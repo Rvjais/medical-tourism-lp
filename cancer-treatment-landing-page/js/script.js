@@ -8,14 +8,16 @@
 /* ------------------------------------------------------------
    1) CONFIG — single place to configure brand contact details.
    Replace these placeholders when the client details are final
-   (doc: phone 9971316164 / mail@shifarahealth.com are the
-   reference values from the requirement sheet).
+   (doc reference values: phone 9971316164 / mail@shifarahealth.com).
 ------------------------------------------------------------ */
 const CONFIG = {
   phoneDisplay: "+91 XXXXX XXXXX",
   phoneHref: "tel:+91XXXXXXXXXX",
-  whatsappHref: "https://wa.me/91XXXXXXXXXX?text=" +
-    encodeURIComponent("Hello, I would like a free cancer treatment plan. I am sharing my diagnosis and reports."),
+  whatsappHref:
+    "https://wa.me/91XXXXXXXXXX?text=" +
+    encodeURIComponent(
+      "Hello, I would like a free cancer treatment plan. I am sharing my diagnosis and reports."
+    ),
   emailDisplay: "hello@[brand].com",
   emailHref: "mailto:hello@[brand].com",
 };
@@ -27,8 +29,8 @@ window.dataLayer = window.dataLayer || [];
 
 function trackEvent(eventName, extra) {
   const payload = Object.assign({ event: eventName }, extra || {});
-  if (window.dataLayer) window.dataLayer.push(payload);
-  if (window.gtag) window.gtag("event", eventName, extra || {});
+  window.dataLayer.push(payload);
+  if (typeof window.gtag === "function") window.gtag("event", eventName, extra || {});
 }
 
 /* ------------------------------------------------------------
@@ -37,10 +39,18 @@ function trackEvent(eventName, extra) {
 function applyContactDetails() {
   document.querySelectorAll("[data-contact]").forEach((el) => {
     switch (el.dataset.contact) {
-      case "phoneText": el.textContent = CONFIG.phoneDisplay; break;
-      case "mailText":  el.textContent = CONFIG.emailDisplay; break;
-      case "phoneLink": el.setAttribute("href", CONFIG.phoneHref); break;
-      case "mailLink":  el.setAttribute("href", CONFIG.emailHref); break;
+      case "phoneText":
+        el.textContent = CONFIG.phoneDisplay;
+        break;
+      case "mailText":
+        el.textContent = CONFIG.emailDisplay;
+        break;
+      case "phoneLink":
+        el.setAttribute("href", CONFIG.phoneHref);
+        break;
+      case "mailLink":
+        el.setAttribute("href", CONFIG.emailHref);
+        break;
       case "waLink":
         el.setAttribute("href", CONFIG.whatsappHref);
         el.setAttribute("target", "_blank");
@@ -51,125 +61,340 @@ function applyContactDetails() {
 }
 
 /* ------------------------------------------------------------
-   4) HERO SLIDER — 4 slides, autoplay, arrows, dots, swipe.
+   4) HERO SLIDER — 4 full-width slides, autoplay, arrows,
+      dots, swipe, keyboard. Autoplay stops after interaction
+      and is disabled for prefers-reduced-motion users.
 ------------------------------------------------------------ */
 function initSlider() {
-  const viewport = document.getElementById("slidesViewport");
+  const slider = document.getElementById("heroSlider");
+  const track = document.getElementById("slidesViewport");
   const dotsWrap = document.getElementById("slideDots");
-  if (!viewport) return;
+  if (!slider || !track || !dotsWrap) return;
 
-  const slides = Array.from(viewport.children);
-  let current = 0;
+  const slides = Array.from(track.querySelectorAll(".hero-slide"));
+  if (slides.length < 2) return;
+
+  const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const DELAY = 6000;
+
+  let index = 0;
   let timer = null;
-  const DELAY = 5500;
+  let hoverPaused = false;
+  let stoppedByUser = false; // manual navigation stops autoplay
+  let pausedByToggle = false;
+  let motionOverride = false;
 
-  /* build dots */
+  /* ---- dots ---- */
   slides.forEach((_, i) => {
     const dot = document.createElement("button");
     dot.type = "button";
-    dot.setAttribute("aria-label", `Go to slide ${i + 1} of ${slides.length}`);
-    dot.addEventListener("click", () => { go(i); restart(); });
+    dot.className = "slide-dot";
+    dot.setAttribute("aria-label", "Go to slide " + (i + 1) + " of " + slides.length);
+    dot.addEventListener("click", () => {
+      go(i);
+      stopAutoplay();
+    });
     dotsWrap.appendChild(dot);
   });
+  const dots = Array.from(dotsWrap.querySelectorAll(".slide-dot"));
+  const toggleBtn = dotsWrap.querySelector(".slide-toggle");
+  const toggleIcon = toggleBtn ? toggleBtn.querySelector("use") : null;
 
-  function go(index) {
-    current = (index + slides.length) % slides.length;
-    viewport.style.transform = `translateX(-${current * 100}%)`;
-    dotsWrap.querySelectorAll("button").forEach((b, i) => {
-      b.classList.toggle("is-active", i === current);
+  /* ---- render ---- */
+  function render() {
+    track.style.transform = "translateX(-" + index * 100 + "%)";
+
+    slides.forEach((slide, i) => {
+      const isActive = i === index;
+      slide.classList.toggle("is-active", isActive);
+      slide.setAttribute("aria-hidden", isActive ? "false" : "true");
+
+      /* keep hidden slides out of the accessibility tree and tab order */
+      if (isActive) {
+        slide.removeAttribute("inert");
+      } else {
+        slide.setAttribute("inert", "");
+      }
+      slide.querySelectorAll("a, button").forEach((el) => {
+        if (isActive) el.removeAttribute("tabindex");
+        else el.setAttribute("tabindex", "-1");
+      });
+    });
+
+    dots.forEach((dot, i) => {
+      const isActive = i === index;
+      dot.classList.toggle("is-active", isActive);
+      if (isActive) dot.setAttribute("aria-current", "true");
+      else dot.removeAttribute("aria-current");
     });
   }
 
-  function next() { go(current + 1); }
-  function prev() { go(current - 1); }
-
-  function restart() {
-    clearInterval(timer);
-    timer = setInterval(next, DELAY);
+  /* ---- navigation ---- */
+  function go(next) {
+    index = (next + slides.length) % slides.length;
+    render();
   }
 
-  /* arrows */
-  const nextBtn = document.querySelector(".slide-next");
-  const prevBtn = document.querySelector(".slide-prev");
-  if (nextBtn) nextBtn.addEventListener("click", () => { next(); restart(); });
-  if (prevBtn) prevBtn.addEventListener("click", () => { prev(); restart(); });
+  const nextBtn = slider.querySelector(".slide-next");
+  const prevBtn = slider.querySelector(".slide-prev");
 
-  /* pause on hover / focus */
-  const slider = document.getElementById("heroSlider");
-  if (slider) {
-    slider.addEventListener("mouseenter", () => clearInterval(timer));
-    slider.addEventListener("mouseleave", restart);
-    slider.addEventListener("focusin", () => clearInterval(timer));
-    slider.addEventListener("focusout", restart);
+  function manualNext() {
+    go(index + 1);
+    stopAutoplay();
+  }
+  function manualPrev() {
+    go(index - 1);
+    stopAutoplay();
   }
 
-  /* swipe support */
-  let startX = null;
-  viewport.addEventListener("touchstart", (e) => { startX = e.touches[0].clientX; }, { passive: true });
-  viewport.addEventListener("touchend", (e) => {
-    if (startX === null) return;
-    const delta = e.changedTouches[0].clientX - startX;
-    if (Math.abs(delta) > 50) (delta < 0 ? next() : prev());
-    startX = null;
-    restart();
-  }, { passive: true });
+  if (nextBtn) nextBtn.addEventListener("click", manualNext);
+  if (prevBtn) prevBtn.addEventListener("click", manualPrev);
 
-  /* keyboard when slider region in focus */
-  slider.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowRight") { next(); restart(); }
-    if (e.key === "ArrowLeft")  { prev(); restart(); }
+  /* ---- autoplay ---- */
+  function clearTimer() {
+    if (timer) {
+      window.clearInterval(timer);
+      timer = null;
+    }
+  }
+
+  function canAutoplay() {
+    if (hoverPaused || stoppedByUser || pausedByToggle || document.hidden) return false;
+    if (motionQuery.matches && !motionOverride) return false;
+    return true;
+  }
+
+  function startAutoplay() {
+    clearTimer();
+    if (!canAutoplay()) return;
+    timer = window.setInterval(() => go(index + 1), DELAY);
+  }
+
+  function stopAutoplay() {
+    stoppedByUser = true;
+    clearTimer();
+    syncToggle();
+  }
+
+  /* pause / play control (WCAG 2.2.2) */
+  function syncToggle() {
+    if (!toggleBtn) return;
+    const isPaused = stoppedByUser || pausedByToggle;
+    toggleBtn.setAttribute("aria-pressed", isPaused ? "true" : "false");
+    toggleBtn.setAttribute("aria-label", isPaused ? "Play slideshow" : "Pause slideshow");
+    if (toggleIcon) toggleIcon.setAttribute("href", isPaused ? "#i-play" : "#i-pause");
+  }
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      if (stoppedByUser || pausedByToggle) {
+        stoppedByUser = false;
+        pausedByToggle = false;
+        motionOverride = true;
+      } else {
+        pausedByToggle = true;
+      }
+      syncToggle();
+      startAutoplay();
+    });
+  }
+
+  /* ---- pause while hovered / focused / tab hidden ---- */
+  slider.addEventListener("mouseenter", () => {
+    hoverPaused = true;
+    clearTimer();
+  });
+  slider.addEventListener("mouseleave", () => {
+    hoverPaused = false;
+    startAutoplay();
+  });
+  slider.addEventListener("focusin", () => {
+    hoverPaused = true;
+    clearTimer();
+  });
+  slider.addEventListener("focusout", (e) => {
+    if (slider.contains(e.relatedTarget)) return;
+    hoverPaused = false;
+    startAutoplay();
   });
 
-  /* pause when tab is hidden */
   document.addEventListener("visibilitychange", () => {
-    if (document.hidden) clearInterval(timer); else restart();
+    if (document.hidden) clearTimer();
+    else startAutoplay();
   });
 
-  go(0);
-  restart();
+  if (typeof motionQuery.addEventListener === "function") {
+    motionQuery.addEventListener("change", () => {
+      if (motionQuery.matches) clearTimer();
+      else startAutoplay();
+    });
+  }
+
+  /* ---- keyboard ---- */
+  slider.addEventListener("keydown", (e) => {
+    switch (e.key) {
+      case "ArrowRight":
+        e.preventDefault();
+        manualNext();
+        break;
+      case "ArrowLeft":
+        e.preventDefault();
+        manualPrev();
+        break;
+      case "Home":
+        e.preventDefault();
+        go(0);
+        stopAutoplay();
+        break;
+      case "End":
+        e.preventDefault();
+        go(slides.length - 1);
+        stopAutoplay();
+        break;
+    }
+  });
+
+  /* ---- swipe ---- */
+  let startX = null;
+  let startY = null;
+
+  track.addEventListener(
+    "touchstart",
+    (e) => {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    },
+    { passive: true }
+  );
+
+  track.addEventListener(
+    "touchend",
+    (e) => {
+      if (startX === null) return;
+      const dx = e.changedTouches[0].clientX - startX;
+      const dy = e.changedTouches[0].clientY - startY;
+      startX = null;
+      startY = null;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+        if (dx < 0) manualNext();
+        else manualPrev();
+      }
+    },
+    { passive: true }
+  );
+
+  render();
+  syncToggle();
+  startAutoplay();
 }
 
 /* ------------------------------------------------------------
-   5) Modern navbar — mobile drawer + scroll-spy + shadow.
+   5) Modern navbar — mobile drawer, Escape / outside click,
+      scroll-spy and sticky-header shadow.
 ------------------------------------------------------------ */
 function initNav() {
+  const header = document.getElementById("siteHeader");
   const toggle = document.getElementById("navToggle");
   const drawer = document.getElementById("navDrawer");
 
   if (toggle && drawer) {
-    toggle.addEventListener("click", () => {
-      const open = drawer.hidden;
+    const setOpen = (open) => {
       drawer.hidden = !open;
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
       document.body.classList.toggle("nav-open", open);
+    };
+
+    toggle.addEventListener("click", () => setOpen(drawer.hidden));
+
+    drawer.querySelectorAll("a").forEach((link) =>
+      link.addEventListener("click", () => setOpen(false))
+    );
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !drawer.hidden) {
+        setOpen(false);
+        toggle.focus();
+      }
     });
 
-    /* close the drawer when any link inside it is used */
-    drawer.querySelectorAll("a").forEach((a) =>
-      a.addEventListener("click", () => {
-        drawer.hidden = true;
-        toggle.setAttribute("aria-expanded", "false");
-        document.body.classList.remove("nav-open");
-      })
-    );
+    document.addEventListener("click", (e) => {
+      if (drawer.hidden) return;
+      if (drawer.contains(e.target) || toggle.contains(e.target)) return;
+      setOpen(false);
+    });
+
+    const desktop = window.matchMedia("(min-width: 981px)");
+    if (typeof desktop.addEventListener === "function") {
+      desktop.addEventListener("change", (e) => {
+        if (e.matches) setOpen(false);
+      });
+    }
   }
 
   /* scroll-spy: highlight the section currently in view */
-  const links = document.querySelectorAll("#navLinks a");
-  const sections = Array.from(links)
-    .map((a) => document.querySelector(a.getAttribute("href")))
+  const links = Array.from(document.querySelectorAll("#navLinks a"));
+  const sections = links
+    .map((a) => {
+      const id = a.getAttribute("href");
+      return id && id.length > 1 ? document.querySelector(id) : null;
+    })
     .filter(Boolean);
 
+  if (!sections.length) return;
+
+  let ticking = false;
   const spy = () => {
-    const pos = window.scrollY + 140;
-    let activeId = null;
-    sections.forEach((sec) => { if (sec.offsetTop <= pos) activeId = sec.id; });
-    links.forEach((a) =>
-      a.classList.toggle("is-active", a.getAttribute("href") === "#" + activeId)
-    );
+    ticking = false;
+    const pos = window.scrollY + (header ? header.offsetHeight : 0) + 40;
+    let activeId = "";
+    sections.forEach((section) => {
+      if (section.offsetTop <= pos) activeId = section.id;
+    });
+    links.forEach((a) => {
+      a.classList.toggle("is-active", a.getAttribute("href") === "#" + activeId);
+    });
   };
-  window.addEventListener("scroll", spy, { passive: true });
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(spy);
+    },
+    { passive: true }
+  );
   spy();
+}
+
+/* ------------------------------------------------------------
+   5b) Keep --header-h in sync so anchors are not hidden under
+       the sticky header (CSS uses it for scroll-padding-top).
+------------------------------------------------------------ */
+function initHeaderHeight() {
+  const header = document.getElementById("siteHeader");
+  if (!header) return;
+
+  const sync = () => {
+    const bar = header.querySelector(".navbar");
+    const top = header.querySelector(".topbar");
+    let h = 0;
+    if (bar) h += bar.getBoundingClientRect().height;
+    if (top) h += top.getBoundingClientRect().height;
+    /* fall back to the whole header if the markup changes */
+    if (!h) {
+      const drawer = header.querySelector(".nav-drawer");
+      h = header.getBoundingClientRect().height;
+      if (drawer && !drawer.hidden) h -= drawer.getBoundingClientRect().height;
+    }
+    if (h > 0) document.documentElement.style.setProperty("--header-h", Math.round(h) + "px");
+  };
+
+  sync();
+  window.addEventListener("resize", sync, { passive: true });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(sync);
+  window.addEventListener("load", sync);
 }
 
 /* ------------------------------------------------------------
@@ -221,56 +446,84 @@ function populateCountries() {
   if (!select) return;
 
   const preferred = COUNTRIES.filter((c) => PREFERRED.includes(c[0]));
-  const rest = CountriesExcept(PREFERRED);
+  const rest = COUNTRIES.filter((c) => !PREFERRED.includes(c[0])).sort((a, b) =>
+    a[0].localeCompare(b[0])
+  );
 
-  function add(sepLabel, list) {
-    if (sepLabel) {
+  const add = (separator, list) => {
+    if (separator) {
       const sep = document.createElement("option");
       sep.disabled = true;
-      sep.textContent = sepLabel;
+      sep.textContent = separator;
       select.appendChild(sep);
     }
     list.forEach(([name, dial]) => {
       const opt = document.createElement("option");
       opt.value = dial;
-      opt.textContent = dial === "+__" ? name : `${name} (${dial})`;
+      opt.textContent = name + " (" + dial + ")";
       select.appendChild(opt);
     });
-  }
+  };
 
   add("— Popular source markets —", preferred);
   add("— All countries —", rest);
 
+  const dial = document.getElementById("dialCode");
   select.addEventListener("change", () => {
-    const dial = document.getElementById("dialCode");
     if (dial && select.value) dial.textContent = select.value;
   });
 }
 
-function CountriesExcept(exclude) {
-  return COUNTRIES.filter((c) => !exclude.includes(c[0])).sort((a, b) =>
-    a[0].localeCompare(b[0])
-  );
-}
-
 /* ------------------------------------------------------------
-   7) Tabs (cancer types & oncology services) — single open panel.
-      On mobile the menu becomes a scrollable pill bar.
+   7) Tabs (cancer types & oncology services) — single open panel,
+      wired ARIA + keyboard support.
 ------------------------------------------------------------ */
 function initTabs() {
   document.querySelectorAll("[data-tabs]").forEach((wrap) => {
-    const btns = wrap.querySelectorAll(".tab-btn");
-    const panels = wrap.querySelectorAll(".tab-panel");
+    const btns = Array.from(wrap.querySelectorAll(".tab-btn"));
+    const panels = Array.from(wrap.querySelectorAll(".tab-panel"));
+
     btns.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        btns.forEach((b) => {
-          b.classList.toggle("is-active", b === btn);
-          b.setAttribute("aria-selected", b === btn ? "true" : "false");
-        });
-        panels.forEach((p) => p.classList.toggle("is-active", p.id === btn.dataset.panel));
-        trackEvent("tab_click", { tab: btn.textContent.trim() });
+      const panel = panels.find((p) => p.id === btn.dataset.panel);
+      if (panel) {
+        btn.id = btn.id || "tab-" + panel.id;
+        btn.setAttribute("aria-controls", panel.id);
+        panel.setAttribute("role", "tabpanel");
+        panel.setAttribute("aria-labelledby", btn.id);
+      }
+      btn.tabIndex = btn.classList.contains("is-active") ? 0 : -1;
+
+      btn.addEventListener("click", () => activate(btn, true));
+      btn.addEventListener("keydown", (e) => {
+        const current = btns.indexOf(btn);
+        let nextIndex = null;
+        if (e.key === "ArrowDown" || e.key === "ArrowRight") nextIndex = (current + 1) % btns.length;
+        if (e.key === "ArrowUp" || e.key === "ArrowLeft") nextIndex = (current - 1 + btns.length) % btns.length;
+        if (e.key === "Home") nextIndex = 0;
+        if (e.key === "End") nextIndex = btns.length - 1;
+        if (nextIndex === null) return;
+        e.preventDefault();
+        btns[nextIndex].focus();
+        activate(btns[nextIndex], true);
       });
     });
+
+    function activate(btn, notify) {
+      btns.forEach((b) => {
+        const isActive = b === btn;
+        b.classList.toggle("is-active", isActive);
+        b.setAttribute("aria-selected", isActive ? "true" : "false");
+        b.tabIndex = isActive ? 0 : -1;
+      });
+      panels.forEach((p) => {
+        const isActive = p.id === btn.dataset.panel;
+        p.classList.toggle("is-active", isActive);
+        p.setAttribute("aria-hidden", isActive ? "false" : "true");
+      });
+      if (notify) trackEvent("tab_click", { tab: btn.textContent.trim() });
+    }
+
+    activate(btns.find((b) => b.classList.contains("is-active")) || btns[0], false);
   });
 }
 
@@ -278,14 +531,23 @@ function initTabs() {
    8) FAQ accordion
 ------------------------------------------------------------ */
 function initFaq() {
-  document.querySelectorAll(".faq-item").forEach((item) => {
+  document.querySelectorAll(".faq-item").forEach((item, i) => {
     const q = item.querySelector(".faq-q");
     const a = item.querySelector(".faq-a");
+    if (!q || !a) return;
+
+    if (!a.id) a.id = "faq-answer-" + (i + 1);
+    q.setAttribute("aria-controls", a.id);
+    q.setAttribute("aria-expanded", "false");
+
     q.addEventListener("click", () => {
       const open = item.classList.toggle("open");
       q.setAttribute("aria-expanded", open ? "true" : "false");
       a.hidden = !open;
-      if (open) trackEvent("faq_open", { question: q.querySelector("span").textContent.trim() });
+      if (open) {
+        const label = q.querySelector("span");
+        trackEvent("faq_open", { question: label ? label.textContent.trim() : "" });
+      }
     });
   });
 }
@@ -301,11 +563,16 @@ function initForm() {
   const form = document.getElementById("enquiryForm");
   if (!form) return;
 
+  const success = document.getElementById("formSuccess");
+  const submitBtn = form.querySelector('button[type="submit"]');
+
   const setErr = (id, msg) => {
     const field = document.getElementById(id);
-    const errEl = form.querySelector(`[data-err="${id}"]`);
-    if (field) field.classList.toggle("is-invalid", !!msg);
+    const errEl = form.querySelector('[data-err="' + id + '"]');
+    if (field) field.classList.toggle("is-invalid", Boolean(msg));
     if (errEl) errEl.textContent = msg || "";
+    if (field && msg) field.setAttribute("aria-invalid", "true");
+    if (field && !msg) field.removeAttribute("aria-invalid");
   };
 
   form.addEventListener("submit", (e) => {
@@ -314,24 +581,32 @@ function initForm() {
     const name = document.getElementById("fullName");
     const country = document.getElementById("country");
     const phone = document.getElementById("phone");
+    if (!name || !country || !phone) return;
 
     setErr("fullName", name.value.trim().length < 3 ? "Please enter your full name." : "");
     setErr("country", country.value ? "" : "Please select your country.");
 
     const digits = phone.value.replace(/\D/g, "");
-    setErr("phone",
+    setErr(
+      "phone",
       digits.length >= 7 && digits.length <= 15
         ? ""
-        : "Please enter a valid phone / WhatsApp number.");
+        : "Please enter a valid phone / WhatsApp number."
+    );
 
-    if (form.querySelector(".is-invalid")) {
-      form.querySelector(".is-invalid").focus();
+    const firstInvalid = form.querySelector(".is-invalid");
+    if (firstInvalid) {
+      firstInvalid.focus();
       return;
     }
 
+    const sourceField = form.elements.namedItem("formSource");
+    const countryText =
+      country.selectedIndex >= 0 ? country.options[country.selectedIndex].textContent : "";
+
     trackEvent("form_submit", {
-      formSource: form.formSource.value,
-      country: country.value,
+      formSource: sourceField ? sourceField.value : "",
+      country: countryText,
     });
 
     /* TODO — send to CRM endpoint here, e.g.:
@@ -342,22 +617,34 @@ function initForm() {
   });
 
   function showSuccess() {
+    if (!success) return;
     form.hidden = true;
-    const success = document.getElementById("formSuccess");
     success.hidden = false;
-    success.scrollIntoView({ behavior: "smooth", block: "center" });
+
+    const title = success.querySelector("h3");
+    if (title) {
+      title.tabIndex = -1;
+      title.focus({ preventScroll: true });
+    }
+
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    success.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
   }
 
   /* clear error state while typing */
-  form.querySelectorAll("input, select").forEach((el) => {
+  form.querySelectorAll("input, select, textarea").forEach((el) => {
     el.addEventListener("input", () => setErr(el.id, ""));
   });
 
-  /* digits only in phone field */
+  /* digits only in the phone field */
   const phone = document.getElementById("phone");
-  phone.addEventListener("input", () => {
-    phone.value = phone.value.replace(/[^\d\s-]/g, "");
-  });
+  if (phone) {
+    phone.addEventListener("input", () => {
+      phone.value = phone.value.replace(/[^\d\s-]/g, "");
+    });
+  }
+
+  if (submitBtn) submitBtn.addEventListener("click", () => trackEvent("form_intent"));
 }
 
 /* ------------------------------------------------------------
@@ -365,8 +652,11 @@ function initForm() {
 ------------------------------------------------------------ */
 function initTracking() {
   document.addEventListener("click", (e) => {
+    if (!(e.target instanceof Element)) return;
     const el = e.target.closest("[data-event]");
-    if (!el || el.matches('#enquiryForm [data-event="form_submit"]')) return; // form handled in initForm
+    if (!el) return;
+    /* the form submit button is tracked in initForm */
+    if (el.matches('#enquiryForm [data-event="form_submit"]')) return;
     trackEvent(el.dataset.event);
   });
 }
@@ -376,19 +666,39 @@ function initTracking() {
 ------------------------------------------------------------ */
 function initScrollEffects() {
   const header = document.getElementById("siteHeader");
-  window.addEventListener("scroll", () => {
-    header.classList.toggle("is-scrolled", window.scrollY > 8);
-  }, { passive: true });
+  if (header) {
+    let ticking = false;
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (ticking) return;
+        ticking = true;
+        window.requestAnimationFrame(() => {
+          header.classList.toggle("is-scrolled", window.scrollY > 8);
+          ticking = false;
+        });
+      },
+      { passive: true }
+    );
+  }
 
   const revealEls = document.querySelectorAll(".reveal");
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
+  if (!("IntersectionObserver" in window)) {
+    revealEls.forEach((el) => el.classList.add("visible"));
+    return;
+  }
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          io.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
   revealEls.forEach((el) => io.observe(el));
 }
 
@@ -397,6 +707,7 @@ function initScrollEffects() {
 ------------------------------------------------------------ */
 document.addEventListener("DOMContentLoaded", () => {
   applyContactDetails();
+  initHeaderHeight();
   initSlider();
   initNav();
   populateCountries();
