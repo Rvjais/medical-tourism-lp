@@ -41,11 +41,17 @@ cancer-treatment-landing-page/
 - **Imagery:** real photography in `assets/images/` for hero slides, doctors, hospitals,
   cities, why-us and patient stories; flat SVG artwork in `assets/illustrations/`
   remains available for fallbacks.
-- **Hero slider** — 4 auto-rotating banners (arrows, dots, swipe, pause, reduced-motion aware).
+- **Hero slider** — 4 full-bleed, full-screen photo banners (radiation therapy, oncology
+  consultation, chemotherapy infusion, tumour board) with arrows, dots, swipe, pause and
+  reduced-motion support. Each photo fills the slide; copy sits on a flat tint, no gradients.
 - **Modern navbar** — utility topbar, anchor links with scroll-spy, mobile drawer.
 - **Aesthetic dark footer** — enquiry card, link columns, badge strip, disclaimer.
 - Use **margins, not transforms**, for any offset layout: `.reveal.visible` resets
   `transform` to `none` once a section scrolls into view.
+
+Hero photo credit: `hero-slide-3.jpg` is a public-domain National Cancer Institute
+photograph (Rhoda Baer, 2010), sourced via Unsplash. Replace or re-credit it when the
+brand supplies its own hospital photography.
 
 ## Sections included (matching the doc)
 

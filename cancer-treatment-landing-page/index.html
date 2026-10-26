@@ -30,6 +30,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
+  <!-- Hero banner: load the first slide immediately -->
+  <link rel="preload" as="image" href="assets/images/hero-slide-1.jpg" fetchpriority="high">
+
   <!-- Styles -->
   <link rel="stylesheet" href="css/style.css">
 
@@ -202,7 +205,8 @@
         <div class="hero-slides" id="slidesViewport">
 
           <article class="hero-slide hero-slide--ink is-active" aria-roledescription="slide" aria-label="Slide 1 of 4">
-            <span class="hero-dots" aria-hidden="true"></span>
+            <img class="hero-slide-bg" src="assets/images/hero-slide-1.jpg" alt="Patient receiving radiation therapy on a linear accelerator" width="1200" height="896" fetchpriority="high">
+            <span class="hero-scrim" aria-hidden="true"></span>
             <div class="container hero-slide-inner">
               <div class="hero-slide-copy">
                 <p class="eyebrow"><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg> Cancer Care in India</p>
@@ -216,14 +220,12 @@
                   </a>
                 </div>
               </div>
-              <figure class="hero-slide-art">
-                <img src="assets/images/hero-slide-1.jpg" alt="Senior oncologist consulting international patient and family" width="520" height="390" fetchpriority="high">
-              </figure>
             </div>
           </article>
 
-          <article class="hero-slide hero-slide--teal" aria-roledescription="slide" aria-label="Slide 2 of 4">
-            <span class="hero-dots" aria-hidden="true"></span>
+          <article class="hero-slide hero-slide--teal hero-slide--bottom" aria-roledescription="slide" aria-label="Slide 2 of 4">
+            <img class="hero-slide-bg" src="assets/images/hero-slide-2.jpg" alt="Oncologist explaining a cancer care plan and likely costs to an international patient and his wife" width="1200" height="896" loading="lazy">
+            <span class="hero-scrim" aria-hidden="true"></span>
             <div class="container hero-slide-inner">
               <div class="hero-slide-copy">
                 <span class="slide-tag">Cost Advantage</span>
@@ -233,31 +235,27 @@
                   <a class="btn btn-ghost-gold" href="#costs">View treatment costs <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
                 </div>
               </div>
-              <figure class="hero-slide-art">
-                <img src="assets/images/hero-slide-2.jpg" alt="State of the art linear accelerator radiation oncology suite with medical team" width="520" height="390" loading="lazy">
-              </figure>
             </div>
           </article>
 
-          <article class="hero-slide hero-slide--coral" aria-roledescription="slide" aria-label="Slide 3 of 4">
-            <span class="hero-dots" aria-hidden="true"></span>
+          <article class="hero-slide hero-slide--coral hero-slide--bottom hero-slide--narrow" aria-roledescription="slide" aria-label="Slide 3 of 4">
+            <img class="hero-slide-bg" src="assets/images/hero-slide-3.jpg" alt="Oncology doctor and nurse caring for a patient during chemotherapy infusion" width="1920" height="1080" loading="lazy">
+            <span class="hero-scrim" aria-hidden="true"></span>
             <div class="container hero-slide-inner">
               <div class="hero-slide-copy">
                 <span class="slide-tag">Complete Support</span>
-                <h2>Visa, travel, stay &amp; interpreters — handled</h2>
-                <p class="hero-sub">One dedicated team carries you from your first enquiry to your flight home.</p>
+                <h2>One care team beside you, from diagnosis to&nbsp;recovery</h2>
+                <p class="hero-sub">Chemotherapy, radiation and surgery planned by specialists — with visa, travel, stay and interpreter support handled for you and your family.</p>
                 <div class="hero-cta-row">
                   <a class="btn btn-ghost-gold" href="#journey">See how the journey works <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
                 </div>
               </div>
-              <figure class="hero-slide-art">
-                <img src="assets/images/hero-slide-3.jpg" alt="Dedicated international patient travel concierge coordinator welcoming family" width="520" height="390" loading="lazy">
-              </figure>
             </div>
           </article>
 
-          <article class="hero-slide hero-slide--sand" aria-roledescription="slide" aria-label="Slide 4 of 4">
-            <span class="hero-dots" aria-hidden="true"></span>
+          <article class="hero-slide hero-slide--sand hero-slide--bottom" aria-roledescription="slide" aria-label="Slide 4 of 4">
+            <img class="hero-slide-bg" src="assets/images/hero-slide-4.jpg" alt="Multidisciplinary oncology team reviewing cancer scans on a tumour board" width="1200" height="896" loading="lazy">
+            <span class="hero-scrim" aria-hidden="true"></span>
             <div class="container hero-slide-inner">
               <div class="hero-slide-copy">
                 <span class="slide-tag">Second Opinion</span>
@@ -267,9 +265,6 @@
                   <a class="btn btn-primary" href="#lead-form" data-event="form_intent">Get my free plan <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
                 </div>
               </div>
-              <figure class="hero-slide-art">
-                <img src="assets/images/hero-slide-4.jpg" alt="Multidisciplinary oncology tumor board reviewing cancer diagnostic scans" width="520" height="390" loading="lazy">
-              </figure>
             </div>
           </article>
 
@@ -337,7 +332,7 @@
               <div class="field">
                 <label for="phone">Phone / WhatsApp <em>*</em></label>
                 <div class="phone-field">
-                  <span class="dial" id="dialCode">+__</span>
+                  <span class="dial" id="dialCode">+</span>
                   <input type="tel" id="phone" name="phone" required inputmode="numeric" maxlength="15" autocomplete="tel" placeholder="Phone / WhatsApp number">
                 </div>
                 <span class="err" data-err="phone"></span>
