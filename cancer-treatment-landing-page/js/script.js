@@ -1,5 +1,6 @@
 /* ============================================================
    [Brand] — Cancer Treatment in India · Landing Page
+   Slider · navbar · scroll-spy · tabs · FAQ · form · tracking
    Events per doc: form_submit, whatsapp_click, call_click,
    doctor_profile_click, hospital_profile_click
 ============================================================ */
@@ -50,7 +51,129 @@ function applyContactDetails() {
 }
 
 /* ------------------------------------------------------------
-   4) Country dropdown — target markets first (Bangladesh, Gulf,
+   4) HERO SLIDER — 4 slides, autoplay, arrows, dots, swipe.
+------------------------------------------------------------ */
+function initSlider() {
+  const viewport = document.getElementById("slidesViewport");
+  const dotsWrap = document.getElementById("slideDots");
+  if (!viewport) return;
+
+  const slides = Array.from(viewport.children);
+  let current = 0;
+  let timer = null;
+  const DELAY = 5500;
+
+  /* build dots */
+  slides.forEach((_, i) => {
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.setAttribute("aria-label", `Go to slide ${i + 1} of ${slides.length}`);
+    dot.addEventListener("click", () => { go(i); restart(); });
+    dotsWrap.appendChild(dot);
+  });
+
+  function go(index) {
+    current = (index + slides.length) % slides.length;
+    viewport.style.transform = `translateX(-${current * 100}%)`;
+    dotsWrap.querySelectorAll("button").forEach((b, i) => {
+      b.classList.toggle("is-active", i === current);
+    });
+  }
+
+  function next() { go(current + 1); }
+  function prev() { go(current - 1); }
+
+  function restart() {
+    clearInterval(timer);
+    timer = setInterval(next, DELAY);
+  }
+
+  /* arrows */
+  const nextBtn = document.querySelector(".slide-next");
+  const prevBtn = document.querySelector(".slide-prev");
+  if (nextBtn) nextBtn.addEventListener("click", () => { next(); restart(); });
+  if (prevBtn) prevBtn.addEventListener("click", () => { prev(); restart(); });
+
+  /* pause on hover / focus */
+  const slider = document.getElementById("heroSlider");
+  if (slider) {
+    slider.addEventListener("mouseenter", () => clearInterval(timer));
+    slider.addEventListener("mouseleave", restart);
+    slider.addEventListener("focusin", () => clearInterval(timer));
+    slider.addEventListener("focusout", restart);
+  }
+
+  /* swipe support */
+  let startX = null;
+  viewport.addEventListener("touchstart", (e) => { startX = e.touches[0].clientX; }, { passive: true });
+  viewport.addEventListener("touchend", (e) => {
+    if (startX === null) return;
+    const delta = e.changedTouches[0].clientX - startX;
+    if (Math.abs(delta) > 50) (delta < 0 ? next() : prev());
+    startX = null;
+    restart();
+  }, { passive: true });
+
+  /* keyboard when slider region in focus */
+  slider.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") { next(); restart(); }
+    if (e.key === "ArrowLeft")  { prev(); restart(); }
+  });
+
+  /* pause when tab is hidden */
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) clearInterval(timer); else restart();
+  });
+
+  go(0);
+  restart();
+}
+
+/* ------------------------------------------------------------
+   5) Modern navbar — mobile drawer + scroll-spy + shadow.
+------------------------------------------------------------ */
+function initNav() {
+  const toggle = document.getElementById("navToggle");
+  const drawer = document.getElementById("navDrawer");
+
+  if (toggle && drawer) {
+    toggle.addEventListener("click", () => {
+      const open = drawer.hidden;
+      drawer.hidden = !open;
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      document.body.classList.toggle("nav-open", open);
+    });
+
+    /* close the drawer when any link inside it is used */
+    drawer.querySelectorAll("a").forEach((a) =>
+      a.addEventListener("click", () => {
+        drawer.hidden = true;
+        toggle.setAttribute("aria-expanded", "false");
+        document.body.classList.remove("nav-open");
+      })
+    );
+  }
+
+  /* scroll-spy: highlight the section currently in view */
+  const links = document.querySelectorAll("#navLinks a");
+  const sections = Array.from(links)
+    .map((a) => document.querySelector(a.getAttribute("href")))
+    .filter(Boolean);
+
+  const spy = () => {
+    const pos = window.scrollY + 140;
+    let activeId = null;
+    sections.forEach((sec) => { if (sec.offsetTop <= pos) activeId = sec.id; });
+    links.forEach((a) =>
+      a.classList.toggle("is-active", a.getAttribute("href") === "#" + activeId)
+    );
+  };
+  window.addEventListener("scroll", spy, { passive: true });
+  spy();
+}
+
+/* ------------------------------------------------------------
+   6) Country dropdown — target markets first (Bangladesh, Gulf,
       Africa, Iran etc. per doc), then the rest alphabetically.
       Selecting a country auto-fills the dial code.
 ------------------------------------------------------------ */
@@ -131,8 +254,8 @@ function CountriesExcept(exclude) {
 }
 
 /* ------------------------------------------------------------
-   5) Tabs (cancer types & oncology services) — single open panel.
-      On mobile the menu becomes a scrollable pill bar (accordion-style).
+   7) Tabs (cancer types & oncology services) — single open panel.
+      On mobile the menu becomes a scrollable pill bar.
 ------------------------------------------------------------ */
 function initTabs() {
   document.querySelectorAll("[data-tabs]").forEach((wrap) => {
@@ -152,7 +275,7 @@ function initTabs() {
 }
 
 /* ------------------------------------------------------------
-   6) FAQ accordion
+   8) FAQ accordion
 ------------------------------------------------------------ */
 function initFaq() {
   document.querySelectorAll(".faq-item").forEach((item) => {
@@ -168,7 +291,7 @@ function initFaq() {
 }
 
 /* ------------------------------------------------------------
-   7) Lead form — inline validation, dial-code aware phone rule,
+   9) Lead form — inline validation, dial-code aware phone rule,
       success state, GTM form_submit event.
       TEMPLATE NOTE: replace the simulated success with a POST to
       the CRM / form endpoint once routing is confirmed
@@ -192,7 +315,6 @@ function initForm() {
     const country = document.getElementById("country");
     const phone = document.getElementById("phone");
 
-    let ok = true;
     setErr("fullName", name.value.trim().length < 3 ? "Please enter your full name." : "");
     setErr("country", country.value ? "" : "Please select your country.");
 
@@ -202,8 +324,7 @@ function initForm() {
         ? ""
         : "Please enter a valid phone / WhatsApp number.");
 
-    ok = !form.querySelector(".is-invalid");
-    if (!ok) {
+    if (form.querySelector(".is-invalid")) {
       form.querySelector(".is-invalid").focus();
       return;
     }
@@ -240,7 +361,7 @@ function initForm() {
 }
 
 /* ------------------------------------------------------------
-   8) Click-tracking via [data-event] attributes
+   10) Click-tracking via [data-event] attributes
 ------------------------------------------------------------ */
 function initTracking() {
   document.addEventListener("click", (e) => {
@@ -251,7 +372,7 @@ function initTracking() {
 }
 
 /* ------------------------------------------------------------
-   9) Scroll effects — sticky header shadow + reveal animations
+   11) Scroll effects — sticky header shadow + reveal animations
 ------------------------------------------------------------ */
 function initScrollEffects() {
   const header = document.getElementById("siteHeader");
@@ -276,6 +397,8 @@ function initScrollEffects() {
 ------------------------------------------------------------ */
 document.addEventListener("DOMContentLoaded", () => {
   applyContactDetails();
+  initSlider();
+  initNav();
   populateCountries();
   initTabs();
   initFaq();

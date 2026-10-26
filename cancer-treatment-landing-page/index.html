@@ -28,7 +28,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/style.css">
@@ -68,6 +68,8 @@
     <defs>
       <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
       <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+      <symbol id="i-chevl" viewBox="0 0 24 24"><path d="m14 18-6-6 6-6"/></symbol>
+      <symbol id="i-chevr" viewBox="0 0 24 24"><path d="m10 6 6 6-6 6"/></symbol>
       <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></symbol>
       <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
       <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 2a9.9 9.9 0 0 0-8.53 14.97L2 22.5l5.68-1.43A9.9 9.9 0 0 0 12 21.8h.01A9.9 9.9 0 0 0 12 2Zm5.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.44-.53.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.91-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.62.7.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.28-.2-.57-.35Z"/></symbol>
@@ -101,20 +103,76 @@
        Contact values are injected from js/script.js CONFIG.
   ============================================================= -->
   <header class="site-header" id="siteHeader">
-    <div class="container header-inner">
-      <a class="logo" href="#top" aria-label="[Brand] – home">
-        <span class="logo-mark" aria-hidden="true">
-          <svg viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="var(--brand)"/><path d="M32 50C20 41 12 34 12 24a10 10 0 0 1 20-3 10 10 0 0 1 20 3c0 10-8 17-20 26z" fill="#fff"/><path d="M29 22h6v6h6v6h-6v6h-6v-6h-6v-6h6z" fill="var(--brand)"/></svg>
-        </span>
-        <span class="logo-text">[Brand]<small>Health</small></span>
-      </a>
+    <!-- Utility top bar -->
+    <div class="topbar">
+      <div class="container topbar-inner">
+        <div class="topbar-contact">
+          <a data-contact="phoneLink" href="#" data-event="call_click">
+            <svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>
+            <span data-contact="phoneText">+91 XXXXX XXXXX</span>
+          </a>
+          <span class="topbar-sep" aria-hidden="true">|</span>
+          <a data-contact="mailLink" href="#" data-event="email_click">
+            <svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>
+            <span data-contact="mailText">hello@[brand].com</span>
+          </a>
+        </div>
+        <p class="topbar-note"><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg> Free expert opinion · 24/7 patient support</p>
+      </div>
+    </div>
 
-      <div class="header-actions">
-        <a class="header-phone" data-contact="phoneLink" href="#" data-event="call_click">
+    <!-- Main navbar: on-page anchors only (visitors stay on the page per doc) -->
+    <nav class="navbar" aria-label="Page navigation">
+      <div class="container navbar-inner">
+        <a class="logo" href="#top" aria-label="[Brand] – home">
+          <span class="logo-mark" aria-hidden="true">
+            <svg viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="var(--brand)"/><path d="M32 50C20 41 12 34 12 24a10 10 0 0 1 20-3 10 10 0 0 1 20 3c0 10-8 17-20 26z" fill="#fff"/><path d="M29 22h6v6h6v6h-6v6h-6v-6h-6v-6h6z" fill="var(--brand)"/></svg>
+          </span>
+          <span class="logo-text">[Brand]<small>Health</small></span>
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#cancer-types">Cancer Types</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#why-india">Why India</a></li>
+          <li><a href="#costs">Costs</a></li>
+          <li><a href="#journey">Journey</a></li>
+          <li><a href="#hubs">Cities</a></li>
+          <li><a href="#faqs">FAQ</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a class="nav-phone" data-contact="phoneLink" href="#" data-event="call_click" aria-label="Call us">
+            <svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>
+          </a>
+          <a class="btn btn-primary btn-header" href="#lead-form" data-event="form_intent">Get Free Treatment Plan</a>
+          <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navDrawer" aria-label="Open menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile drawer -->
+    <div class="nav-drawer" id="navDrawer" hidden>
+      <ul class="drawer-links">
+        <li><a href="#cancer-types">Cancer Types</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#why-india">Why India</a></li>
+        <li><a href="#costs">Costs</a></li>
+        <li><a href="#journey">Journey</a></li>
+        <li><a href="#hubs">Cities</a></li>
+        <li><a href="#faqs">FAQ</a></li>
+      </ul>
+      <div class="drawer-actions">
+        <a class="btn btn-primary btn-block" href="#lead-form" data-event="form_intent">Get My Free Treatment Plan</a>
+        <a class="btn btn-whatsapp btn-block" data-contact="waLink" href="#" target="_blank" rel="noopener" data-event="whatsapp_click">
+          <svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg> WhatsApp Coordinator
+        </a>
+        <a class="drawer-phone" data-contact="phoneLink" href="#" data-event="call_click">
           <svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>
           <span data-contact="phoneText">+91 XXXXX XXXXX</span>
         </a>
-        <a class="btn btn-primary btn-header" href="#lead-form" data-event="form_intent">Get My Free Treatment Plan</a>
       </div>
     </div>
   </header>
@@ -125,10 +183,12 @@
          SECTION 1 — HERO  (primary conversion: free consultation form)
     ========================================================== -->
     <section class="hero" id="top">
+      <!-- flat decorative background: outline rings + dot pattern (no gradients) -->
       <div class="hero-bg" aria-hidden="true">
-        <span class="blob blob-1"></span>
-        <span class="blob blob-2"></span>
-        <svg class="hero-wave" viewBox="0 0 1440 110" preserveAspectRatio="none"><path d="M0 70 C240 110 480 30 720 55 C960 80 1200 110 1440 60 L1440 110 L0 110 Z" fill="var(--bg)"/></svg>
+        <span class="ring ring-1"></span>
+        <span class="ring ring-2"></span>
+        <span class="ring ring-3"></span>
+        <svg class="hero-wave" viewBox="0 0 1440 110" preserveAspectRatio="none"><path d="M0 70 C240 110 480 30 720 55 C960 80 1200 110 1440 60 L1440 110 L0 110 Z" fill="var(--cream)"/></svg>
       </div>
 
       <div class="container hero-grid">
@@ -222,6 +282,57 @@
           </div>
         </div>
       </div>
+
+      <!-- Sliding banner strip: 4 auto-rotating slides in the hero -->
+      <div class="container slider-zone">
+        <div class="slider" id="heroSlider" aria-roledescription="carousel" aria-label="Why patients choose us">
+          <button class="slide-arrow slide-prev" aria-label="Previous slide">
+            <svg class="ic" aria-hidden="true"><use href="#i-chevl"/></svg>
+          </button>
+          <div class="slides-viewport" id="slidesViewport">
+            <figure class="slide slide-ink">
+              <div class="slide-copy">
+                <span class="slide-tag">Cost Advantage</span>
+                <h2>Save 60–80% on Cancer Treatment</h2>
+                <p>World-class care at JCI / NABH-accredited hospitals — at a fraction of US or UK prices.</p>
+                <a class="slide-cta" href="#costs">View treatment costs <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+              <img src="assets/illustrations/cost-savings.svg" alt="Illustration showing treatment cost savings" width="420" height="340" loading="lazy">
+            </figure>
+            <figure class="slide slide-teal">
+              <div class="slide-copy">
+                <span class="slide-tag">Expert Care</span>
+                <h2>Top Oncologists at JCI · NABH Hospitals</h2>
+                <p>Medical, surgical and radiation oncology across 12 major cancer types.</p>
+                <a class="slide-cta" href="#cancer-types">Explore cancer types <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+              <img src="assets/illustrations/oncology-care.svg" alt="Illustration of an oncologist caring for a patient" width="420" height="340" loading="lazy">
+            </figure>
+            <figure class="slide slide-coral">
+              <div class="slide-copy">
+                <span class="slide-tag">Complete Support</span>
+                <h2>Visa, Travel, Stay & Interpreters — Handled</h2>
+                <p>One dedicated team carries you from first enquiry to your flight home.</p>
+                <a class="slide-cta" href="#journey">See how the journey works <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+              <img src="assets/illustrations/journey-support.svg" alt="Illustration of medical travel support with plane and route" width="420" height="340" loading="lazy">
+            </figure>
+            <figure class="slide slide-sand">
+              <div class="slide-copy">
+                <span class="slide-tag">Second Opinion</span>
+                <h2>Free Expert Opinion on Your Reports</h2>
+                <p>Share your diagnosis today and get clear options before you decide.</p>
+                <a class="slide-cta" href="#lead-form" data-event="form_intent">Get my free plan <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+              <img src="assets/illustrations/second-opinion.svg" alt="Illustration of a medical report review with magnifying glass" width="420" height="340" loading="lazy">
+            </figure>
+          </div>
+          <button class="slide-arrow slide-next" aria-label="Next slide">
+            <svg class="ic" aria-hidden="true"><use href="#i-chevr"/></svg>
+          </button>
+          <div class="slide-dots" id="slideDots" aria-label="Slide navigation"></div>
+        </div>
+      </div>
     </section>
 
     <!-- ========================================================
@@ -260,7 +371,7 @@
     ========================================================== -->
     <section class="section support" id="support">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head" data-overline="How We Help">
           <h2>Find the Right Support for Your Cancer Journey</h2>
           <p>Every cancer journey is different. Tell us what you need and we will help you take the right next step.</p>
         </div>
@@ -327,7 +438,7 @@
 ============================================================ -->
     <section class="section types" id="cancer-types">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head" data-overline="Cancer Types">
           <h2>Cancers We Help Patients Seek Treatment For</h2>
           <p>Specialised cancer care across major cancer types, with medical, surgical, radiation and supportive oncology at JCI / NABH-accredited hospitals.</p>
         </div>
@@ -566,7 +677,7 @@
 ============================================================ -->
     <section class="section services" id="services">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head" data-overline="Specialised Oncology">
           <h2>Advanced Cancer Care Through Specialised Oncology Services</h2>
           <p>From diagnosis to recovery, dedicated oncology services across India’s accredited cancer hospitals, coordinated for you by one team.</p>
         </div>
@@ -711,7 +822,7 @@
 ============================================================ -->
     <section class="section why-india" id="why-india">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head" data-overline="Why Treatment in India">
           <h2>Why Choose India for Cancer Treatment?</h2>
           <p>India is among the world’s most trusted medical tourism destinations for cancer care, welcoming hundreds of thousands of international patients every year. Here is why families around the world choose it for cancer treatment.</p>
         </div>
@@ -758,7 +869,7 @@
     ============================================================ -->
     <section class="section experts" id="doctors">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head" data-overline="Meet Our Experts">
           <h2>Meet Our Oncology Experts</h2>
           <p>Specialist profiles are being finalised with our medical team and will appear here. In the meantime, our care team will match you with the right oncologist for your diagnosis.</p>
         </div>
@@ -801,7 +912,7 @@
 
     <section class="section hospitals" id="hospitals">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head" data-overline="Our Hospital Network">
           <h2>Cancer Hospitals in Our Network</h2>
           <p>Only verified, accredited partner hospitals are listed. Per-hospital accreditation status and oncology facilities are confirmed for each hospital before it is added here.</p>
         </div>
@@ -846,7 +957,7 @@
     ============================================================ -->
     <section class="section costs" id="costs">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head" data-overline="Transparent Pricing">
           <h2>Transparent Cancer Treatment Costs</h2>
           <p>Save 60–80% compared with the US, UK and Gulf at JCI / NABH / NABL accredited hospitals. Your exact estimate depends on your reports, the treatment plan and the hospital.</p>
         </div>
@@ -935,7 +1046,7 @@
 ============================================================ -->
     <section class="section journey" id="journey">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head" data-overline="How It Works">
           <h2>Your Cancer Treatment Journey in India</h2>
           <p>From your first conversation with us to your return home, one team guides you through every step.</p>
         </div>
@@ -1036,7 +1147,7 @@
 ============================================================ -->
     <section class="section healing" id="healing">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head" data-overline="Beyond Treatment">
           <h2>Focus on Healing. We’ll Handle the Journey.</h2>
           <p>Cancer treatment can feel overwhelming. [Brand] brings specialists, hospitals, travel, stay and recovery together under one dedicated team, so you can concentrate on getting better.</p>
         </div>
@@ -1097,7 +1208,7 @@
 ============================================================ -->
     <section class="section hubs" id="hubs">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head" data-overline="Cancer Care Cities">
           <h2>Active Across India’s Top Cancer Care Cities</h2>
           <p>Wherever your treatment takes you, a [Brand] team and an accredited partner hospital are ready in India’s leading cancer care cities.</p>
         </div>
@@ -1151,9 +1262,13 @@
 ============================================================ -->
     <section class="section why-us" id="why-us">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head" data-overline="Why [Brand]">
           <h2>Why Choose [Brand] for Cancer Treatment in India?</h2>
           <p>Choosing the right care partner matters as much as choosing the right doctor. [Brand] stands with patients and families at every step, offering guidance, clarity and compassionate support.</p>
+        </div>
+        <div class="us-illustration reveal">
+          <img src="assets/illustrations/oncology-care.svg" alt="" width="380" height="308" loading="lazy">
+          <p class="us-illo-caption">One care team beside you — from your first report to your last follow-up.</p>
         </div>
         <div class="grid-4 us-grid">
           <div class="card us-card reveal">
@@ -1241,23 +1356,40 @@
 ============================================================ -->
     <section class="section stories" id="stories">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head" data-overline="Patient Voices">
           <h2>Real Stories From Patients and Families</h2>
           <p>Patient stories with written consent are being collected for this page. In the meantime, families from many countries already travel with [Brand].</p>
         </div>
 
-        <!-- Uncomment and fill when consented stories arrive:
-        <div class="grid-3">
-          <figure class="card story-card">
-            <blockquote>“…”</blockquote>
-            <figcaption>
-              <strong>[Patient first name + initial]</strong>
-              <span>[Country] · [Cancer type and treatment]</span>
-            </figcaption>
+        <div class="stories-row">
+          <figure class="stories-illo reveal">
+            <img src="assets/illustrations/recovery-care.svg" alt="Illustration of a comfortable recovery room" width="380" height="308" loading="lazy">
           </figure>
-          … (3–5 cards; hospital/doctor named only with permission)
+
+          <!--
+            TEMPLATE SLOTS — 3 to 5 stories, each requiring (per doc):
+            first name + initial, cancer type/treatment, quote ≤ 40 words,
+            real photo, written consent. Hospital/doctor named ONLY with
+            permission. No survival or cure claims.
+          -->
+          <div class="story-slots">
+            <figure class="story-slot reveal">
+              <div class="story-photo"><svg class="ic" aria-hidden="true"><use href="#i-video"/></svg><span>[Patient photo — with written consent]</span></div>
+              <blockquote>“[Patient quote — up to 40 words, in their own words]”</blockquote>
+              <figcaption><strong>[First name + initial]</strong> · [Country] · [Cancer type & treatment]</figcaption>
+            </figure>
+            <figure class="story-slot reveal">
+              <div class="story-photo"><svg class="ic" aria-hidden="true"><use href="#i-video"/></svg><span>[Patient photo — with written consent]</span></div>
+              <blockquote>“[Patient quote — up to 40 words, in their own words]”</blockquote>
+              <figcaption><strong>[First name + initial]</strong> · [Country] · [Cancer type & treatment]</figcaption>
+            </figure>
+            <figure class="story-slot reveal">
+              <div class="story-photo"><svg class="ic" aria-hidden="true"><use href="#i-video"/></svg><span>[Patient photo — with written consent]</span></div>
+              <blockquote>“[Patient quote — up to 40 words, in their own words]”</blockquote>
+              <figcaption><strong>[First name + initial]</strong> · [Country] · [Cancer type & treatment]</figcaption>
+            </figure>
+          </div>
         </div>
-        -->
 
         <div class="trust-strip reveal">
           <span class="trust-strip-label">Trusted by families from</span>
@@ -1306,7 +1438,7 @@
 ============================================================ -->
     <section class="section faqs" id="faqs">
       <div class="container container-narrow">
-        <div class="section-head">
+        <div class="section-head" data-overline="Questions & Answers">
           <h2>Frequently Asked Questions About Cancer Treatment in India</h2>
           <p>Everything patients and families commonly ask before starting their journey with us.</p>
         </div>
@@ -1372,6 +1504,20 @@
 ============================================================ -->
     <footer class="site-footer" id="footer">
       <div class="container">
+        <!-- instant enquiry card -->
+        <div class="footer-cta reveal">
+          <div class="footer-cta-copy">
+            <h2>Looking for guidance on cancer care in India?</h2>
+            <p>Free expert opinion on your reports — visa, travel, stay and care handled by one dedicated team.</p>
+          </div>
+          <div class="footer-cta-actions">
+            <a class="btn btn-accent-solid" href="#lead-form" data-event="form_intent">Get My Free Treatment Plan <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-whatsapp" data-contact="waLink" href="#" target="_blank" rel="noopener" data-event="whatsapp_click">
+              <svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg> WhatsApp Coordinator
+            </a>
+          </div>
+        </div>
+
         <div class="footer-grid">
           <div class="footer-brand">
             <a class="logo logo--light" href="#top" aria-label="[Brand] – home">
@@ -1423,6 +1569,13 @@
                 <a data-contact="mailLink" href="#" data-event="email_click"><span data-contact="mailText">hello@[brand].com</span></a></li>
             </ul>
           </div>
+        </div>
+
+        <div class="footer-badges" aria-label="Network highlights">
+          <span><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg> JCI · NABH · NABL network</span>
+          <span><svg class="ic" aria-hidden="true"><use href="#i-tag"/></svg> 60–80% cost savings</span>
+          <span><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg> 160+ e-Medical Visa countries</span>
+          <span><svg class="ic" aria-hidden="true"><use href="#i-headset"/></svg> 24/7 patient support</span>
         </div>
 
         <div class="footer-bottom">

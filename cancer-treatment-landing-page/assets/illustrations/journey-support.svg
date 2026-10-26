@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 420" fill="none" role="img" aria-label="Travel and journey support illustration">
+  <!-- flat palette: cream circle, coral plane, teal pin, gold suitcase -->
+  <circle cx="260" cy="210" r="170" fill="#f7efe2"/>
+  <!-- dashed travel route -->
+  <path d="M96 300c70-70 150-40 196-96 30-36 52-70 96-88" stroke="#0e2a33" stroke-width="7" stroke-linecap="round" stroke-dasharray="1 16"/>
+  <!-- plane -->
+  <g transform="translate(330 84) rotate(38)">
+    <path d="M0 26 12 0l8 2-4 26 22-8 10-12 10 4-10 18-14 20-26 4 6-12-18-2z" fill="#e9724c"/>
+  </g>
+  <!-- start pin -->
+  <circle cx="96" cy="300" r="0"/>
+  <circle cx="96" cy="286" r="16" fill="#f0b429"/>
+  <rect x="92" y="300" width="8" height="18" rx="4" fill="#f0b429"/>
+  <!-- destination pin -->
+  <g fill="#0f6272">
+    <path d="M388 152c14 0 24 10 24 23 0 15-24 43-24 43s-24-28-24-43c0-13 10-23 24-23z"/>
+    <circle cx="388" cy="174" r="9" fill="#f7efe2"/>
+  </g>
+  <!-- suitcase -->
+  <rect x="272" y="242" width="96" height="120" rx="16" fill="#f0b429"/>
+  <path d="M296 242v-18a24 24 0 0 1 48 0v18" stroke="#caa20d" stroke-width="8" fill="none"/>
+  <rect x="272" y="284" width="96" height="10" fill="#e2b40f"/>
+  <rect x="300" y="266" width="40" height="52" rx="8" fill="#ffffff" opacity="0.35"/>
+  <!-- cloud -->
+  <g fill="#ffffff" opacity="0.8">
+    <ellipse cx="180" cy="120" rx="34" ry="14"/>
+    <ellipse cx="206" cy="112" rx="22" ry="12"/>
+  </g>
+  <!-- dots -->
+  <circle cx="440" cy="300" r="6" fill="#e9724c"/>
+  <circle cx="120" cy="180" r="6" fill="#f0b429"/>
+</svg>

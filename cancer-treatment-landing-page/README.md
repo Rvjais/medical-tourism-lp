@@ -13,11 +13,26 @@ A ready-to-use medical-tourism landing page built from
 
 ```
 cancer-treatment-landing-page/
-├── index.html        — full page (17 sections from the doc)
-├── css/style.css     — design system + responsive styles
-├── js/script.js      — interactions, tracking, contact CONFIG
+├── index.html                    — full page (17 sections from the doc)
+├── css/style.css                 — flat editorial design system + responsive styles
+├── js/script.js                  — CONFIG + carousel, navbar, tabs, form, tracking
+├── assets/illustrations/         — flat SVG artwork (hero slider + section art)
+│   ├── cost-savings.svg
+│   ├── oncology-care.svg
+│   ├── journey-support.svg
+│   ├── second-opinion.svg
+│   ├── hospital-accredited.svg
+│   └── recovery-care.svg
 └── README.md
 ```
+
+## Design system (v2)
+
+- **Flat, gradient-free** design: cream background, deep-teal ink, coral/saffron accents.
+- **Hero slider** — 4 auto-rotating banners (arrows, dots, swipe, pause on hover).
+- **Modern navbar** — utility topbar, anchor links with scroll-spy, mobile drawer.
+- **Aesthetic dark footer** — enquiry card, link columns, badge strip, disclaimer.
+- Flat SVG illustrations arranged in section layouts (hero slides, why-us, stories).
 
 ## Sections included (matching the doc)
 
