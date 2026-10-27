@@ -2638,6 +2638,11 @@ a { color: var(--brand-deep); }
   .slide-dots { bottom: 1rem; }
 }
 
+/* narrow desktops: the side arrows would sit on top of the copy, so use the dots */
+@media (min-width: 1081px) and (max-width: 1354px) {
+  .slide-arrow { display: none; }
+}
+
 /* ---------- Desktop: keep the floating capture card inside the fold ---------- */
 @media (min-width: 1081px) {
   .hero-capture {
@@ -2646,7 +2651,7 @@ a { color: var(--brand-deep); }
   }
   /* safety net: never clip the card if the viewport is extremely short */
   .hero-form {
-    max-height: calc(100svh - var(--header-h, 118px) - 3rem);
+    max-height: calc(100svh - var(--header-h, 118px) - 2rem);
     overflow-y: auto;
     overscroll-behavior: contain;
     scrollbar-width: thin;
@@ -2699,6 +2704,28 @@ a { color: var(--brand-deep); }
   .hero-benefits .ic { margin-top: .18em; }
 }
 
+/* narrower desktops/tablets: two benefit pills per row and a single-line CTA */
+@media (min-width: 641px) and (max-width: 1200px) {
+  .hero-slide-inner,
+  .hero-slide--bottom .hero-slide-inner,
+  .hero-slide--narrow .hero-slide-inner { padding-bottom: 5rem; }
+  .hero-benefits { grid-template-columns: 1fr 1fr; }
+  .hero-benefits li { align-items: flex-start; border-radius: 14px; }
+  .hero-benefits .ic { margin-top: .18em; }
+  .hero-cta-row { gap: .55rem; }
+  .hero-cta-row .btn { padding-left: 1rem; padding-right: 1rem; font-size: .85rem; }
+}
+
+/* very short viewports: keep the headline + pills + CTA, drop the paragraph */
+@media (min-width: 641px) and (max-height: 640px) {
+  .hero-sub { display: none; }
+}
+
+/* short phones: the same, so the copy clears the top controls and bottom bar */
+@media (max-width: 640px) and (max-height: 700px) {
+  .hero-sub { display: none; }
+}
+
 /* short + narrow desktops: compact the benefit pills so the CTA clears the dots */
 @media (min-width: 641px) and (max-height: 720px) {
   .hero-slide-copy h1,
@@ -2713,6 +2740,11 @@ a { color: var(--brand-deep); }
   .hero-form .field textarea { min-height: 36px; }
   .hero-form .form-privacy { font-size: .56rem; line-height: 1.3; }
   .hero-form .btn-block { padding: .6rem 1rem; }
+}
+
+/* 600px-tall desktop windows: drop the card label so the form needs no scroll */
+@media (min-width: 1081px) and (max-height: 640px) {
+  .hero-form .capture-eyebrow { display: none; }
 }
 
 /* short phones: keep the hero CTA clear of the fixed bottom action bar */
