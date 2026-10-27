@@ -7,19 +7,17 @@
 
 /* ------------------------------------------------------------
    1) CONFIG — single place to configure brand contact details.
-   Replace these placeholders when the client details are final
-   (doc reference values: phone 9971316164 / mail@shifarahealth.com).
 ------------------------------------------------------------ */
 const CONFIG = {
-  phoneDisplay: "+91 XXXXX XXXXX",
-  phoneHref: "tel:+91XXXXXXXXXX",
+  phoneDisplay: "+91 99713 16164",
+  phoneHref: "tel:+919971316164",
   whatsappHref:
-    "https://wa.me/91XXXXXXXXXX?text=" +
+    "https://wa.me/919971316164?text=" +
     encodeURIComponent(
-      "Hello, I would like a free cancer treatment plan. I am sharing my diagnosis and reports."
+      "Hello Shifara Health, I would like a free cancer treatment plan. I am sharing my diagnosis and reports."
     ),
-  emailDisplay: "hello@[brand].com",
-  emailHref: "mailto:hello@[brand].com",
+  emailDisplay: "mail@shifarahealth.com",
+  emailHref: "mailto:mail@shifarahealth.com",
 };
 
 /* ------------------------------------------------------------
@@ -377,18 +375,12 @@ function initHeaderHeight() {
   if (!header) return;
 
   const sync = () => {
-    const bar = header.querySelector(".navbar");
-    const top = header.querySelector(".topbar");
-    let h = 0;
-    if (bar) h += bar.getBoundingClientRect().height;
-    if (top) h += top.getBoundingClientRect().height;
-    /* fall back to the whole header if the markup changes */
-    if (!h) {
-      const drawer = header.querySelector(".nav-drawer");
-      h = header.getBoundingClientRect().height;
-      if (drawer && !drawer.hidden) h -= drawer.getBoundingClientRect().height;
-    }
-    if (h > 0) document.documentElement.style.setProperty("--header-h", Math.round(h) + "px");
+    /* use the header's real outer height (it includes the 1px bottom border) */
+    const drawer = header.querySelector(".nav-drawer");
+    let h = header.getBoundingClientRect().height;
+    if (drawer && !drawer.hidden) h -= drawer.getBoundingClientRect().height;
+    /* keep the fractional height so a 100vh hero lands exactly on the fold */
+    if (h > 0) document.documentElement.style.setProperty("--header-h", h.toFixed(2) + "px");
   };
 
   sync();
