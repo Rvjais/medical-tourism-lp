@@ -13,7 +13,7 @@ A ready-to-use medical-tourism landing page built from
 ```
 cancer-treatment-landing-page/
 ├── index.html                    — full page (17 sections from the doc)
-├── css/style.css                 — flat editorial design system + responsive styles
+├── css/style.css                 — warm theme design system + responsive styles
 ├── js/script.js                  — CONFIG + carousel, navbar, tabs, form, tracking
 ├── assets/images/                — photography (hero slides, doctors, hospitals,
 │                                   cities, patient stories, why-us / step-down care)
@@ -27,25 +27,29 @@ cancer-treatment-landing-page/
 └── README.md
 ```
 
-## Design system (v3 — flat / de-boxed)
+## Design system (v4 — warm premium)
 
-- **Flat, gradient-free** design: cream background, deep-teal ink, coral/saffron accents.
-- **De-boxed editorial layout:** repeated cards were replaced by open columns separated
-  by 1px hairlines. Sections read as type + imagery, not as stacked panels.
-  - List sections (support, why India, costs, healing, why-us, doctors, hospitals, cities)
-    use a hairline above each item, icons as plain colored line-art, and no fills.
-  - Pills became small uppercase meta labels separated by a middot.
-  - FAQs are a ruled accordion; tabs are a bare list with a single divider.
-  - Enclosed surfaces are kept only where they earn it: the lead form, the final CTA
-    panel, the footer enquiry card, and photo overlays.
-- **Imagery:** real photography in `assets/images/` for hero slides, doctors, hospitals,
-  cities, why-us and patient stories; flat SVG artwork in `assets/illustrations/`
-  remains available for fallbacks.
-- **Hero slider** — 4 full-bleed, full-screen photo banners (radiation therapy, oncology
-  consultation, chemotherapy infusion, tumour board) with arrows, dots, swipe, pause and
-  reduced-motion support. Each photo fills the slide; copy sits on a flat tint, no gradients.
-- **Modern navbar** — utility topbar, anchor links with scroll-spy, mobile drawer.
-- **Aesthetic dark footer** — enquiry card, link columns, badge strip, disclaimer.
+- **Palette:** ivory paper (`#fffdf6` / `#fdf6e5`), coffee-brown ink (`#3f2c12`),
+  amber `#916301`, brushed gold `#b29257` and copper accents. **Solid colours only —
+  no gradients anywhere.**
+- **Typography:** Poppins with tighter headline tracking and a soft `#8c7a5c` body tone.
+- **Shape language:** 999px pill buttons and pill lists, 20–28px rounded cards,
+  dashed gold pill tiles for the cancer-type and service rails.
+- **Warm theme layer:** the base rules live at the top of `css/style.css`; the warm
+  redesign is appended as a clearly marked `WARM PREMIUM THEME` block plus its own
+  responsive section, so it can be tuned without touching the original cascade.
+- **Hero:** 4 full-bleed, full-screen clinical photo banners (radiation therapy, oncology
+  consultation, chemotherapy infusion, tumour board) under a flat brown scrim, with a
+  floating lead-form card on ≥1081px that stacks below the banner on smaller screens.
+  Copy sits on the left with four cream benefit pills; arrows, dots, swipe, pause and
+  reduced-motion are supported. On tablets the arrows sit bottom-right, clear of the copy.
+- **Card sections:** support, why-India, experts, hospitals, costs, journey, healing,
+  hubs, why-us, stories, FAQ and the final CTA are re-boxed as warm rounded cards with
+  bottom-aligned card links.
+- **Stats strip:** solid gold band with coffee-brown text (AA contrast), footnote included.
+- **Modern navbar** — cream utility topbar, pill nav links with scroll-spy, mobile drawer.
+- **Dark coffee footer** — floating enquiry card, link columns, badge strip, mandatory
+  disclaimer.
 - Use **margins, not transforms**, for any offset layout: `.reveal.visible` resets
   `transform` to `none` once a section scrolls into view.
 

@@ -28,7 +28,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Hero banner: load the first slide immediately -->
   <link rel="preload" as="image" href="assets/images/hero-slide-1.jpg" fetchpriority="high">
@@ -212,6 +212,12 @@
                 <p class="eyebrow"><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg> Cancer Care in India</p>
                 <h1>Cancer Treatment in India, With Trusted Guidance at&nbsp;Every&nbsp;Step</h1>
                 <p class="hero-sub">Connect with leading oncologists at JCI / NABH-accredited hospitals. [Brand] reviews your reports, explains your options and costs, and takes care of your visa, travel, stay and recovery.</p>
+                <ul class="hero-benefits">
+                  <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Free expert opinion on your medical reports</li>
+                  <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Clear treatment options and cost estimates</li>
+                  <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Top oncologists at JCI / NABH / NABL accredited hospitals</li>
+                  <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Visa, flights, stay and recovery support from one team</li>
+                </ul>
                 <div class="hero-cta-row">
                   <a class="btn btn-primary" href="#lead-form" data-event="form_intent">Get My Free Treatment Plan <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
                   <a class="btn btn-ghost" data-contact="phoneLink" href="#" data-event="call_click">
@@ -284,24 +290,11 @@
         </div>
       </div>
 
-      <!-- Lead capture card overlapping the banner -->
-      <div class="container hero-capture">
-        <div class="capture-points">
-          <p class="capture-eyebrow">What you get with [Brand]</p>
-          <ul class="hero-points">
-            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Free expert opinion on your medical reports</li>
-            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Clear treatment options and cost estimates</li>
-            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Top oncologists at JCI / NABH / NABL accredited hospitals</li>
-            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Visa, flights, stay, interpreter and recovery support from one team</li>
-          </ul>
-          <p class="capture-note">“When cancer takes you far from home, the journey can feel overwhelming. [Brand] is your guide, support and companion through it all.”</p>
-          <a class="capture-wa" data-contact="waLink" href="#" target="_blank" rel="noopener" data-event="whatsapp_click">
-            <svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg> Prefer to talk? WhatsApp our oncology coordinator
-          </a>
-        </div>
-
+      <!-- Lead form floating over the right side of the banner (stacks below on mobile) -->
+      <div class="hero-capture">
         <div class="hero-form-wrap">
           <div class="hero-form" id="lead-form">
+            <p class="capture-eyebrow">What you get with [Brand]</p>
             <h2>Get Your Free Cancer Treatment Plan</h2>
             <p class="form-sub">Share your diagnosis and reports. Our medical team will review your case and connect you with the right specialist and hospital.</p>
 
@@ -352,6 +345,12 @@
                 <svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg>
                 Your information is confidential and shared only with relevant doctors and hospitals for medical evaluation and coordination. <a href="/privacy-policy/">Privacy&nbsp;Policy</a>
               </p>
+
+              <p class="form-quote">“When cancer takes you far from home, the journey can feel overwhelming. [Brand] is your guide, support and companion through it all.”</p>
+
+              <a class="capture-wa" data-contact="waLink" href="#" target="_blank" rel="noopener" data-event="whatsapp_click">
+                <svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg> Prefer to talk? WhatsApp our oncology coordinator
+              </a>
             </form>
 
             <!-- Shown after successful submission (template behaviour) -->
