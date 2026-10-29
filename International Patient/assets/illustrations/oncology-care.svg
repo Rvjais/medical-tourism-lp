@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 420" fill="none" role="img" aria-label="Oncologist with patient illustration">
+  <!-- flat palette: cream circle bg, teal + coral characters, gold accents -->
+  <circle cx="260" cy="210" r="170" fill="#f7efe2"/>
+  <!-- doctor (left): head, coat body -->
+  <circle cx="196" cy="160" r="34" fill="#10322e"/>
+  <path d="M196 128a34 34 0 0 1 26 12 34 34 0 0 0-52 0 34 34 0 0 1 26-12z" fill="#082220"/>
+  <path d="M150 268c0-34 20-58 46-58s46 24 46 58v22h-92z" fill="#0f6272"/>
+  <path d="M196 210c-12 0-18 8-18 18v62h36v-62c0-10-6-18-18-18z" fill="#ffffff"/>
+  <path d="M188 214h16v28a8 8 0 0 1-16 0z" fill="#e9724c"/>
+  <!-- stethoscope -->
+  <path d="M176 232c-12 10-14 26-6 38s24 16 36 8" stroke="#0e2a33" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="209" cy="282" r="9" fill="#f0b429"/>
+  <!-- patient (right): armchair -->
+  <circle cx="330" cy="182" r="30" fill="#7a4b32"/>
+  <path d="M330 152a30 30 0 0 1 22 10 30 30 0 0 0-44 0 30 30 0 0 1 22-10z" fill="#683f28"/>
+  <path d="M296 274c0-38 14-56 34-56s34 18 34 56v14h-68z" fill="#e9c9b3"/>
+  <path d="M282 244c-10 0-16 10-16 24 0 14 8 22 18 22h8v-14h-4c-4 0-6-4-6-10 0-12 4-22 0-22z" fill="#c98f6b"/>
+  <!-- heart pulse cutout on chest -->
+  <path d="M322 244h20m-10 0-5 8m5-8 5-6" stroke="#c0532e" stroke-width="5" stroke-linecap="round"/>
+  <!-- cross badge -->
+  <circle cx="422" cy="140" r="34" fill="#f0b429"/>
+  <path d="M416 128h12v8h8v12h-8v8h-12v-8h-8v-12h8z" fill="#ffffff"/>
+  <!-- speech dots -->
+  <circle cx="250" cy="106" r="5" fill="#e9724c"/>
+  <circle cx="268" cy="96" r="4" fill="#0f6272"/>
+  <circle cx="286" cy="108" r="3" fill="#f0b429"/>
+</svg>

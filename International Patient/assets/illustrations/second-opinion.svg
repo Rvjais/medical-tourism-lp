@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 420" fill="none" role="img" aria-label="Second opinion and report review illustration">
+  <!-- flat palette: cream circle, teal report, coral magnifier, ink pulse -->
+  <circle cx="260" cy="210" r="170" fill="#f7efe2"/>
+  <!-- report sheet -->
+  <rect x="150" y="96" width="204" height="252" rx="16" fill="#0f6272"/>
+  <rect x="150" y="96" width="204" height="34" rx="16" fill="#0b4a57"/>
+  <rect x="176" y="160" width="112" height="10" rx="5" fill="#9ecfd8"/>
+  <rect x="176" y="186" width="152" height="10" rx="5" fill="#9ecfd8"/>
+  <rect x="176" y="212" width="90" height="10" rx="5" fill="#9ecfd8"/>
+  <!-- pulse line on report -->
+  <path d="M176 268h40l12-20 16 38 12-22 10 8h46" stroke="#f0b429" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- corner fold -->
+  <path d="M330 96h24v24z" fill="#0b4a57"/>
+  <!-- magnifier -->
+  <circle cx="352" cy="278" r="56" fill="#ffffff" opacity="0.25"/>
+  <circle cx="352" cy="278" r="56" stroke="#e9724c" stroke-width="16"/>
+  <path d="M310 322l-34 34" stroke="#e9724c" stroke-width="18" stroke-linecap="round"/>
+  <!-- check inside lens -->
+  <path d="m322 280 20 18 38-38" stroke="#ffffff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- badge -->
+  <circle cx="140" cy="132" r="26" fill="#f0b429"/>
+  <path d="m128 132 10 10 18-18" stroke="#ffffff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
