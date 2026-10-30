@@ -2,6 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+
+  <!-- Google Tag Manager -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TSCMNPLR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- ============================================================
@@ -10,23 +18,21 @@
   <title>Medical Treatment in India | Shifara Health</title>
   <meta name="description" content="Get JCI/NABH-accredited treatment in India at 60–80% lower cost. Shifara handles hospitals, visas, travel and recovery. Free consultation.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://shifarahealth.com/international-patients/">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Medical Treatment in India | Shifara Health">
   <meta property="og:description" content="Get JCI/NABH-accredited treatment in India at 60–80% lower cost. Shifara handles hospitals, visas, travel and recovery. Free consultation.">
-  <meta property="og:url" content="https://shifarahealth.com/international-patients/">
-  <meta property="og:image" content="https://shifarahealth.com/assets/images/hero-slide-2.jpg">
+  <meta property="og:image" content="assets/images/hero-slide-2.jpg">
   <meta name="theme-color" content="#102949">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Fonts (self-hosted — no external requests) -->
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/plus-jakarta-sans.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter.woff2" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
 
   <!-- Hero banner: load the first slide immediately -->
   <link rel="preload" as="image" href="assets/images/hero-slide-2.jpg" fetchpriority="high">
@@ -336,7 +342,7 @@
 
               <p class="form-privacy">
                 <svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg>
-                Your information is confidential and shared only with relevant doctors and hospitals for medical evaluation and coordination. <a href="/privacy-policy/">Privacy&nbsp;Policy</a>
+                Your information is confidential and shared only with relevant doctors and hospitals for medical evaluation and coordination.
               </p>
 
               <p class="form-quote">“When treatment takes you to another country, the journey can feel overwhelming. Shifara Health is your guide, support and companion from your first conversation to your return home.”</p>
@@ -471,7 +477,7 @@
             <p class="proc-why"><strong>Why India:</strong> Experienced nephrologists, transplant surgeons and multidisciplinary teams with advanced critical care, at significantly lower cost than many countries.</p>
             <p class="proc-cost"><svg class="ic" aria-hidden="true"><use href="#i-tag"/></svg> <span>From $12,500 – $14,000<small>Indicative; final estimate after report review</small></span></p>
             <div class="proc-links">
-              <a href="https://shifarahealth.com/treatments/kidney-transplant/" target="_blank" rel="noopener" data-event="treatment_click">Explore kidney transplant <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <a href="#contact" data-event="form_intent">Get a kidney transplant estimate <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
             </div>
           </article>
 
@@ -483,8 +489,8 @@
             <p class="proc-why"><strong>Why India:</strong> Experienced surgeons, modern implants and robotic-assisted options, with little or no waiting time.</p>
             <p class="proc-cost"><svg class="ic" aria-hidden="true"><use href="#i-tag"/></svg> <span>Knee from $4,000 · Hip from $4,000<small>One side, indicative. Both knees $6,000–8,000; both hips $8,500–10,000. Robotic-assisted: +$800 knee, +$1,000 hip.</small></span></p>
             <div class="proc-links">
-              <a href="https://shifarahealth.com/treatments/total-knee-replacement/" target="_blank" rel="noopener" data-event="treatment_click">Knee replacement <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-              <a href="https://shifarahealth.com/treatments/hip-replacement/" target="_blank" rel="noopener" data-event="treatment_click">Hip replacement <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <a href="#contact" data-event="form_intent">Get a knee replacement estimate <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <a href="#contact" data-event="form_intent">Get a hip replacement estimate <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
             </div>
           </article>
 
@@ -508,7 +514,7 @@
             <p class="proc-why"><strong>Procedures:</strong> Liposuction, tummy tuck, abdominoplasty, hair transplant and fillers.</p>
             <p class="proc-cost"><svg class="ic" aria-hidden="true"><use href="#i-tag"/></svg> <span>Liposuction from $3,500 · Hair transplant from $1,800<small>Indicative; other procedures quoted on request</small></span></p>
             <div class="proc-links">
-              <a href="https://shifarahealth.com/treatments/" target="_blank" rel="noopener" data-event="treatment_click">Cosmetic &amp; plastic surgery <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <a href="#contact" data-event="form_intent">Get a cosmetic surgery estimate <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
             </div>
           </article>
 
@@ -520,7 +526,7 @@
             <p class="proc-why"><strong>Why India:</strong> Dedicated transplant units with haematology, critical care and infection-control expertise.</p>
             <p class="proc-cost"><svg class="ic" aria-hidden="true"><use href="#i-tag"/></svg> <span>From $14,000<small>Indicative; depends on transplant type. Allogeneic $25,000–32,000; autologous $30,000.</small></span></p>
             <div class="proc-links">
-              <a href="https://shifarahealth.com/treatments/adult-bone-marrow-transplant/" target="_blank" rel="noopener" data-event="treatment_click">Adult bone marrow transplant <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <a href="#contact" data-event="form_intent">Get a bone marrow transplant estimate <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
             </div>
           </article>
 
@@ -532,7 +538,7 @@
             <p class="proc-why"><strong>Why India:</strong> Neuro-spine and ortho-spine units using modern imaging and navigation.</p>
             <p class="proc-cost"><svg class="ic" aria-hidden="true"><use href="#i-tag"/></svg> <span>Decompression &amp; fusion $5,500 – $8,000<small>Indicative; other spine procedures quoted on request</small></span></p>
             <div class="proc-links">
-              <a href="https://shifarahealth.com/treatments/decompression-fusion/" target="_blank" rel="noopener" data-event="treatment_click">Decompression &amp; fusion <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <a href="#contact" data-event="form_intent">Get a spine surgery estimate <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
             </div>
           </article>
 
@@ -882,7 +888,7 @@
                   <p class="doc-role">Sr. Consultant – Nephrology &amp; Kidney Transplantation</p>
                   <p class="doc-meta"><svg class="ic" aria-hidden="true"><use href="#i-hospital"/></svg> Indraprastha Apollo Hospitals, Delhi</p>
                   <span class="doc-exp">40+ years experience</span>
-                  <a class="card-link" href="https://shifarahealth.com/doctors/" target="_blank" rel="noopener" data-event="doctor_profile_click">View Profile <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                  <a class="card-link" href="#contact" data-event="form_intent">Request Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
                 </article>
                 <article class="card doc-card">
                   <span class="doc-initials" aria-hidden="true">DK</span>
@@ -890,7 +896,7 @@
                   <p class="doc-role">Chairman &amp; Head – Nephrology &amp; Renal Transplant Medicine</p>
                   <p class="doc-meta"><svg class="ic" aria-hidden="true"><use href="#i-hospital"/></svg> Max Super Speciality Hospital, Delhi</p>
                   <span class="doc-exp">36+ years experience</span>
-                  <a class="card-link" href="https://shifarahealth.com/doctors/" target="_blank" rel="noopener" data-event="doctor_profile_click">View Profile <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                  <a class="card-link" href="#contact" data-event="form_intent">Request Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
                 </article>
                 <article class="card doc-card">
                   <span class="doc-initials" aria-hidden="true">LT</span>
@@ -898,7 +904,7 @@
                   <p class="doc-role">Director &amp; Head – Nephrology &amp; Kidney Transplantation</p>
                   <p class="doc-meta"><svg class="ic" aria-hidden="true"><use href="#i-hospital"/></svg> Artemis Hospital, Gurgaon</p>
                   <span class="doc-exp">25+ years experience</span>
-                  <a class="card-link" href="https://shifarahealth.com/doctors/" target="_blank" rel="noopener" data-event="doctor_profile_click">View Profile <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                  <a class="card-link" href="#contact" data-event="form_intent">Request Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
                 </article>
                 <article class="card doc-card">
                   <span class="doc-initials" aria-hidden="true">HP</span>
@@ -906,7 +912,7 @@
                   <p class="doc-role">Head – Kidney Transplant Surgery &amp; Reconstructive Urology</p>
                   <p class="doc-meta"><svg class="ic" aria-hidden="true"><use href="#i-hospital"/></svg> Nanavati Max Super Speciality Hospital, Mumbai</p>
                   <span class="doc-exp">22+ years experience</span>
-                  <a class="card-link" href="https://shifarahealth.com/doctors/" target="_blank" rel="noopener" data-event="doctor_profile_click">View Profile <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                  <a class="card-link" href="#contact" data-event="form_intent">Request Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
                 </article>
               </div>
             </div>
@@ -920,7 +926,7 @@
                   <p class="doc-role">Chief – Orthopedics &amp; Joint Replacement; Director – Artemis Joint Centre</p>
                   <p class="doc-meta"><svg class="ic" aria-hidden="true"><use href="#i-hospital"/></svg> Artemis Hospital, Gurgaon</p>
                   <span class="doc-exp">31+ years experience</span>
-                  <a class="card-link" href="https://shifarahealth.com/doctors/" target="_blank" rel="noopener" data-event="doctor_profile_click">View Profile <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                  <a class="card-link" href="#contact" data-event="form_intent">Request Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
                 </article>
                 <article class="card doc-card">
                   <span class="doc-initials" aria-hidden="true">SM</span>
@@ -928,7 +934,7 @@
                   <p class="doc-role">Chairman &amp; Chief – Max Institute of Musculoskeletal Sciences</p>
                   <p class="doc-meta"><svg class="ic" aria-hidden="true"><use href="#i-hospital"/></svg> Max Super Speciality Hospital, Gurgaon</p>
                   <span class="doc-exp">40+ years experience</span>
-                  <a class="card-link" href="https://shifarahealth.com/doctors/" target="_blank" rel="noopener" data-event="doctor_profile_click">View Profile <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                  <a class="card-link" href="#contact" data-event="form_intent">Request Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
                 </article>
                 <article class="card doc-card">
                   <span class="doc-initials" aria-hidden="true">AA</span>
@@ -936,7 +942,7 @@
                   <p class="doc-role">Sr. Consultant – Orthopedics &amp; Joint Replacement</p>
                   <p class="doc-meta"><svg class="ic" aria-hidden="true"><use href="#i-hospital"/></svg> Indraprastha Apollo Hospitals, Delhi</p>
                   <span class="doc-exp">18+ years experience</span>
-                  <a class="card-link" href="https://shifarahealth.com/doctors/" target="_blank" rel="noopener" data-event="doctor_profile_click">View Profile <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                  <a class="card-link" href="#contact" data-event="form_intent">Request Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
                 </article>
                 <article class="card doc-card">
                   <span class="doc-initials" aria-hidden="true">AM</span>
@@ -944,7 +950,7 @@
                   <p class="doc-role">Director &amp; Head – Orthopedics &amp; Joint Replacement</p>
                   <p class="doc-meta"><svg class="ic" aria-hidden="true"><use href="#i-hospital"/></svg> Fortis Hospital, Noida</p>
                   <span class="doc-exp">24+ years experience</span>
-                  <a class="card-link" href="https://shifarahealth.com/doctors/" target="_blank" rel="noopener" data-event="doctor_profile_click">View Profile <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                  <a class="card-link" href="#contact" data-event="form_intent">Request Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
                 </article>
               </div>
             </div>
@@ -958,7 +964,7 @@
                   <p class="doc-role">Director – General, Laparoscopic &amp; Bariatric Surgery</p>
                   <p class="doc-meta"><svg class="ic" aria-hidden="true"><use href="#i-hospital"/></svg> Max Super Speciality Hospital, Delhi</p>
                   <span class="doc-exp">22+ years experience</span>
-                  <a class="card-link" href="https://shifarahealth.com/doctors/" target="_blank" rel="noopener" data-event="doctor_profile_click">View Profile <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                  <a class="card-link" href="#contact" data-event="form_intent">Request Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
                 </article>
                 <article class="card doc-card">
                   <span class="doc-initials" aria-hidden="true">AP</span>
@@ -966,7 +972,7 @@
                   <p class="doc-role">Head – Minimal Access, Bariatric &amp; Robotic Surgery</p>
                   <p class="doc-meta"><svg class="ic" aria-hidden="true"><use href="#i-hospital"/></svg> Indraprastha Apollo Hospitals, Delhi</p>
                   <span class="doc-exp">35+ years experience</span>
-                  <a class="card-link" href="https://shifarahealth.com/doctors/" target="_blank" rel="noopener" data-event="doctor_profile_click">View Profile <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                  <a class="card-link" href="#contact" data-event="form_intent">Request Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
                 </article>
                 <article class="card doc-card">
                   <span class="doc-initials" aria-hidden="true">AK</span>
@@ -974,7 +980,7 @@
                   <p class="doc-role">Chairman – GI, Minimal Access &amp; Bariatric Surgery</p>
                   <p class="doc-meta"><svg class="ic" aria-hidden="true"><use href="#i-hospital"/></svg> Fortis Memorial Research Institute, Gurgaon</p>
                   <span class="doc-exp">40+ years experience</span>
-                  <a class="card-link" href="https://shifarahealth.com/doctors/" target="_blank" rel="noopener" data-event="doctor_profile_click">View Profile <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                  <a class="card-link" href="#contact" data-event="form_intent">Request Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
                 </article>
                 <article class="card doc-card">
                   <span class="doc-initials" aria-hidden="true">JP</span>
@@ -982,7 +988,7 @@
                   <p class="doc-role">Sr. Director &amp; Head – GI, Minimal Access &amp; Bariatric Surgery</p>
                   <p class="doc-meta"><svg class="ic" aria-hidden="true"><use href="#i-hospital"/></svg> Nanavati Max Super Speciality Hospital, Mumbai</p>
                   <span class="doc-exp">23+ years experience</span>
-                  <a class="card-link" href="https://shifarahealth.com/doctors/" target="_blank" rel="noopener" data-event="doctor_profile_click">View Profile <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                  <a class="card-link" href="#contact" data-event="form_intent">Request Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
                 </article>
               </div>
             </div>
@@ -996,7 +1002,7 @@
                   <p class="doc-role">Clinical Director &amp; Head – Plastic Surgery</p>
                   <p class="doc-meta"><svg class="ic" aria-hidden="true"><use href="#i-hospital"/></svg> Marengo Asia Hospital, Gurgaon</p>
                   <span class="doc-exp">30+ years experience</span>
-                  <a class="card-link" href="https://shifarahealth.com/doctors/" target="_blank" rel="noopener" data-event="doctor_profile_click">View Profile <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                  <a class="card-link" href="#contact" data-event="form_intent">Request Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
                 </article>
                 <article class="card doc-card">
                   <span class="doc-initials" aria-hidden="true">AC</span>
@@ -1004,7 +1010,7 @@
                   <p class="doc-role">Director &amp; Head – Aesthetics, Plastic &amp; Reconstructive Surgery</p>
                   <p class="doc-meta"><svg class="ic" aria-hidden="true"><use href="#i-hospital"/></svg> CK Birla Hospital, Gurgaon</p>
                   <span class="doc-exp">16+ years experience</span>
-                  <a class="card-link" href="https://shifarahealth.com/doctors/" target="_blank" rel="noopener" data-event="doctor_profile_click">View Profile <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                  <a class="card-link" href="#contact" data-event="form_intent">Request Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
                 </article>
                 <article class="card doc-card">
                   <span class="doc-initials" aria-hidden="true">MS</span>
@@ -1012,7 +1018,7 @@
                   <p class="doc-role">Director – Plastic, Aesthetic &amp; Reconstructive Surgery</p>
                   <p class="doc-meta"><svg class="ic" aria-hidden="true"><use href="#i-hospital"/></svg> Artemis Hospital, Gurgaon</p>
                   <span class="doc-exp">19+ years experience</span>
-                  <a class="card-link" href="https://shifarahealth.com/doctors/" target="_blank" rel="noopener" data-event="doctor_profile_click">View Profile <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                  <a class="card-link" href="#contact" data-event="form_intent">Request Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
                 </article>
                 <article class="card doc-card">
                   <span class="doc-initials" aria-hidden="true">LK</span>
@@ -1020,7 +1026,7 @@
                   <p class="doc-role">Sr. Director &amp; HOD – Plastic &amp; Cosmetic Surgery</p>
                   <p class="doc-meta"><svg class="ic" aria-hidden="true"><use href="#i-hospital"/></svg> BLK-Max Super Speciality Hospital, Delhi</p>
                   <span class="doc-exp">30+ years experience</span>
-                  <a class="card-link" href="https://shifarahealth.com/doctors/" target="_blank" rel="noopener" data-event="doctor_profile_click">View Profile <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                  <a class="card-link" href="#contact" data-event="form_intent">Request Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
                 </article>
               </div>
             </div>
@@ -1034,7 +1040,7 @@
                   <p class="doc-role">Sr. Director &amp; HOD – Bone Marrow Transplant &amp; Hematology</p>
                   <p class="doc-meta"><svg class="ic" aria-hidden="true"><use href="#i-hospital"/></svg> BLK-Max Super Speciality Hospital, Delhi</p>
                   <span class="doc-exp">25+ years experience</span>
-                  <a class="card-link" href="https://shifarahealth.com/doctors/" target="_blank" rel="noopener" data-event="doctor_profile_click">View Profile <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                  <a class="card-link" href="#contact" data-event="form_intent">Request Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
                 </article>
                 <article class="card doc-card">
                   <span class="doc-initials" aria-hidden="true">GD</span>
@@ -1042,7 +1048,7 @@
                   <p class="doc-role">Chief – Bone Marrow Transplant &amp; Hematology</p>
                   <p class="doc-meta"><svg class="ic" aria-hidden="true"><use href="#i-hospital"/></svg> Artemis Hospital, Gurgaon</p>
                   <span class="doc-exp">16+ years experience</span>
-                  <a class="card-link" href="https://shifarahealth.com/doctors/" target="_blank" rel="noopener" data-event="doctor_profile_click">View Profile <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                  <a class="card-link" href="#contact" data-event="form_intent">Request Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
                 </article>
                 <article class="card doc-card">
                   <span class="doc-initials" aria-hidden="true">AJ</span>
@@ -1050,7 +1056,7 @@
                   <p class="doc-role">Consultant – Clinical Hematology, Hemato-Oncology &amp; BMT</p>
                   <p class="doc-meta"><svg class="ic" aria-hidden="true"><use href="#i-hospital"/></svg> Marengo Asia CIMS Hospital, Ahmedabad</p>
                   <span class="doc-exp">10+ years experience</span>
-                  <a class="card-link" href="https://shifarahealth.com/doctors/" target="_blank" rel="noopener" data-event="doctor_profile_click">View Profile <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                  <a class="card-link" href="#contact" data-event="form_intent">Request Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
                 </article>
               </div>
             </div>
@@ -1064,7 +1070,7 @@
                   <p class="doc-role">Vice Chairman &amp; Head – Neurosurgery &amp; Spine Surgery</p>
                   <p class="doc-meta"><svg class="ic" aria-hidden="true"><use href="#i-hospital"/></svg> Max Super Speciality Hospital, Delhi</p>
                   <span class="doc-exp">32+ years experience</span>
-                  <a class="card-link" href="https://shifarahealth.com/doctors/" target="_blank" rel="noopener" data-event="doctor_profile_click">View Profile <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                  <a class="card-link" href="#contact" data-event="form_intent">Request Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
                 </article>
                 <article class="card doc-card">
                   <span class="doc-initials" aria-hidden="true">SC</span>
@@ -1072,7 +1078,7 @@
                   <p class="doc-role">Sr. Consultant &amp; Head – Spine Surgery &amp; Neurosurgery</p>
                   <p class="doc-meta"><svg class="ic" aria-hidden="true"><use href="#i-hospital"/></svg> Indraprastha Apollo Hospitals, Delhi</p>
                   <span class="doc-exp">33+ years experience</span>
-                  <a class="card-link" href="https://shifarahealth.com/doctors/" target="_blank" rel="noopener" data-event="doctor_profile_click">View Profile <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                  <a class="card-link" href="#contact" data-event="form_intent">Request Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
                 </article>
                 <article class="card doc-card">
                   <span class="doc-initials" aria-hidden="true">HG</span>
@@ -1080,7 +1086,7 @@
                   <p class="doc-role">Chief – Spine Surgery (Artemis Spine Centre)</p>
                   <p class="doc-meta"><svg class="ic" aria-hidden="true"><use href="#i-hospital"/></svg> Artemis Hospital, Gurgaon</p>
                   <span class="doc-exp">21+ years experience</span>
-                  <a class="card-link" href="https://shifarahealth.com/doctors/" target="_blank" rel="noopener" data-event="doctor_profile_click">View Profile <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                  <a class="card-link" href="#contact" data-event="form_intent">Request Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
                 </article>
                 <article class="card doc-card">
                   <span class="doc-initials" aria-hidden="true">AS</span>
@@ -1088,7 +1094,7 @@
                   <p class="doc-role">Sr. Director &amp; Head – Neurosurgery &amp; Spine Surgery</p>
                   <p class="doc-meta"><svg class="ic" aria-hidden="true"><use href="#i-hospital"/></svg> Max Super Speciality Hospital, Gurgaon</p>
                   <span class="doc-exp">28+ years experience</span>
-                  <a class="card-link" href="https://shifarahealth.com/doctors/" target="_blank" rel="noopener" data-event="doctor_profile_click">View Profile <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                  <a class="card-link" href="#contact" data-event="form_intent">Request Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
                 </article>
               </div>
             </div>
@@ -1314,9 +1320,17 @@
                 <svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>
                 <span data-contact="mailText">mail@shifarahealth.com</span>
               </a>
+              <a data-contact="waLink" href="#" target="_blank" rel="noopener" data-event="whatsapp_click">
+                <svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+                <span>WhatsApp: <span data-contact="phoneText">+91 99713 16164</span></span>
+              </a>
               <span>
                 <svg class="ic" aria-hidden="true"><use href="#i-map"/></svg>
                 <span>B7 10, Sushant Lok Phase 1, Sector 43,<br>Gurugram, Haryana</span>
+              </span>
+              <span>
+                <svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg>
+                <span>Bangladesh: Zahid Ansari (Bengali)<br>Africa: Shrishti (English)</span>
               </span>
             </div>
           </div>
@@ -1392,7 +1406,7 @@
 
               <p class="form-privacy">
                 <svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg>
-                Your information is confidential and shared only with relevant doctors and hospitals for medical evaluation and coordination. <a href="/privacy-policy/">Privacy&nbsp;Policy</a>
+                Your information is confidential and shared only with relevant doctors and hospitals for medical evaluation and coordination.
               </p>
             </form>
 
@@ -1430,6 +1444,29 @@
         </div>
       </div>
 
+      <!-- Language-wise SPOC contacts -->
+      <div class="lang-support reveal" aria-label="Language support">
+        <div class="lang-support-head">
+          <span class="lang-support-icon"><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg></span>
+          <div>
+            <h3>Talk to us in your language</h3>
+            <p>Language-wise coordinators for international patients.</p>
+          </div>
+        </div>
+        <ul class="lang-support-list">
+          <li>
+            <span class="lang-region">Bangladesh</span>
+            <span class="lang-person">Zahid Ansari</span>
+            <span class="lang-language">Bengali</span>
+          </li>
+          <li>
+            <span class="lang-region">Africa</span>
+            <span class="lang-person">Shrishti</span>
+            <span class="lang-language">English</span>
+          </li>
+        </ul>
+      </div>
+
       <div class="footer-grid">
         <div class="footer-brand">
           <a class="logo logo--light" href="#top" aria-label="Shifara Health – home">
@@ -1445,6 +1482,8 @@
               <span>B7 10, Sushant Lok Phase 1, Sector 43<br>Gurugram, Haryana</span></li>
             <li><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>
               <a data-contact="phoneLink" href="#" data-event="call_click"><span data-contact="phoneText">+91 99713 16164</span></a></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+              <a data-contact="waLink" href="#" target="_blank" rel="noopener" data-event="whatsapp_click">WhatsApp: <span data-contact="phoneText">+91 99713 16164</span></a></li>
             <li><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>
               <a data-contact="mailLink" href="#" data-event="email_click"><span data-contact="mailText">mail@shifarahealth.com</span></a></li>
           </ul>

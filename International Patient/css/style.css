@@ -457,14 +457,15 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-6px) rotate
 .err { display: block; color: var(--danger); font-size: .78rem; margin-top: .3rem; min-height: 1em; }
 .noscript-note { margin-top: .4rem; font-size: .78rem; color: var(--danger); }
 
-.phone-field { display: flex; gap: .5rem; }
+.phone-field { display: flex; gap: 0; }
 .phone-field .dial {
   flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center;
-  padding: .74rem .8rem; border: 1.5px solid var(--line-strong); border-radius: var(--radius-sm);
+  padding: .74rem .8rem; border: 1.5px solid var(--line-strong); border-right: 0;
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
   background: var(--brand-light); color: var(--brand-deep); font-weight: 700; font-size: .95rem;
-  min-width: 76px;
+  min-width: 56px; cursor: default; user-select: none;
 }
-.phone-field input { flex: 1; }
+.phone-field input { flex: 1; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
 
 .form-privacy {
   display: flex; gap: .5rem; align-items: flex-start;
@@ -1077,7 +1078,7 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-6px) rotate
 }
 .faq-item.open .faq-q .ic { transform: rotate(180deg); }
 .faq-a { padding: 0 1.3rem 1.2rem; color: var(--muted); font-size: .94rem; }
-.faq-more { text-align: center; margin-top: 2rem; }
+.faq-more { text-align: center; margin: 2rem 0 1.6rem; }
 
 /* ============================================================
    FOOTER — dark editorial card layout
@@ -1104,6 +1105,46 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-6px) rotate
 .footer-cta-copy h2 { color: #fff; font-size: clamp(1.25rem, 2.4vw, 1.7rem); font-weight: 800; margin-bottom: .4rem; }
 .footer-cta-copy p { color: #c3d8dd; font-size: .95rem; max-width: 52ch; }
 .footer-cta-actions { display: flex; gap: .85rem; flex-wrap: wrap; flex-shrink: 0; position: relative; }
+
+/* language-wise SPOC strip */
+.lang-support {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 1.1rem 2rem;
+  margin: 1.8rem 0 2.2rem; padding: 1.35rem 1.6rem;
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 20px;
+}
+.lang-support-head { display: flex; align-items: center; gap: .85rem; }
+.lang-support-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px; flex: 0 0 auto;
+  border-radius: 14px;
+  background: rgba(72, 181, 178, .18);
+  color: var(--gold);
+}
+.lang-support-icon .ic { width: 1.25rem; height: 1.25rem; }
+.lang-support h3 { color: #fff; font-size: 1rem; margin: 0 0 .15rem; }
+.lang-support p { color: #a9c2cc; font-size: .84rem; margin: 0; }
+.lang-support-list { display: flex; flex-wrap: wrap; gap: .7rem 1.6rem; }
+.lang-support-list li {
+  display: flex; align-items: baseline; flex-wrap: wrap; gap: .3rem .55rem;
+  padding-left: 1.1rem; border-left: 1px solid rgba(255, 255, 255, .18);
+}
+.lang-support-list li:first-child { border-left: 0; padding-left: 0; }
+.lang-region { color: #fff; font-weight: 600; font-size: .9rem; }
+.lang-person { color: #c3d8dd; font-size: .88rem; }
+.lang-language {
+  display: inline-flex; align-items: center;
+  padding: .12rem .55rem; border-radius: 999px;
+  background: rgba(72, 181, 178, .18); color: #9fe0dd;
+  font-size: .72rem; font-weight: 600; letter-spacing: .04em;
+}
+@media (max-width: 760px) {
+  .lang-support { flex-direction: column; align-items: flex-start; }
+  .lang-support-list { flex-direction: column; gap: .65rem; }
+  .lang-support-list li { border-left: 0; padding-left: 0; }
+}
 
 .footer-grid {
   display: grid; grid-template-columns: 1.35fr 1fr; gap: 2.4rem;
@@ -1249,7 +1290,7 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-6px) rotate
   .float-wa { display: none; }
   body { padding-bottom: 76px; }
   .checklist { grid-template-columns: 1fr; }
-  .footer-cta { flex-direction: column; align-items: flex-start; transform: translateY(-34px); }
+  .footer-cta { flex-direction: column; align-items: flex-start; }
 }
 
 @media (max-width: 640px) {
@@ -1794,8 +1835,8 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-6px) rotate
 
 /* ============================================================
    SHIFARA BRAND THEME
-   Navy ink, teal accents and coral calls to action, taken from
-   shifarahealth.com. Rounded surfaces and pill controls.
+   Navy ink, teal accents and coral calls to action from the
+   Shifara brand. Rounded surfaces and pill controls.
    Solid colours only — no gradients.
 ============================================================ */
 
@@ -2041,13 +2082,17 @@ a { color: var(--brand-deep); }
   box-shadow: 0 0 0 3px rgba(16, 41, 73, .1);
 }
 .hero-form .phone-field .dial {
-  border-radius: 999px;
+  border-radius: 999px 0 0 999px;
   border-color: #dbe6f1;
+  border-right: 0;
   background: #f8fafc;
   color: var(--brand-deep);
   padding: .5rem .7rem;
-  min-width: 60px;
+  min-width: 52px;
   font-size: .83rem;
+}
+.hero-form .phone-field input {
+  border-radius: 0 999px 999px 0;
 }
 .hero-form .btn-block { padding: .78rem 1.2rem; font-size: .88rem; }
 .hero-form .form-privacy { font-size: .64rem; line-height: 1.4; margin-top: .5rem; color: #7c8ba0; }
@@ -2468,8 +2513,8 @@ a { color: var(--brand-deep); }
   .types .tab-panel .checklist { grid-template-columns: 1fr; }
 }
 
-/* footer: breathe between the floating CTA and the nav columns */
-.site-footer .footer-cta { margin-bottom: 3.2rem; }
+/* footer: the language strip now separates the CTA from the nav columns */
+.site-footer .footer-cta { margin-bottom: 0; }
 
 /* ---------- Theme responsive ---------- */
 @media (max-width: 1080px) {

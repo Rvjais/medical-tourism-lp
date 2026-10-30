@@ -2,6 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+
+  <!-- Google Tag Manager -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TSCMNPLR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- ============================================================
@@ -10,23 +18,21 @@
   <title>Cancer Treatment in India – Top Oncologists | Shifara Health</title>
   <meta name="description" content="Free cancer treatment plan in India. Top oncologists at JCI/NABH hospitals, with visa, travel & recovery handled by Shifara Health.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://shifarahealth.com/cancer-treatment-india/">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Cancer Treatment in India – Top Oncologists | Shifara Health">
   <meta property="og:description" content="Free cancer treatment plan in India. Top oncologists at JCI/NABH hospitals, with visa, travel & recovery handled by Shifara Health.">
-  <meta property="og:url" content="https://shifarahealth.com/cancer-treatment-india/">
-  <meta property="og:image" content="https://shifarahealth.com/assets/images/hero-slide-1.jpg">
+  <meta property="og:image" content="assets/images/hero-slide-1.jpg">
   <meta name="theme-color" content="#102949">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Fonts (self-hosted — no external requests) -->
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/plus-jakarta-sans.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter.woff2" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
 
   <!-- Hero banner: load the first slide immediately -->
   <link rel="preload" as="image" href="assets/images/hero-slide-1.jpg" fetchpriority="high">
@@ -329,7 +335,7 @@
 
               <p class="form-privacy">
                 <svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg>
-                Your information is confidential and shared only with relevant doctors and hospitals for medical evaluation and coordination. <a href="/privacy-policy/">Privacy&nbsp;Policy</a>
+                Your information is confidential and shared only with relevant doctors and hospitals for medical evaluation and coordination.
               </p>
 
               <p class="form-quote">“When cancer takes you far from home, the journey can feel overwhelming. Shifara Health is your guide, support and companion through it all.”</p>
@@ -397,26 +403,22 @@
         </div>
 
         <div class="support-grid">
-          <a class="card support-card reveal" href="/doctors/" data-event="doctor_profile_click">
-            <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-compass"/></svg></span>
+          <a class="card support-card reveal" href="#lead-form" data-event="doctor_profile_click">
             <h3>Find a Cancer Specialist</h3>
             <p>Meet oncologists matched to your cancer type, stage and needs.</p>
-            <span class="card-link">Browse Oncologists <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+            <span class="card-link">Request a Specialist Match <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
           </a>
-          <a class="card support-card reveal" href="/hospitals/" data-event="hospital_profile_click">
-            <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-hospital"/></svg></span>
+          <a class="card support-card reveal" href="#hubs" data-event="hospital_profile_click">
             <h3>Find a Cancer Hospital</h3>
             <p>Compare JCI / NABH-accredited cancer centres by expertise and city.</p>
             <span class="card-link">View Hospitals <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
           </a>
           <a class="card support-card reveal" href="#lead-form" data-event="form_intent">
-            <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-file"/></svg></span>
             <h3>Get a Free Second Opinion</h3>
             <p>Share your reports and get an expert review before you decide.</p>
             <span class="card-link">Get a Second Opinion <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
           </a>
           <a class="card support-card reveal" href="#costs">
-            <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-tag"/></svg></span>
             <h3>Understand Treatment Costs</h3>
             <p>Transparent estimates and savings against the US, UK and Gulf.</p>
             <span class="card-link">Compare Costs <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
@@ -429,7 +431,7 @@
      SECTION 4 — CANCER TYPES (12)
      Template note: the doc lists featured specialists per panel.
      Doctor & hospital names are intentionally excluded here —
-     connect each CTA to /doctors/ (filtered per type) on the live site.
+     CTAs stay on this page and open the enquiry form.
 ============================================================ -->
     <section class="section types" id="cancer-types">
       <div class="container">
@@ -778,7 +780,7 @@
         <p class="cost-disclaimer">Costs shown are indicative ranges and vary by hospital, doctor, treatment plan and your medical condition. A final estimate is given after your reports are reviewed.</p>
 
         <div class="costs-cta">
-          <a class="btn btn-outline" href="/country-comparison/">Compare Costs by Country <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn-outline" href="#contact">Talk to a Cost Advisor <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
           <a class="btn btn-primary" href="#lead-form" data-event="form_intent">Get My Free Estimate <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </div>
       </div>
@@ -1067,6 +1069,11 @@
             <span class="dot" aria-hidden="true">·</span>
             <a data-contact="mailLink" href="#" data-event="email_click"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg> <span data-contact="mailText">mail@shifarahealth.com</span></a>
           </p>
+
+          <p class="cta-language">
+            <svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg>
+            <span>Bangladesh: Zahid Ansari (Bengali) · Africa: Shrishti (English)</span>
+          </p>
         </div>
       </div>
     </section>
@@ -1117,7 +1124,7 @@
         </div>
 
         <div class="faq-more">
-          <a class="btn btn-ghost-dark" href="/faqs/">View all FAQs <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn-ghost-dark" href="#contact">Still have questions? Talk to us <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </div>
       </div>
     </section>
@@ -1142,6 +1149,29 @@
           </div>
         </div>
 
+        <!-- Language-wise SPOC contacts -->
+        <div class="lang-support reveal" aria-label="Language support">
+          <div class="lang-support-head">
+            <span class="lang-support-icon"><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg></span>
+            <div>
+              <h3>Talk to us in your language</h3>
+              <p>Language-wise coordinators for international patients.</p>
+            </div>
+          </div>
+          <ul class="lang-support-list">
+            <li>
+              <span class="lang-region">Bangladesh</span>
+              <span class="lang-person">Zahid Ansari</span>
+              <span class="lang-language">Bengali</span>
+            </li>
+            <li>
+              <span class="lang-region">Africa</span>
+              <span class="lang-person">Shrishti</span>
+              <span class="lang-language">English</span>
+            </li>
+          </ul>
+        </div>
+
         <div class="footer-grid">
           <div class="footer-brand">
             <a class="logo logo--light" href="#top" aria-label="Shifara Health – home">
@@ -1157,6 +1187,8 @@
                 <span>Venture X, 389P-390, Near IFFCO Metro Station<br>Sector 29, Gurugram, Haryana - 122022</span></li>
               <li><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>
                 <a data-contact="phoneLink" href="#" data-event="call_click"><span data-contact="phoneText">+91 99713 16164</span></a></li>
+              <li><svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+                <a data-contact="waLink" href="#" target="_blank" rel="noopener" data-event="whatsapp_click">WhatsApp: <span data-contact="phoneText">+91 99713 16164</span></a></li>
               <li><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>
                 <a data-contact="mailLink" href="#" data-event="email_click"><span data-contact="mailText">mail@shifarahealth.com</span></a></li>
             </ul>
