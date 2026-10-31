@@ -23,7 +23,7 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Medical Treatment in India | Shifara Health">
   <meta property="og:description" content="Get JCI/NABH-accredited treatment in India at 60–80% lower cost. Shifara handles hospitals, visas, travel and recovery. Free consultation.">
-  <meta property="og:image" content="assets/images/hero-slide-2.jpg">
+  <meta property="og:image" content="assets/images/hero-bg.jpg">
   <meta name="theme-color" content="#102949">
 
   <!-- Favicon -->
@@ -34,8 +34,8 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter.woff2" crossorigin>
   <link rel="stylesheet" href="css/fonts.css">
 
-  <!-- Hero banner: load the first slide immediately -->
-  <link rel="preload" as="image" href="assets/images/hero-slide-2.jpg" fetchpriority="high">
+  <!-- Hero banner: load the image immediately -->
+  <link rel="preload" as="image" href="assets/images/hero-bg.jpg" fetchpriority="high">
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/style.css">
@@ -45,6 +45,8 @@
     <style>
       .reveal { opacity: 1 !important; transform: none !important; }
       .noscript-only { display: block !important; }
+      .plan-step { display: block !important; }
+      .plan-actions, .plan-progress, .plan-flag, .plan-error { display: none !important; }
     </style>
   </noscript>
 
@@ -57,13 +59,21 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      {"@type": "Question","name": "How much can I save by getting treated in India?","acceptedAnswer": {"@type": "Answer","text": "Most procedures cost 60–80% less than in the US, UK or Gulf countries. Your Shifara advisor gives a personalised estimate after reviewing your reports."}},
-      {"@type": "Question","name": "Are the hospitals accredited?","acceptedAnswer": {"@type": "Answer","text": "Shifara partners with internationally accredited JCI, NABH and NABL hospitals. Accreditation is confirmed for each hospital before your treatment plan is finalised."}},
-      {"@type": "Question","name": "How do I get a medical visa?","acceptedAnswer": {"@type": "Answer","text": "Shifara supports the full medical visa process, including invitation letters and travel documents. Citizens of 160+ countries can apply for India's e-Medical Visa; rules change, so we confirm the current requirements for your country."}},
-      {"@type": "Question","name": "Can my family travel with me?","acceptedAnswer": {"@type": "Answer","text": "Yes. We help arrange accommodation, transport, translators and food for accompanying family members, and can organise local sightseeing during longer stays."}},
-      {"@type": "Question","name": "What happens after treatment?","acceptedAnswer": {"@type": "Answer","text": "We arrange recovery stays, nurses, follow-up consultations and record sharing with your doctor back home."}},
-      {"@type": "Question","name": "Is a kidney transplant legal for international patients?","acceptedAnswer": {"@type": "Answer","text": "All transplant evaluations and procedures follow applicable medical and legal requirements. Your coordinator explains the current requirements for your case before you travel."}},
-      {"@type": "Question","name": "Can I get a second opinion before travelling?","acceptedAnswer": {"@type": "Answer","text": "Yes. Share your reports for a free medical opinion from a specialist suited to your condition."}}
+      {"@type": "Question","name": "Why should I consider India for medical treatment?","acceptedAnswer": {"@type": "Answer","text": "India offers a range of medical treatment options across multiple specialities, including cardiac care, oncology, orthopaedics, organ transplantation and fertility treatment. International patients can explore hospitals, specialist consultations and treatment estimates based on their medical requirements."}},
+      {"@type": "Question","name": "How can I find the right hospital for medical treatment in India?","acceptedAnswer": {"@type": "Answer","text": "Finding the right hospital depends on your medical condition, treatment requirements, doctor availability and budget. Shifara Health helps international patients explore suitable hospitals, connect with relevant specialists and coordinate medical consultations in India."}},
+      {"@type": "Question","name": "How can international patients consult doctors in India before travelling?","acceptedAnswer": {"@type": "Answer","text": "International patients can share their medical reports, diagnostic results and treatment history for an initial review. Based on doctor availability, Shifara Health helps coordinate online medical consultations and treatment discussions before travel."}},
+      {"@type": "Question","name": "What is the cost of medical treatment in India for international patients?","acceptedAnswer": {"@type": "Answer","text": "The cost of medical treatment in India varies depending on the procedure, hospital, specialist, medical condition and length of stay. Patients can request personalised treatment estimates after sharing their medical reports and requirements."}},
+      {"@type": "Question","name": "Is medical treatment in India more affordable than in other countries?","acceptedAnswer": {"@type": "Answer","text": "Treatment costs in India may be lower than in several other countries, depending on the procedure and hospital. International patients can compare treatment estimates, understand what is included and review available medical care options before making a decision."}},
+      {"@type": "Question","name": "Can I get a treatment cost estimate before travelling to India?","acceptedAnswer": {"@type": "Answer","text": "Yes. You can share your medical reports, diagnosis and treatment history to request an indicative treatment estimate. The final cost is subject to specialist evaluation, hospital assessment and the treatment plan."}},
+      {"@type": "Question","name": "Do international patients need a medical visa to travel to India?","acceptedAnswer": {"@type": "Answer","text": "Foreign nationals travelling to India for medical treatment may be eligible for an Indian e-Medical Visa or another applicable visa category, subject to nationality and government requirements. Patients should check the latest eligibility criteria before applying."}},
+      {"@type": "Question","name": "Does Shifara Health assist with medical visa applications?","acceptedAnswer": {"@type": "Answer","text": "Shifara Health can guide international patients through the medical travel process, including information about medical visa requirements, hospital documentation and travel coordination. Visa approval remains subject to the relevant Indian authorities."}},
+      {"@type": "Question","name": "Can Shifara Health help arrange accommodation and airport transfers?","acceptedAnswer": {"@type": "Answer","text": "Shifara Health can assist patients in coordinating travel-related requirements, including accommodation guidance, airport transfers and hospital visits, depending on the services available at the selected location."}},
+      {"@type": "Question","name": "How do I choose the right cancer specialist or oncologist in India?","acceptedAnswer": {"@type": "Answer","text": "Choosing an oncologist depends on the type of cancer, stage, recommended treatment and specialist experience. Shifara Health helps patients explore relevant oncology specialists and coordinate consultations based on their medical reports."}},
+      {"@type": "Question","name": "Can I get a second medical opinion from an Indian specialist?","acceptedAnswer": {"@type": "Answer","text": "Yes. International patients can share their existing diagnosis, investigation reports and treatment recommendations to request a second medical opinion, subject to specialist availability and review."}},
+      {"@type": "Question","name": "How long should I stay in India for medical treatment?","acceptedAnswer": {"@type": "Answer","text": "The required stay depends on the procedure, recovery period, follow-up appointments and individual medical condition. The treating hospital can provide an estimated duration after reviewing the treatment plan."}},
+      {"@type": "Question","name": "Can I bring a family member or attendant for medical treatment in India?","acceptedAnswer": {"@type": "Answer","text": "Yes. International patients may travel with eligible attendants, subject to applicable visa requirements. The number of attendants and visa category should be confirmed before travel."}},
+      {"@type": "Question","name": "How do I start my medical treatment journey with Shifara Health?","acceptedAnswer": {"@type": "Answer","text": "You can begin by submitting your medical reports and treatment requirements through the enquiry form. The team can help coordinate an initial review, connect you with relevant hospitals and specialists, and guide you through the next steps."}},
+      {"@type": "Question","name": "Does Shifara Health provide assistance after treatment?","acceptedAnswer": {"@type": "Answer","text": "Shifara Health can help coordinate post-treatment follow-ups with the selected hospital and provide guidance regarding medical records, recovery instructions and further consultations, depending on the services arranged."}}
     ]
   }
   </script>
@@ -188,111 +198,98 @@
     <!-- ========================================================
          SECTION 1 — HERO  (primary conversion: free consultation)
     ========================================================== -->
-    <section class="hero" id="top">
-      <!-- FULL-WIDTH SLIDING BANNER — 4 flat image slides -->
-      <div class="hero-banner" id="heroSlider" role="region" aria-roledescription="carousel" aria-label="Medical treatment in India highlights" tabindex="0">
-        <div class="hero-slides" id="slidesViewport">
-
-          <article class="hero-slide hero-slide--ink is-active" aria-roledescription="slide" aria-label="Slide 1 of 4">
-            <img class="hero-slide-bg" src="assets/images/hero-slide-2.jpg" alt="Shifara Health advisor explaining a treatment plan to an international patient and her husband" width="1200" height="896" fetchpriority="high">
-            <span class="hero-scrim" aria-hidden="true"></span>
-            <div class="container hero-slide-inner">
-              <div class="hero-slide-copy">
-                <p class="eyebrow"><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg> International Patient Care in India</p>
-                <h1>Plan Your Medical Treatment in India with Trusted Guidance</h1>
-                <p class="hero-sub">Share your reports, meet the right specialist and let one team handle your hospital, visa, travel and recovery.</p>
-                <ul class="hero-benefits">
-                  <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> JCI · NABH · NABL accredited partner hospitals</li>
-                  <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Save 60–80% vs US / UK</li>
-                  <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> e-Medical Visa support for 160+ countries</li>
-                </ul>
-                <div class="hero-cta-row">
-                  <a class="btn btn-primary" href="#lead-form" data-event="form_intent">Get a Free Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-                  <a class="btn btn-ghost" data-contact="waLink" href="#" target="_blank" rel="noopener" data-event="whatsapp_click">
-                    <svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg>
-                    Talk to a Shifara Advisor
-                  </a>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="hero-slide hero-slide--teal hero-slide--bottom" aria-roledescription="slide" aria-label="Slide 2 of 4">
-            <img class="hero-slide-bg" src="assets/images/hero-slide-4.jpg" alt="Multidisciplinary team of specialists reviewing scans and planning care" width="1200" height="896" loading="lazy">
-            <span class="hero-scrim" aria-hidden="true"></span>
-            <div class="container hero-slide-inner">
-              <div class="hero-slide-copy">
-                <span class="slide-tag">The Right Expert</span>
-                <h2>Meet the specialist who is right for your condition</h2>
-                <p class="hero-sub">We review your reports and connect you with experienced specialists at accredited partner hospitals across India.</p>
-                <div class="hero-cta-row">
-                  <a class="btn btn-ghost-gold" href="#doctors">Find your specialist <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="hero-slide hero-slide--coral hero-slide--bottom hero-slide--narrow" aria-roledescription="slide" aria-label="Slide 3 of 4">
-            <img class="hero-slide-bg" src="assets/images/hero-slide-3.jpg" alt="Doctor and nurse caring for a patient during treatment" width="1920" height="1080" loading="lazy">
-            <span class="hero-scrim" aria-hidden="true"></span>
-            <div class="container hero-slide-inner">
-              <div class="hero-slide-copy">
-                <span class="slide-tag">One Team, Every Step</span>
-                <h2>Hospital, visa, travel and recovery — handled by&nbsp;one&nbsp;team</h2>
-                <p class="hero-sub">From your first report to your follow-up at home, a Shifara coordinator stays beside you and your family.</p>
-                <div class="hero-cta-row">
-                  <a class="btn btn-ghost-gold" href="#journey">See how the journey works <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="hero-slide hero-slide--sand hero-slide--bottom" aria-roledescription="slide" aria-label="Slide 4 of 4">
-            <img class="hero-slide-bg" src="assets/images/hero-slide-1.jpg" alt="Advanced treatment technology at a partner hospital" width="1200" height="896" loading="lazy">
-            <span class="hero-scrim" aria-hidden="true"></span>
-            <div class="container hero-slide-inner">
-              <div class="hero-slide-copy">
-                <span class="slide-tag">Transparent Costs</span>
-                <h2>Clear cost estimates before you commit</h2>
-                <p class="hero-sub">Indicative ranges up front and a personalised estimate after your reports are reviewed by a specialist.</p>
-                <div class="hero-cta-row">
-                  <a class="btn btn-primary" href="#procedures" data-event="form_intent">View treatment costs <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-                </div>
-              </div>
-            </div>
-          </article>
-
-        </div>
-
-        <button class="slide-arrow slide-prev" aria-label="Previous slide">
-          <svg class="ic" aria-hidden="true"><use href="#i-chevl"/></svg>
-        </button>
-        <button class="slide-arrow slide-next" aria-label="Next slide">
-          <svg class="ic" aria-hidden="true"><use href="#i-chevr"/></svg>
-        </button>
-        <div class="slide-dots" id="slideDots" role="group" aria-label="Slide navigation">
-          <button class="slide-toggle" type="button" aria-label="Pause slideshow" aria-pressed="false">
-            <svg class="ic" aria-hidden="true"><use href="#i-pause"/></svg>
-          </button>
-          <!-- indicator dots are generated by js/script.js -->
-        </div>
+    <section class="hero-bright" id="top">
+      <div class="hb-media" aria-hidden="true">
+        <img class="hb-img" src="assets/images/hero-bg.jpg" alt="" width="1376" height="768" fetchpriority="high">
+        <span class="hb-veil"></span>
       </div>
 
-      <!-- Lead form floating over the right side of the banner (stacks below on mobile) -->
-      <div class="hero-capture">
-        <div class="hero-form-wrap">
-          <div class="hero-form" id="lead-form">
-            <p class="capture-eyebrow">What you get with Shifara Health</p>
-            <h2>Get Your Free Consultation</h2>
-            <p class="form-sub">Share your details and reports. Our medical team will review your case and connect you with the right specialist and hospital.</p>
+      <div class="container hb-grid">
+        <div class="hb-copy">
+          <p class="hb-chip"><span class="hb-chip-country">India</span>JCI · NABH · NABL accredited hospitals only</p>
+          <h1 class="hb-title">Accredited Hospital Care in&nbsp;India, <em>Guided</em> Every Step of&nbsp;the&nbsp;Way.</h1>
+          <p class="hb-lead">Share your reports and get a personalised treatment plan with hospital options and an upfront cost estimate. Free, with no obligation. Then let one case manager handle the visa, travel, stay and recovery.</p>
 
-            <form id="enquiryForm" data-lead-form data-success="formSuccess" novalidate="">
-              <input type="hidden" name="formSource" value="International Patients landing page – hero">
+          <ul class="hb-checks">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Save 60–80% vs US, UK &amp; Gulf</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> No waiting lists</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Free medical visa help</li>
+          </ul>
+
+          <div class="hb-cta">
+            <a class="btn btn-primary" href="#lead-form" data-event="form_intent">Get My Free Treatment Plan <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-whatsapp" data-contact="waLink" href="#" target="_blank" rel="noopener" data-event="whatsapp_click">
+              <svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg> Chat On WhatsApp
+            </a>
+          </div>
+
+          <dl class="hb-stats">
+            <div><dt>17+</dt><dd>Partner hospitals</dd></div>
+            <div><dt>50+</dt><dd>Specialist doctors</dd></div>
+            <div><dt>6</dt><dd>India medical hubs</dd></div>
+            <div><dt>160+</dt><dd>Countries on e-Medical Visa*</dd></div>
+          </dl>
+        </div>
+
+        <!-- 3-step treatment plan card -->
+        <div class="plan-card" id="lead-form">
+          <span class="plan-flag">100% free · Reply within 24 hrs</span>
+
+          <div class="plan-head">
+            <h2>Get Your Treatment Plan &amp; Cost Estimate</h2>
+            <p>Takes under a minute. A medical case manager reviews every request.</p>
+          </div>
+
+          <div class="plan-progress" aria-hidden="true">
+            <i class="is-on" data-seg="1"></i><i data-seg="2"></i><i data-seg="3"></i>
+          </div>
+
+          <!-- Submissions are stored by Formester (CONFIG.formesterEndpoint in
+               js/script.js). With JavaScript the form is posted through a hidden
+               iframe; these attributes keep the native fallback working. -->
+          <form id="enquiryForm" data-lead-form data-success="formSuccess" novalidate
+                action="https://app.formester.com/forms/4RkE3znWs/submissions"
+                method="POST" enctype="multipart/form-data" accept-charset="UTF-8">
+            <input type="hidden" name="formSource" value="International Patients landing page – hero">
+            <input type="hidden" name="treatment" value="" data-plan-treatment>
+
+            <!-- Step 1 · treatment -->
+            <div class="plan-step is-active" data-step="1" tabindex="-1">
+              <p class="plan-q">What treatment are you looking for?</p>
+              <div class="plan-pills" role="group" aria-label="Treatment needed">
+                <button type="button" class="plan-pill" data-value="Heart / Cardiac" aria-pressed="false">Heart / Cardiac</button>
+                <button type="button" class="plan-pill" data-value="Cancer" aria-pressed="false">Cancer</button>
+                <button type="button" class="plan-pill" data-value="Knee / Hip" aria-pressed="false">Knee / Hip</button>
+                <button type="button" class="plan-pill" data-value="Spine" aria-pressed="false">Spine</button>
+                <button type="button" class="plan-pill" data-value="Transplant" aria-pressed="false">Transplant</button>
+                <button type="button" class="plan-pill" data-value="IVF" aria-pressed="false">IVF</button>
+                <button type="button" class="plan-pill" data-value="Neuro" aria-pressed="false">Neuro</button>
+                <button type="button" class="plan-pill" data-value="Cosmetic" aria-pressed="false">Cosmetic</button>
+                <button type="button" class="plan-pill" data-value="Other / Not sure" aria-pressed="false">Other / Not sure</button>
+              </div>
+              <p class="plan-error" hidden>Please choose a treatment so a case manager can match the right specialist.</p>
+              <div class="plan-actions">
+                <button type="button" class="btn btn-navy btn-block" data-plan-next="2">Continue <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+              </div>
+            </div>
+
+            <!-- Step 2 · contact details -->
+            <div class="plan-step" data-step="2" tabindex="-1" hidden>
+              <p class="plan-q">How can our case manager reach you?</p>
 
               <div class="field">
                 <label for="fullName">Full Name <em>*</em></label>
                 <input type="text" id="fullName" name="fullName" required autocomplete="name" placeholder="Patient or attendant name">
                 <span class="err" data-err="fullName"></span>
+              </div>
+
+              <div class="field">
+                <label for="phone">Phone / WhatsApp <em>*</em></label>
+                <div class="phone-field">
+                  <span class="dial" id="dialCode">+</span>
+                  <input type="tel" id="phone" name="phone" required inputmode="numeric" maxlength="15" autocomplete="tel" placeholder="Phone number">
+                </div>
+                <span class="err" data-err="phone"></span>
               </div>
 
               <div class="field">
@@ -306,66 +303,52 @@
                 <span class="err" data-err="country"></span>
               </div>
 
-              <div class="field">
-                <label for="phone">Phone / WhatsApp <em>*</em></label>
-                <div class="phone-field">
-                  <span class="dial" id="dialCode">+</span>
-                  <input type="tel" id="phone" name="phone" required inputmode="numeric" maxlength="15" autocomplete="tel" placeholder="Phone number">
-                </div>
-                <span class="err" data-err="phone"></span>
+              <div class="plan-actions plan-actions--split">
+                <button type="button" class="btn btn-ghost-dark" data-plan-next="1">Back</button>
+                <button type="button" class="btn btn-navy" data-plan-next="3">Continue <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></button>
               </div>
+            </div>
+
+            <!-- Step 3 · message + submit -->
+            <div class="plan-step" data-step="3" tabindex="-1" hidden>
+              <p class="plan-q">Anything the doctor should know?</p>
 
               <div class="field">
-                <label for="treatment">Treatment Needed <em>*</em></label>
-                <select id="treatment" name="treatment" required>
-                  <option value="" disabled selected>Select a treatment</option>
-                  <option value="kidney-transplant">Kidney Transplant</option>
-                  <option value="knee-hip-replacement">Knee &amp; Hip Replacement</option>
-                  <option value="bariatric-surgery">Bariatric Surgery</option>
-                  <option value="cosmetic-surgery">Cosmetic Surgery</option>
-                  <option value="bone-marrow-transplant">Bone Marrow Transplant (Adult)</option>
-                  <option value="spine-surgery">Spine Surgery</option>
-                  <option value="other">Not sure yet / Other</option>
-                </select>
-                <span class="err" data-err="treatment"></span>
+                <label for="message">Message <small>(optional)</small></label>
+                <textarea id="message" name="message" rows="3" placeholder="Diagnosis, treatment tried so far, preferred city — anything that helps us prepare"></textarea>
               </div>
 
-              <div class="field">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="3" placeholder="Tell us about the diagnosis, treatment so far and what help you need"></textarea>
+              <div class="plan-actions plan-actions--split">
+                <button type="button" class="btn btn-ghost-dark" data-plan-next="2">Back</button>
+                <button type="submit" class="btn btn-primary" data-event="form_submit">Get My Treatment Plan <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></button>
               </div>
-
-              <button type="submit" class="btn btn-primary btn-block" data-event="form_submit">
-                Request Free Consultation
-                <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg>
-              </button>
 
               <p class="form-privacy">
                 <svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg>
                 Your information is confidential and shared only with relevant doctors and hospitals for medical evaluation and coordination.
               </p>
 
-              <p class="form-quote">“When treatment takes you to another country, the journey can feel overwhelming. Shifara Health is your guide, support and companion from your first conversation to your return home.”</p>
-
-              <a class="capture-wa" data-contact="waLink" href="#" target="_blank" rel="noopener" data-event="whatsapp_click">
-                <svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg> Prefer to talk? WhatsApp our international patient coordinator
-              </a>
-            </form>
-
-            <!-- Shown after successful submission -->
-            <div class="form-success" id="formSuccess" hidden>
-              <span class="success-ic"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span>
-              <h3>Thank you! Your request is in.</h3>
-              <p>Our international patient team will review your details and reach out shortly with the right guidance for you.</p>
-              <p class="success-note">Need help sooner?</p>
-              <a class="btn btn-whatsapp btn-block" data-contact="waLink" href="#" target="_blank" rel="noopener" data-event="whatsapp_click">
-                <svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg> WhatsApp Our Patient Coordinator
-              </a>
+              <p class="form-status" hidden>Something went wrong while sending your request. Please try again — or <a data-contact="waLink" href="#" target="_blank" rel="noopener" data-event="whatsapp_click">WhatsApp us</a> and we will take your details directly.</p>
             </div>
+          </form>
+
+          <!-- Shown after successful submission -->
+          <div class="form-success" id="formSuccess" hidden>
+            <span class="success-ic"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span>
+            <h3>Thank you! Your request is in.</h3>
+            <p>Our medical case manager has your details and will reach out with the right guidance — usually within 24 hours.</p>
+            <p class="success-note">Need help sooner?</p>
+            <a class="btn btn-whatsapp btn-block" data-contact="waLink" href="#" target="_blank" rel="noopener" data-event="whatsapp_click">
+              <svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg> WhatsApp Our Patient Coordinator
+            </a>
           </div>
+
+          <p class="plan-foot">
+            <svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg>
+            Your medical information stays confidential and is shared only with relevant doctors and hospitals for medical evaluation.
+          </p>
         </div>
       </div>
-
     </section>
 
     <!-- ========================================================
@@ -387,6 +370,24 @@
         </div>
       </div>
       <p class="container trust-footnote">*Savings vary by procedure and hospital. Visa eligibility rules change — confirm current e-Medical Visa requirements for your country. Accreditation is confirmed per hospital before your plan is finalised.</p>
+    </section>
+
+    <!-- ========================================================
+         SECTION 2b — THE RIGHT EXPERT (banner, doc image 3)
+         Headline per the treatment doc:
+         "Connect With the Right Medical Specialist in India"
+    ========================================================== -->
+    <section class="specialist-banner" aria-labelledby="specialistTitle">
+      <img class="sb-photo" src="assets/images/hero-slide-4.jpg" alt="" width="1200" height="896" loading="lazy">
+      <span class="sb-veil" aria-hidden="true"></span>
+      <div class="container sb-inner">
+        <div class="sb-copy">
+          <span class="sb-tag">The Right Expert</span>
+          <h2 id="specialistTitle">Connect With the Right Medical Specialist in India</h2>
+          <p>Share your reports once. We review them and connect you with specialists experienced in treating your condition at accredited partner hospitals across India.</p>
+          <a class="btn btn-ghost-gold" href="#doctors" data-event="doctor_profile_click">Find your specialist <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
     </section>
 
     <!-- ========================================================
@@ -458,93 +459,214 @@
     </section>
 
     <!-- ========================================================
-         SECTION 5 — MEDICAL PROCEDURES (six treatments)
+         SECTION 5 — TREATMENTS (8-treatment slider, per doc)
     ========================================================== -->
     <section class="section types" id="procedures">
       <div class="container">
         <div class="section-head" data-overline="Treatments We Coordinate">
           <h2>Medical Procedures We Coordinate in India</h2>
-          <p>Six treatment areas, with hospital options and indicative costs from Shifara’s published treatment pages. Your final estimate is prepared after a specialist reviews your reports.</p>
+          <p>Eight of the treatments international patients ask us for most, shown in a slider with indicative costs. Your final estimate is prepared after a specialist reviews your reports.</p>
         </div>
 
-        <div class="proc-grid">
+        <div class="proc-slider" data-slider>
+          <div class="row-track" id="procTrack" tabindex="0" aria-label="Treatment cards — scroll horizontally to see more treatments">
 
-          <article class="card proc-card reveal">
-            <span class="proc-tag">Treatment 01</span>
-            <h3>Kidney Transplant</h3>
-            <p class="proc-lead">A new path forward, with the right kidney care beside you</p>
-            <p>A kidney transplant replaces failed kidneys with a healthy donor kidney. Your journey includes transplant assessment, donor evaluation, surgery, monitoring and long-term follow-up. Shifara reviews your dialysis history and reports, connects you with an experienced transplant team and coordinates your visa, travel and stay.</p>
-            <p class="proc-why"><strong>Why India:</strong> Experienced nephrologists, transplant surgeons and multidisciplinary teams with advanced critical care, at significantly lower cost than many countries.</p>
-            <p class="proc-cost"><svg class="ic" aria-hidden="true"><use href="#i-tag"/></svg> <span>From $12,500 – $14,000<small>Indicative; final estimate after report review</small></span></p>
-            <div class="proc-links">
-              <a href="#contact" data-event="form_intent">Get a kidney transplant estimate <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            </div>
-          </article>
+            <article class="card proc-card reveal">
+              <span class="proc-tag">Treatment 01</span>
+              <h3>Coronary Artery Bypass (CABG)</h3>
+              <p class="proc-lead">Specialised cardiac care with guidance throughout your treatment journey.</p>
+              <p class="proc-desc">Coronary artery bypass grafting (CABG) is a surgical procedure used to improve blood flow to the heart by creating an alternative route around blocked or narrowed arteries. Shifara reviews your cardiac reports, connects you with experienced cardiac surgeons and coordinates consultations, hospital admission, travel and post-surgery follow-up.</p>
+              <div class="proc-price">
+                <p class="proc-price-line"><span class="proc-price-from">Starting from</span> <strong>$5,500 – $8,500</strong></p>
+                <small>Indicative cost; final estimate depends on medical assessment and treatment requirements.</small>
+              </div>
+              <div class="proc-links">
+                <a href="#contact" data-event="form_intent">Get a CABG treatment estimate <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+            </article>
 
-          <article class="card proc-card reveal">
-            <span class="proc-tag">Treatment 02</span>
-            <h3>Knee &amp; Hip Replacement</h3>
-            <p class="proc-lead">Move forward again, without the long wait</p>
-            <p>Joint replacement relieves pain from severe arthritis or joint damage and helps restore mobility. Shifara reviews your X-rays and scans, connects you with a joint replacement specialist and coordinates rehabilitation, recovery stay and follow-up.</p>
-            <p class="proc-why"><strong>Why India:</strong> Experienced surgeons, modern implants and robotic-assisted options, with little or no waiting time.</p>
-            <p class="proc-cost"><svg class="ic" aria-hidden="true"><use href="#i-tag"/></svg> <span>Knee from $4,000 · Hip from $4,000<small>One side, indicative. Both knees $6,000–8,000; both hips $8,500–10,000. Robotic-assisted: +$800 knee, +$1,000 hip.</small></span></p>
-            <div class="proc-links">
-              <a href="#contact" data-event="form_intent">Get a knee replacement estimate <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-              <a href="#contact" data-event="form_intent">Get a hip replacement estimate <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            </div>
-          </article>
+            <article class="card proc-card reveal">
+              <span class="proc-tag">Treatment 02</span>
+              <h3>Total Knee Replacement</h3>
+              <p class="proc-lead">Restore mobility with personalised joint replacement care.</p>
+              <p class="proc-desc">Total knee replacement involves replacing damaged joint surfaces with artificial implants to help relieve pain and improve mobility. Shifara reviews your X-rays, scans and medical history, connects you with orthopaedic specialists and coordinates consultations, surgery, rehabilitation, recovery stay and follow-up care.</p>
+              <div class="proc-price">
+                <p class="proc-price-line"><span class="proc-price-from">Starting from</span> <strong>$5,500 – $8,000</strong></p>
+                <small>Indicative cost; final pricing depends on implant selection, procedure and medical assessment.</small>
+              </div>
+              <div class="proc-links">
+                <a href="#contact" data-event="form_intent">Get a knee replacement estimate <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+            </article>
 
-          <article class="card proc-card reveal">
-            <span class="proc-tag">Treatment 03</span>
-            <h3>Bariatric Surgery</h3>
-            <p class="proc-lead">Specialist care for long-term weight management</p>
-            <p>Bariatric surgery is considered for patients with severe obesity when other approaches have not worked. Eligibility depends on a detailed medical assessment. Shifara connects you with an experienced bariatric surgical team and coordinates your travel, stay and follow-up.</p>
-            <p class="proc-why"><strong>Why India:</strong> Experienced laparoscopic and robotic bariatric surgeons at accredited multi-speciality hospitals.</p>
-            <p class="proc-cost"><svg class="ic" aria-hidden="true"><use href="#i-tag"/></svg> <span>Cost on request<small>Pricing depends on the procedure and your assessment</small></span></p>
-            <div class="proc-links">
-              <a href="#contact" data-event="form_intent">Get an estimate <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            </div>
-          </article>
+            <article class="card proc-card reveal">
+              <span class="proc-tag">Treatment 03</span>
+              <h3>Liver Transplant</h3>
+              <p class="proc-lead">Comprehensive transplant coordination from evaluation to recovery.</p>
+              <p class="proc-desc">A liver transplant involves replacing a diseased or failing liver with a healthy donor liver. The process requires detailed medical evaluation, donor assessment and specialised surgical care. Shifara reviews your medical records, coordinates transplant consultations and supports you with hospital admission, travel arrangements, accommodation and post-transplant follow-up.</p>
+              <div class="proc-price">
+                <p class="proc-price-line"><span class="proc-price-from">Starting from</span> <strong>$28,000 – $40,000</strong></p>
+                <small>Indicative cost; final estimate depends on donor evaluation, procedure and clinical requirements.</small>
+              </div>
+              <div class="proc-links">
+                <a href="#contact" data-event="form_intent">Get a liver transplant estimate <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+            </article>
 
-          <article class="card proc-card reveal">
-            <span class="proc-tag">Treatment 04</span>
-            <h3>Cosmetic Surgery</h3>
-            <p class="proc-lead">Precision cosmetic care, guided by the right expertise</p>
-            <p>Body contouring, facial and hair procedures planned around your goals and health. Shifara reviews your history and goals, connects you with an experienced plastic surgeon and coordinates consultations, travel and post-operative follow-up. Procedures are cosmetic and are not a treatment for obesity.</p>
-            <p class="proc-why"><strong>Procedures:</strong> Liposuction, tummy tuck, abdominoplasty, hair transplant and fillers.</p>
-            <p class="proc-cost"><svg class="ic" aria-hidden="true"><use href="#i-tag"/></svg> <span>Liposuction from $3,500 · Hair transplant from $1,800<small>Indicative; other procedures quoted on request</small></span></p>
-            <div class="proc-links">
-              <a href="#contact" data-event="form_intent">Get a cosmetic surgery estimate <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            </div>
-          </article>
+            <article class="card proc-card reveal">
+              <span class="proc-tag">Treatment 04</span>
+              <h3>IVF Cycle</h3>
+              <p class="proc-lead">Personalised fertility care with guidance at every stage.</p>
+              <p class="proc-desc">In vitro fertilisation (IVF) is an assisted reproductive procedure that involves fertilising an egg with sperm in a laboratory before transferring an embryo into the uterus. Shifara helps review your fertility history, connects you with fertility specialists and coordinates consultations, treatment planning, appointments and follow-up support throughout the IVF journey.</p>
+              <div class="proc-price">
+                <p class="proc-price-line"><span class="proc-price-from">Starting from</span> <strong>$2,500 – $4,500</strong></p>
+                <small>Indicative cost; final pricing depends on the treatment protocol and additional procedures required.</small>
+              </div>
+              <div class="proc-links">
+                <a href="#contact" data-event="form_intent">Get an IVF treatment estimate <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+            </article>
 
-          <article class="card proc-card reveal">
-            <span class="proc-tag">Treatment 05</span>
-            <h3>Bone Marrow Transplant <small>(Adult)</small></h3>
-            <p class="proc-lead">When your blood needs a new beginning</p>
-            <p>A bone marrow transplant replaces damaged bone marrow with healthy stem cells, using your own cells (autologous) or a matched donor’s (allogeneic). Shifara reviews your pathology and bone marrow reports, connects you with a transplant specialist and coordinates hospital stay, accommodation where needed and long-term follow-up.</p>
-            <p class="proc-why"><strong>Why India:</strong> Dedicated transplant units with haematology, critical care and infection-control expertise.</p>
-            <p class="proc-cost"><svg class="ic" aria-hidden="true"><use href="#i-tag"/></svg> <span>From $14,000<small>Indicative; depends on transplant type. Allogeneic $25,000–32,000; autologous $30,000.</small></span></p>
-            <div class="proc-links">
-              <a href="#contact" data-event="form_intent">Get a bone marrow transplant estimate <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            </div>
-          </article>
+            <article class="card proc-card reveal">
+              <span class="proc-tag">Treatment 05</span>
+              <h3>Brain Tumour Surgery</h3>
+              <p class="proc-lead">Specialised neurosurgical care with coordinated patient support.</p>
+              <p class="proc-desc">Brain tumour surgery involves removing all or part of a tumour from the brain, depending on its type, size and location. Shifara reviews MRI scans, diagnostic reports and medical history, connects you with neurosurgical specialists and coordinates consultations, surgical planning, hospital admission, recovery arrangements and follow-up care.</p>
+              <div class="proc-price">
+                <p class="proc-price-line"><span class="proc-price-from">Starting from</span> <strong>$8,000 – $18,000</strong></p>
+                <small>Indicative cost; final estimate depends on tumour type, surgical complexity and clinical requirements.</small>
+              </div>
+              <div class="proc-links">
+                <a href="#contact" data-event="form_intent">Get a brain tumour surgery estimate <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+            </article>
 
-          <article class="card proc-card reveal">
-            <span class="proc-tag">Treatment 06</span>
-            <h3>Spine Surgery</h3>
-            <p class="proc-lead">Relieving pain while restoring spinal strength</p>
-            <p>Spinal decompression and fusion relieves pressure on spinal nerves and stabilises the spine. Shifara reviews your MRIs and X-rays, maps your care with senior spine surgeons and coordinates rehabilitation and follow-up scans.</p>
-            <p class="proc-why"><strong>Why India:</strong> Neuro-spine and ortho-spine units using modern imaging and navigation.</p>
-            <p class="proc-cost"><svg class="ic" aria-hidden="true"><use href="#i-tag"/></svg> <span>Decompression &amp; fusion $5,500 – $8,000<small>Indicative; other spine procedures quoted on request</small></span></p>
-            <div class="proc-links">
-              <a href="#contact" data-event="form_intent">Get a spine surgery estimate <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            </div>
-          </article>
+            <article class="card proc-card reveal">
+              <span class="proc-tag">Treatment 06</span>
+              <h3>Hair Transplant</h3>
+              <p class="proc-lead">Personalised hair restoration with specialist-led treatment planning.</p>
+              <p class="proc-desc">Hair transplantation is a procedure that relocates hair follicles from a donor area to areas experiencing hair loss or thinning. Shifara connects you with hair restoration specialists, helps coordinate consultations and treatment planning, and assists with travel, accommodation, procedure scheduling and post-treatment follow-up.</p>
+              <div class="proc-price">
+                <p class="proc-price-line"><span class="proc-price-from">Starting from</span> <strong>$1,800 – $3,500</strong></p>
+                <small>Indicative cost; final pricing depends on graft requirements and the selected procedure.</small>
+              </div>
+              <div class="proc-links">
+                <a href="#contact" data-event="form_intent">Get a hair transplant estimate <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+            </article>
 
+            <article class="card proc-card reveal">
+              <span class="proc-tag">Treatment 07</span>
+              <h3>Dental Implants</h3>
+              <p class="proc-lead">Restore your smile with personalised dental restoration care.</p>
+              <p class="proc-desc">Dental implants are artificial tooth roots placed into the jawbone to support replacement teeth. Shifara helps review your dental scans and reports, connects you with implant specialists and coordinates consultations, treatment scheduling, travel arrangements and post-procedure follow-up.</p>
+              <div class="proc-price">
+                <p class="proc-price-line"><span class="proc-price-from">Starting from</span> <strong>$800 – $2,000</strong></p>
+                <small>Indicative cost; final pricing depends on the number of implants, materials and additional procedures.</small>
+              </div>
+              <div class="proc-links">
+                <a href="#contact" data-event="form_intent">Get a dental implant estimate <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+            </article>
+
+            <article class="card proc-card reveal">
+              <span class="proc-tag">Treatment 08</span>
+              <h3>LASIK (Both Eyes)</h3>
+              <p class="proc-lead">Explore vision correction options with personalised eye care.</p>
+              <p class="proc-desc">LASIK is a laser-assisted vision correction procedure designed to reduce dependence on glasses or contact lenses. Shifara connects you with ophthalmology specialists, coordinates eye examinations and eligibility assessments, and assists with treatment scheduling, travel arrangements and post-procedure follow-up.</p>
+              <div class="proc-price">
+                <p class="proc-price-line"><span class="proc-price-from">Starting from</span> <strong>$900 – $2,500</strong></p>
+                <small>Indicative cost; final estimate depends on the laser technique and individual eye assessment.</small>
+              </div>
+              <div class="proc-links">
+                <a href="#contact" data-event="form_intent">Get a LASIK treatment estimate <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+            </article>
+
+          </div>
+
+          <div class="row-nav" data-slider-nav>
+            <button type="button" class="row-arrow row-prev" aria-label="Previous treatments"><svg class="ic" aria-hidden="true"><use href="#i-chevl"/></svg></button>
+            <button type="button" class="row-arrow row-next" aria-label="More treatments"><svg class="ic" aria-hidden="true"><use href="#i-chevr"/></svg></button>
+          </div>
         </div>
 
         <p class="cost-disclaimer">Costs shown are indicative ranges from Shifara’s treatment pages and vary by hospital, doctor, treatment plan and your medical condition. A final estimate is given after your reports are reviewed.</p>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 5b — PARTNER ASSOCIATED (17+ partner hospitals,
+         per doc: logo marquee + accreditation chips)
+    ========================================================== -->
+    <section class="section partners" id="partners">
+      <div class="container">
+        <div class="section-head" data-overline="Partner Network">
+          <h2><strong>17+ Partner Hospitals,</strong> <em>One Trusted Guide</em></h2>
+          <p>We partner only with JCI and NABH accredited hospitals in India, so you compare real options side by side.</p>
+        </div>
+
+        <ul class="partner-chips reveal">
+          <li><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg> JCI accredited</li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg> NABH accredited</li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg> NABL labs</li>
+        </ul>
+      </div>
+
+      <div class="partner-rows" aria-label="Partner hospital logos">
+        <div class="partner-row" data-marquee>
+          <ul>
+            <li><img src="assets/images/hospitals/apollo.png" alt="Apollo Hospitals" loading="eager" decoding="async"></li>
+            <li><img src="assets/images/hospitals/artemis.png" alt="Artemis Hospital" loading="eager" decoding="async"></li>
+            <li><img src="assets/images/hospitals/fortis.png" alt="Fortis Healthcare" loading="eager" decoding="async"></li>
+            <li><img src="assets/images/hospitals/gleneagles.jpg" alt="Gleneagles Hospital" loading="eager" decoding="async"></li>
+            <li><img src="assets/images/hospitals/hcg.jpg" alt="HCG Hospitals" loading="eager" decoding="async"></li>
+            <li><img src="assets/images/hospitals/manipal.jpg" alt="Manipal Hospitals" loading="eager" decoding="async"></li>
+            <li><img src="assets/images/hospitals/marengo.png" alt="Marengo Hospital" loading="eager" decoding="async"></li>
+            <li><img src="assets/images/hospitals/max-healthcare.png" alt="Max Healthcare" loading="eager" decoding="async"></li>
+            <li><img src="assets/images/hospitals/medanta.png" alt="Medanta – The Medicity" loading="eager" decoding="async"></li>
+          </ul>
+          <ul aria-hidden="true">
+            <li><img src="assets/images/hospitals/apollo.png" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/hospitals/artemis.png" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/hospitals/fortis.png" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/hospitals/gleneagles.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/hospitals/hcg.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/hospitals/manipal.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/hospitals/marengo.png" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/hospitals/max-healthcare.png" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/hospitals/medanta.png" alt="" loading="lazy" decoding="async"></li>
+          </ul>
+        </div>
+        <div class="partner-row" data-marquee>
+          <ul>
+            <li><img src="assets/images/hospitals/medicover-fertility.jpg" alt="Medicover Fertility" loading="eager" decoding="async"></li>
+            <li><img src="assets/images/hospitals/nanavati-max.png" alt="Nanavati Max Super Speciality Hospital" loading="eager" decoding="async"></li>
+            <li><img src="assets/images/hospitals/prime-super-speciality.jpg" alt="Prime Super Speciality Hospital" loading="eager" decoding="async"></li>
+            <li><img src="assets/images/hospitals/rela.png" alt="Rela Hospital" loading="eager" decoding="async"></li>
+            <li><img src="assets/images/hospitals/shalby.png" alt="Shalby Hospitals" loading="eager" decoding="async"></li>
+            <li><img src="assets/images/hospitals/venkateshwar.jpg" alt="Venkateshwar Hospital" loading="eager" decoding="async"></li>
+            <li><img src="assets/images/hospitals/wockhardt.png" alt="Wockhardt Hospitals" loading="eager" decoding="async"></li>
+            <li><img src="assets/images/hospitals/world-ivf.jpg" alt="World IVF Centre" loading="eager" decoding="async"></li>
+          </ul>
+          <ul aria-hidden="true">
+            <li><img src="assets/images/hospitals/medicover-fertility.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/hospitals/nanavati-max.png" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/hospitals/prime-super-speciality.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/hospitals/rela.png" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/hospitals/shalby.png" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/hospitals/venkateshwar.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/hospitals/wockhardt.png" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/hospitals/world-ivf.jpg" alt="" loading="lazy" decoding="async"></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="partners-note">
+        Hospital and brand names belong to their respective owners and are shown for reference.
+      </p>
+      <div class="partners-cta reveal">
+        <a class="btn btn-outline" href="#hospitals" data-event="hospital_profile_click">View Hospital Directory by Speciality <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
     </section>
 
@@ -1110,7 +1232,7 @@
     <section class="section stories" id="stories">
       <div class="container">
         <div class="section-head" data-overline="Patient Voices">
-          <h2>A Patient’s Story</h2>
+          <h2>Patient Stories</h2>
           <p>Real experiences from international patients who travelled to India for treatment and recovery support.</p>
         </div>
 
@@ -1120,18 +1242,61 @@
             <figcaption class="stories-illo-caption">Comfortable recovery stays and dedicated step-down care after hospital discharge.</figcaption>
           </figure>
 
-          <div class="story-slots story-slots--single">
-            <figure class="story-slot reveal">
-              <div class="story-photo-box">
-                <span class="story-initials" aria-hidden="true">GO</span>
-                <div>
-                  <strong>Grace O.</strong>
-                  <p class="ph-line"><svg class="ic" aria-hidden="true"><use href="#i-map"/></svg> Nigeria</p>
+          <div class="story-scroller" data-slider>
+            <div class="row-track" id="storyTrack" tabindex="0" aria-label="Patient stories — scroll horizontally to read more">
+              <figure class="story-slot reveal">
+                <div class="story-photo-box">
+                  <span class="story-initials" aria-hidden="true">GO</span>
+                  <div>
+                    <strong>Grace O.</strong>
+                    <p class="ph-line"><svg class="ic" aria-hidden="true"><use href="#i-map"/></svg> Nigeria</p>
+                  </div>
                 </div>
-              </div>
-              <blockquote>“The recovery home in Gurgaon felt like a hotel with a nurse on call. Best decision for post-op care.”</blockquote>
-              <figcaption><strong>Knee Replacement</strong> · Treated in Gurgaon</figcaption>
-            </figure>
+                <blockquote>“The recovery home in Gurgaon felt like a hotel with a nurse on call. Best decision for post-op care.”</blockquote>
+                <figcaption><strong>Knee Replacement</strong> · Treated in Gurgaon</figcaption>
+              </figure>
+
+              <figure class="story-slot reveal">
+                <div class="story-photo-box">
+                  <span class="story-initials" aria-hidden="true">TF</span>
+                  <div>
+                    <strong>Tariq &amp; Fatima A.</strong>
+                    <p class="ph-line"><svg class="ic" aria-hidden="true"><use href="#i-map"/></svg> Kuwait</p>
+                  </div>
+                </div>
+                <blockquote>“From our first enquiry in Kuwait, the team gave us clarity and reassurance. The surgical team was remarkable, and our coordinator was beside us every day.”</blockquote>
+                <figcaption><strong>Colorectal Surgery &amp; Post-Op Care</strong> · From Kuwait</figcaption>
+              </figure>
+
+              <figure class="story-slot reveal">
+                <div class="story-photo-box">
+                  <span class="story-initials" aria-hidden="true">AO</span>
+                  <div>
+                    <strong>Amara O.</strong>
+                    <p class="ph-line"><svg class="ic" aria-hidden="true"><use href="#i-map"/></svg> Nigeria</p>
+                  </div>
+                </div>
+                <blockquote>“Travelling from Nigeria for cancer care was daunting, but Shifara Health helped with our medical visa, met us at the airport, and made us feel genuinely cared for.”</blockquote>
+                <figcaption><strong>Breast Cancer Precision Oncology</strong> · From Nigeria</figcaption>
+              </figure>
+
+              <figure class="story-slot reveal">
+                <div class="story-photo-box">
+                  <span class="story-initials" aria-hidden="true">RK</span>
+                  <div>
+                    <strong>Reza &amp; Maryam K.</strong>
+                    <p class="ph-line"><svg class="ic" aria-hidden="true"><use href="#i-map"/></svg> Iran</p>
+                  </div>
+                </div>
+                <blockquote>“The free second opinion helped us understand alternative targeted therapy options. The treatment in India gave my mother her strength back at 70% lower cost.”</blockquote>
+                <figcaption><strong>Advanced Radiation &amp; Chemotherapy</strong> · From Iran</figcaption>
+              </figure>
+            </div>
+
+            <div class="row-nav" data-slider-nav>
+              <button type="button" class="row-arrow row-prev" aria-label="Previous stories"><svg class="ic" aria-hidden="true"><use href="#i-chevl"/></svg></button>
+              <button type="button" class="row-arrow row-next" aria-label="More stories"><svg class="ic" aria-hidden="true"><use href="#i-chevr"/></svg></button>
+            </div>
           </div>
         </div>
 
@@ -1265,38 +1430,91 @@
       <div class="container container-narrow">
         <div class="section-head" data-overline="Questions & Answers">
           <h2>Frequently Asked Questions</h2>
-          <p>What international patients and families commonly ask before starting their journey with us.</p>
+          <p>Frequently asked questions from international patients about medical tourism in India.</p>
         </div>
 
-        <div class="faq-list">
-          <div class="faq-item reveal">
-            <button class="faq-q" aria-expanded="false"><span>How much can I save by getting treated in India?</span><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></button>
-            <div class="faq-a" hidden><p>Most procedures cost 60–80% less than in the US, UK or Gulf countries. Your Shifara advisor gives a personalised estimate after reviewing your reports.</p></div>
+        <div class="faq-groups">
+
+          <div class="faq-group reveal">
+            <h3 class="faq-group-title">General medical tourism FAQs</h3>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>Why should I consider India for medical treatment?</span><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+              <div class="faq-a" hidden><p>India offers a range of medical treatment options across multiple specialities, including cardiac care, oncology, orthopaedics, organ transplantation and fertility treatment. International patients can explore hospitals, specialist consultations and treatment estimates based on their medical requirements.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>How can I find the right hospital for medical treatment in India?</span><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+              <div class="faq-a" hidden><p>Finding the right hospital depends on your medical condition, treatment requirements, doctor availability and budget. Shifara Health helps international patients explore suitable hospitals, connect with relevant specialists and coordinate medical consultations in India.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>How can international patients consult doctors in India before travelling?</span><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+              <div class="faq-a" hidden><p>International patients can share their medical reports, diagnostic results and treatment history for an initial review. Based on doctor availability, Shifara Health helps coordinate online medical consultations and treatment discussions before travel.</p></div>
+            </div>
           </div>
-          <div class="faq-item reveal">
-            <button class="faq-q" aria-expanded="false"><span>Are the hospitals accredited?</span><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></button>
-            <div class="faq-a" hidden><p>Shifara partners with internationally accredited JCI, NABH and NABL hospitals. Accreditation is confirmed for each hospital before your treatment plan is finalised.</p></div>
+
+          <div class="faq-group reveal">
+            <h3 class="faq-group-title">Treatment cost and affordability FAQs</h3>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>What is the cost of medical treatment in India for international patients?</span><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+              <div class="faq-a" hidden><p>The cost of medical treatment in India varies depending on the procedure, hospital, specialist, medical condition and length of stay. Patients can request personalised treatment estimates after sharing their medical reports and requirements.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>Is medical treatment in India more affordable than in other countries?</span><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+              <div class="faq-a" hidden><p>Treatment costs in India may be lower than in several other countries, depending on the procedure and hospital. International patients can compare treatment estimates, understand what is included and review available medical care options before making a decision.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>Can I get a treatment cost estimate before travelling to India?</span><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+              <div class="faq-a" hidden><p>Yes. You can share your medical reports, diagnosis and treatment history to request an indicative treatment estimate. The final cost is subject to specialist evaluation, hospital assessment and the treatment plan.</p></div>
+            </div>
           </div>
-          <div class="faq-item reveal">
-            <button class="faq-q" aria-expanded="false"><span>How do I get a medical visa?</span><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></button>
-            <div class="faq-a" hidden><p>Shifara supports the full medical visa process, including invitation letters and travel documents. Citizens of 160+ countries can apply for India’s e-Medical Visa; rules change, so we confirm the current requirements for your country.</p></div>
+
+          <div class="faq-group reveal">
+            <h3 class="faq-group-title">Medical visa and travel assistance FAQs</h3>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>Do international patients need a medical visa to travel to India?</span><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+              <div class="faq-a" hidden><p>Foreign nationals travelling to India for medical treatment may be eligible for an Indian e-Medical Visa or another applicable visa category, subject to nationality and government requirements. Patients should check the latest eligibility criteria before applying.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>Does Shifara Health assist with medical visa applications?</span><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+              <div class="faq-a" hidden><p>Shifara Health can guide international patients through the medical travel process, including information about medical visa requirements, hospital documentation and travel coordination. Visa approval remains subject to the relevant Indian authorities.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>Can Shifara Health help arrange accommodation and airport transfers?</span><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+              <div class="faq-a" hidden><p>Shifara Health can assist patients in coordinating travel-related requirements, including accommodation guidance, airport transfers and hospital visits, depending on the services available at the selected location.</p></div>
+            </div>
           </div>
-          <div class="faq-item reveal">
-            <button class="faq-q" aria-expanded="false"><span>Can my family travel with me?</span><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></button>
-            <div class="faq-a" hidden><p>Yes. We help arrange accommodation, transport, translators and food for accompanying family members, and can organise local sightseeing during longer stays.</p></div>
+
+          <div class="faq-group reveal">
+            <h3 class="faq-group-title">Hospital, doctor and treatment coordination FAQs</h3>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>How do I choose the right cancer specialist or oncologist in India?</span><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+              <div class="faq-a" hidden><p>Choosing an oncologist depends on the type of cancer, stage, recommended treatment and specialist experience. Shifara Health helps patients explore relevant oncology specialists and coordinate consultations based on their medical reports.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>Can I get a second medical opinion from an Indian specialist?</span><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+              <div class="faq-a" hidden><p>Yes. International patients can share their existing diagnosis, investigation reports and treatment recommendations to request a second medical opinion, subject to specialist availability and review.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>How long should I stay in India for medical treatment?</span><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+              <div class="faq-a" hidden><p>The required stay depends on the procedure, recovery period, follow-up appointments and individual medical condition. The treating hospital can provide an estimated duration after reviewing the treatment plan.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>Can I bring a family member or attendant for medical treatment in India?</span><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+              <div class="faq-a" hidden><p>Yes. International patients may travel with eligible attendants, subject to applicable visa requirements. The number of attendants and visa category should be confirmed before travel.</p></div>
+            </div>
           </div>
-          <div class="faq-item reveal">
-            <button class="faq-q" aria-expanded="false"><span>What happens after treatment?</span><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></button>
-            <div class="faq-a" hidden><p>We arrange recovery stays, nurses, follow-up consultations and record sharing with your doctor back home.</p></div>
+
+          <div class="faq-group reveal">
+            <h3 class="faq-group-title">Booking and patient support FAQs</h3>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>How do I start my medical treatment journey with Shifara Health?</span><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+              <div class="faq-a" hidden><p>You can begin by submitting your medical reports and treatment requirements through the enquiry form. The team can help coordinate an initial review, connect you with relevant hospitals and specialists, and guide you through the next steps.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>Does Shifara Health provide assistance after treatment?</span><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+              <div class="faq-a" hidden><p>Shifara Health can help coordinate post-treatment follow-ups with the selected hospital and provide guidance regarding medical records, recovery instructions and further consultations, depending on the services arranged.</p></div>
+            </div>
           </div>
-          <div class="faq-item reveal">
-            <button class="faq-q" aria-expanded="false"><span>Is a kidney transplant legal for international patients?</span><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></button>
-            <div class="faq-a" hidden><p>All transplant evaluations and procedures follow applicable medical and legal requirements. Your coordinator explains the current requirements for your case before you travel.</p></div>
-          </div>
-          <div class="faq-item reveal">
-            <button class="faq-q" aria-expanded="false"><span>Can I get a second opinion before travelling?</span><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></button>
-            <div class="faq-a" hidden><p>Yes. Share your reports for a free medical opinion from a specialist suited to your condition.</p></div>
-          </div>
+
         </div>
       </div>
     </section>
@@ -1339,7 +1557,9 @@
             <h3>Request Free Consultation</h3>
             <p class="form-sub">Tell us about the patient and the treatment needed. Our team will respond with the next steps.</p>
 
-            <form id="consultForm" data-lead-form data-success="consultSuccess" novalidate="">
+            <form id="consultForm" data-lead-form data-success="consultSuccess" novalidate=""
+                  action="https://app.formester.com/forms/4RkE3znWs/submissions"
+                  method="POST" enctype="multipart/form-data" accept-charset="UTF-8">
               <input type="hidden" name="formSource" value="International Patients landing page – final form">
 
               <div class="form-grid">
@@ -1376,13 +1596,15 @@
                   <label for="treatment2">Treatment Needed <em>*</em></label>
                   <select id="treatment2" name="treatment" required>
                     <option value="" disabled selected>Select a treatment</option>
-                    <option value="kidney-transplant">Kidney Transplant</option>
-                    <option value="knee-hip-replacement">Knee &amp; Hip Replacement</option>
-                    <option value="bariatric-surgery">Bariatric Surgery</option>
-                    <option value="cosmetic-surgery">Cosmetic Surgery</option>
-                    <option value="bone-marrow-transplant">Bone Marrow Transplant (Adult)</option>
-                    <option value="spine-surgery">Spine Surgery</option>
-                    <option value="other">Not sure yet / Other</option>
+                    <option value="cabg">Coronary Artery Bypass (CABG)</option>
+                    <option value="total-knee-replacement">Total Knee Replacement</option>
+                    <option value="liver-transplant">Liver Transplant</option>
+                    <option value="ivf-cycle">IVF Cycle</option>
+                    <option value="brain-tumour-surgery">Brain Tumour Surgery</option>
+                    <option value="hair-transplant">Hair Transplant</option>
+                    <option value="dental-implants">Dental Implants</option>
+                    <option value="lasik-both-eyes">LASIK (Both Eyes)</option>
+                    <option value="other">Other / Not sure yet</option>
                   </select>
                   <span class="err" data-err="treatment2"></span>
                 </div>
@@ -1396,6 +1618,7 @@
                   <label for="reports">Upload Reports <small>(optional)</small></label>
                   <input type="file" id="reports" name="reports" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" multiple>
                   <span class="field-hint">PDF, JPG, PNG or DOC — up to 10 MB per file.</span>
+                  <span class="err" data-err="reports"></span>
                 </div>
               </div>
 
@@ -1408,6 +1631,8 @@
                 <svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg>
                 Your information is confidential and shared only with relevant doctors and hospitals for medical evaluation and coordination.
               </p>
+
+              <p class="form-status" hidden>Something went wrong while sending your request. Please try again — or <a data-contact="waLink" href="#" target="_blank" rel="noopener" data-event="whatsapp_click">WhatsApp us</a> and we will take your details directly.</p>
             </form>
 
             <div class="form-success" id="consultSuccess" hidden>

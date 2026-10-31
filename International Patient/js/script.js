@@ -18,6 +18,13 @@ const CONFIG = {
     ),
   emailDisplay: "mail@shifarahealth.com",
   emailHref: "mailto:mail@shifarahealth.com",
+
+  /* Formester lead capture (international patients page).
+     The plain endpoint stores the POST server-side and redirects to
+     its own thank-you page — used via a hidden iframe because the
+     .json endpoint does not allow cross-origin reads (CORS). */
+  formesterEndpoint: "https://app.formester.com/forms/4RkE3znWs/submissions",
+  formesterTimeoutMs: 45000,
 };
 
 /* ------------------------------------------------------------
@@ -64,6 +71,11 @@ function applyContactDetails() {
       and is disabled for prefers-reduced-motion users.
 ------------------------------------------------------------ */
 function initSlider() {
+  /* Retired with the old hero carousel (replaced by the static bright
+     banner). Kept only as a fallback: the element checks below no
+     longer match, so the function safely does nothing. */
+  return;
+
   const slider = document.getElementById("heroSlider");
   const track = document.getElementById("slidesViewport");
   const dotsWrap = document.getElementById("slideDots");
@@ -284,6 +296,167 @@ function initSlider() {
   render();
   syncToggle();
   startAutoplay();
+}
+
+/* ------------------------------------------------------------
+   3b) Row sliders — [data-slider] wrappers (treatment cards,
+       patient stories). Arrows scroll the row, edges disable,
+       native swipe on touch. Reduced motion scrolls instantly.
+------------------------------------------------------------ */
+function initRowSliders() {
+  document.querySelectorAll("[data-slider]").forEach((wrap) => {
+    const track = wrap.querySelector(".row-track");
+    const nav = wrap.querySelector("[data-slider-nav]");
+    if (!track) return;
+
+    const prev = nav ? nav.querySelector(".row-prev") : null;
+    const next = nav ? nav.querySelector(".row-next") : null;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const stepPx = () => Math.max(track.clientWidth * 0.85, 240);
+
+    const update = () => {
+      if (!prev || !next) return;
+      const max = track.scrollWidth - track.clientWidth - 2;
+      prev.disabled = track.scrollLeft <= 2;
+      next.disabled = track.scrollLeft >= max;
+      if (max <= 4) {
+        prev.hidden = true;
+        next.hidden = true;
+      }
+    };
+
+    if (prev) {
+      prev.addEventListener("click", () => {
+        track.scrollBy({ left: -stepPx(), behavior: reduce ? "auto" : "smooth" });
+        trackEvent("slider_scroll", { slider: track.id || "row" });
+      });
+    }
+    if (next) {
+      next.addEventListener("click", () => {
+        track.scrollBy({ left: stepPx(), behavior: reduce ? "auto" : "smooth" });
+        trackEvent("slider_scroll", { slider: track.id || "row" });
+      });
+    }
+
+    track.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update, { passive: true });
+    update();
+  });
+}
+
+/* ------------------------------------------------------------
+   3c) Treatment-plan stepper — the hero card's 3-step flow.
+       Step 1: pick a treatment pill (stores value in a hidden
+       field). Step 2: name / phone / country. Step 3: message
+       + submit (validated by initForm). Progress bar follows.
+------------------------------------------------------------ */
+function initPlanStepper() {
+  const form = document.getElementById("enquiryForm");
+  if (!form || !form.querySelector(".plan-step")) return;
+
+  const steps = Array.from(form.querySelectorAll(".plan-step"));
+  const segs = Array.from(document.querySelectorAll(".plan-progress i"));
+  const treatment = form.querySelector("[data-plan-treatment]");
+  const pills = Array.from(form.querySelectorAll(".plan-pill"));
+
+  const name = form.querySelector('[name="fullName"]');
+  const phone = form.querySelector('[name="phone"]');
+  const country = form.querySelector("select[data-country]");
+
+  const setErr = (field, message) => {
+    if (!field) return;
+    field.classList.toggle("is-invalid", Boolean(message));
+    const errEl = form.querySelector('[data-err="' + field.id + '"]');
+    if (errEl) errEl.textContent = message || "";
+    if (message) field.setAttribute("aria-invalid", "true");
+    else field.removeAttribute("aria-invalid");
+  };
+
+  let step = 1;
+
+  function show(next) {
+    step = next;
+    steps.forEach((el) => {
+      const active = Number(el.dataset.step) === step;
+      el.hidden = !active;
+      el.classList.toggle("is-active", active);
+    });
+    segs.forEach((seg) => {
+      seg.classList.toggle("is-on", Number(seg.dataset.seg) <= step);
+    });
+    const active = steps.find((el) => Number(el.dataset.step) === step);
+    if (active) active.focus({ preventScroll: true });
+  }
+
+  function validateStep(current) {
+    if (current === 1) {
+      const err = form.querySelector(".plan-error");
+      const picked = pills.some((p) => p.getAttribute("aria-pressed") === "true");
+      if (!picked) {
+        if (err) {
+          err.hidden = false;
+          err.textContent = "Please choose a treatment so a case manager can match the right specialist.";
+        }
+        trackEvent("plan_step_block", { step: "1", reason: "treatment" });
+        return false;
+      }
+      if (err) err.hidden = true;
+      return true;
+    }
+
+    const nameErr = !name || name.value.trim().length < 3;
+    setErr(name, nameErr ? "Please enter your full name." : "");
+
+    const digits = phone ? phone.value.replace(/\D/g, "") : "";
+    const phoneErr = digits.length < 7 || digits.length > 15;
+    setErr(phone, phoneErr ? "Please enter a valid phone / WhatsApp number." : "");
+
+    const countryErr = !country || !country.value;
+    setErr(country, countryErr ? "Please select your country." : "");
+
+    if (nameErr || phoneErr || countryErr) {
+      const firstBad = form.querySelector(".is-invalid");
+      if (firstBad) firstBad.focus();
+      return false;
+    }
+    return true;
+  }
+
+  form.addEventListener("click", (e) => {
+    if (!(e.target instanceof Element)) return;
+
+    /* treatment pills behave like a single-choice group */
+    const pill = e.target.closest(".plan-pill");
+    if (pill) {
+      const wasOn = pill.getAttribute("aria-pressed") === "true";
+      pills.forEach((p) => p.setAttribute("aria-pressed", "false"));
+      pill.setAttribute("aria-pressed", "true");
+      if (treatment) treatment.value = pill.dataset.value || "";
+      const err = form.querySelector(".plan-error");
+      if (err) err.hidden = true;
+      if (!wasOn) trackEvent("plan_treatment", { treatment: pill.dataset.value || "" });
+      return;
+    }
+
+    /* step navigation — validate before moving forward */
+    const nav = e.target.closest("[data-plan-next]");
+    if (nav) {
+      const target = Number(nav.dataset.planNext);
+      if (target > step && !validateStep(step)) return;
+      show(target);
+      trackEvent("plan_step", { step: String(target) });
+    }
+  });
+
+  /* Enter inside a field advances instead of submitting early */
+  form.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter" || step >= 3) return;
+    if (!(e.target instanceof Element)) return;
+    if (e.target.matches("input, select, textarea")) {
+      e.preventDefault();
+      if (validateStep(step)) show(step + 1);
+    }
+  });
 }
 
 /* ------------------------------------------------------------
@@ -549,10 +722,111 @@ function initFaq() {
       success state, GTM form_submit event.
       Both the hero form and the full final-CTA form are handled
       by the same routine via [data-lead-form].
-      TEMPLATE NOTE: replace the simulated success with a POST to
-      the CRM / form endpoint once routing is confirmed
-      (doc: CRM + mail@[brand].com).
+      Submissions are stored by Formester (endpoint in
+      CONFIG.formesterEndpoint) — see submitViaFormester below.
 ------------------------------------------------------------ */
+/* Post the form to Formester through a hidden iframe.
+   A native form post needs no CORS clearance; Formester stores the
+   submission and answers with its own thank-you redirect, which
+   lands inside the iframe. The page itself never navigates, so our
+   success panel keeps working. If no response arrives in time, we
+   show the inline WhatsApp suggestion instead of losing the lead. */
+function submitViaFormester(form, onSuccess, onFailure) {
+  if (form.dataset.sending === "true") return;
+  form.dataset.sending = "true";
+
+  const submitBtn = form.querySelector('[type="submit"]');
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.setAttribute("aria-busy", "true");
+  }
+  const status = form.querySelector(".form-status");
+  if (status) status.hidden = true;
+
+  /* readable companions for the CRM (stripped again after the try) */
+  const extras = [];
+  const addHidden = (name, value) => {
+    if (!value) return;
+    const input = document.createElement("input");
+    input.type = "hidden";
+    input.name = name;
+    input.value = value;
+    form.appendChild(input);
+    extras.push(input);
+  };
+  const dial = form.querySelector(".dial");
+  const countrySel = form.querySelector("select[data-country]");
+  const treatSel = form.querySelector('select[name="treatment"]');
+  addHidden("dialCode", dial ? dial.textContent.trim() : "");
+  addHidden(
+    "countryName",
+    countrySel && countrySel.selectedIndex >= 0
+      ? countrySel.options[countrySel.selectedIndex].textContent
+      : ""
+  );
+  addHidden(
+    "treatmentName",
+    treatSel && treatSel.selectedIndex >= 0
+      ? treatSel.options[treatSel.selectedIndex].textContent
+      : ""
+  );
+
+  /* hidden iframe target — created once per form, reused */
+  const frameName = "formester-frame-" + (form.id || "lead");
+  let frame = document.querySelector('iframe[data-form-frame="' + frameName + '"]');
+  if (!frame) {
+    frame = document.createElement("iframe");
+    frame.name = frameName;
+    frame.dataset.formFrame = frameName;
+    frame.title = "Form submission";
+    frame.setAttribute("aria-hidden", "true");
+    frame.tabIndex = -1;
+    frame.style.cssText = "position:absolute;left:-9999px;width:0;height:0;border:0;";
+    document.body.appendChild(frame);
+  }
+
+  form.action = CONFIG.formesterEndpoint;
+  form.method = "POST";
+  form.enctype = "multipart/form-data";
+  form.acceptCharset = "UTF-8";
+  form.target = frameName;
+
+  let settled = false;
+  const restore = () => {
+    settled = true;
+    form.target = "";
+    form.dataset.sending = "false";
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.removeAttribute("aria-busy");
+    }
+    extras.forEach((el) => el.remove());
+  };
+  const finishOk = () => {
+    if (settled) return;
+    clearTimeout(watchdog);
+    restore();
+    onSuccess();
+  };
+  const finishFail = () => {
+    if (settled) return;
+    clearTimeout(watchdog);
+    frame.removeEventListener("load", onLoad);
+    restore();
+    if (status) status.hidden = false;
+    onFailure();
+  };
+  const onLoad = () => {
+    if (settled) return;
+    setTimeout(finishOk, 300); /* let a redirect chain settle */
+  };
+
+  frame.addEventListener("load", onLoad, { once: true });
+  const watchdog = setTimeout(finishFail, CONFIG.formesterTimeoutMs);
+
+  form.submit(); /* native submit — does not re-fire our handler */
+}
+
 function initForm() {
   document.querySelectorAll("form[data-lead-form]").forEach((form) => {
     const successId = form.dataset.success;
@@ -615,17 +889,33 @@ function initForm() {
         ? treatment.options[treatment.selectedIndex].textContent
         : "";
 
-      trackEvent("form_submit", {
-        formSource: sourceField ? sourceField.value : "",
-        country: countryText,
-        treatment: treatmentText,
-      });
+      /* report uploads: enforce the 10 MB-per-file hint client-side */
+      const fileInput = form.querySelector('input[type="file"]');
+      if (fileInput && fileInput.files.length) {
+        const tooBig = Array.from(fileInput.files).some((f) => f.size > 10 * 1024 * 1024);
+        if (tooBig) {
+          setErr(fileInput, "Each report file must be 10 MB or smaller. Try a smaller file or share it on WhatsApp.");
+          fileInput.focus();
+          return;
+        }
+      }
 
-      /* TODO — send to CRM endpoint here, e.g.:
-         fetch("https://[crm-endpoint]", { method: "POST", body: new FormData(form) })
-         .then(showSuccess).catch(showWhatsAppFallback); */
-
-      showSuccess();
+      submitViaFormester(
+        form,
+        () => {
+          trackEvent("form_submit", {
+            formSource: sourceField ? sourceField.value : "",
+            country: countryText,
+            treatment: treatmentText,
+          });
+          showSuccess();
+        },
+        () => {
+          /* lead not confirmed — keep the form on screen so the
+             patient can retry or use the WhatsApp link shown */
+          trackEvent("form_error", { formSource: sourceField ? sourceField.value : "" });
+        }
+      );
     });
 
     function showSuccess() {
@@ -720,6 +1010,8 @@ document.addEventListener("DOMContentLoaded", () => {
   applyContactDetails();
   initHeaderHeight();
   initSlider();
+  initRowSliders();
+  initPlanStepper();
   initNav();
   populateCountries();
   initTabs();
