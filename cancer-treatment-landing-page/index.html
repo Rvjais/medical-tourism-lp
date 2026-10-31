@@ -23,7 +23,7 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Cancer Treatment in India – Top Oncologists | Shifara Health">
   <meta property="og:description" content="Free cancer treatment plan in India. Top oncologists at JCI/NABH hospitals, with visa, travel & recovery handled by Shifara Health.">
-  <meta property="og:image" content="assets/images/hero-slide-1.jpg">
+  <meta property="og:image" content="assets/images/hero-bg.jpg">
   <meta name="theme-color" content="#102949">
 
   <!-- Favicon -->
@@ -34,8 +34,8 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter.woff2" crossorigin>
   <link rel="stylesheet" href="css/fonts.css">
 
-  <!-- Hero banner: load the first slide immediately -->
-  <link rel="preload" as="image" href="assets/images/hero-slide-1.jpg" fetchpriority="high">
+  <!-- Bright hero: load the background image immediately -->
+  <link rel="preload" as="image" href="assets/images/hero-bg.jpg" fetchpriority="high">
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/style.css">
@@ -191,99 +191,42 @@
     <!-- ========================================================
          SECTION 1 — HERO  (primary conversion: free consultation form)
     ========================================================== -->
-    <section class="hero" id="top">
-      <!-- FULL-WIDTH SLIDING BANNER — the hero itself (4 flat image slides) -->
-      <div class="hero-banner" id="heroSlider" role="region" aria-roledescription="carousel" aria-label="Cancer treatment highlights" tabindex="0">
-        <div class="hero-slides" id="slidesViewport">
-
-          <article class="hero-slide hero-slide--ink is-active" aria-roledescription="slide" aria-label="Slide 1 of 4">
-            <img class="hero-slide-bg" src="assets/images/hero-slide-1.jpg" alt="Patient receiving radiation therapy on a linear accelerator" width="1200" height="896" fetchpriority="high">
-            <span class="hero-scrim" aria-hidden="true"></span>
-            <div class="container hero-slide-inner">
-              <div class="hero-slide-copy">
-                <p class="eyebrow"><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg> Cancer Care in India</p>
-                <h1>Cancer Treatment in India, With Trusted Guidance at&nbsp;Every&nbsp;Step</h1>
-                <p class="hero-sub">Connect with leading oncologists at JCI / NABH-accredited hospitals. Shifara Health reviews your reports, explains your options and costs, and takes care of your visa, travel, stay and recovery.</p>
-                <ul class="hero-benefits">
-                  <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Free expert opinion on your medical reports</li>
-                  <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Clear treatment options and cost estimates</li>
-                  <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Top oncologists at JCI / NABH / NABL accredited hospitals</li>
-                  <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Visa, flights, stay and recovery support from one team</li>
-                </ul>
-                <div class="hero-cta-row">
-                  <a class="btn btn-primary" href="#lead-form" data-event="form_intent">Get My Free Treatment Plan <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-                  <a class="btn btn-ghost" data-contact="phoneLink" href="#" data-event="call_click">
-                    <svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>
-                    Call us: <span data-contact="phoneText">+91 99713 16164</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="hero-slide hero-slide--teal hero-slide--bottom" aria-roledescription="slide" aria-label="Slide 2 of 4">
-            <img class="hero-slide-bg" src="assets/images/hero-slide-2.jpg" alt="Oncologist explaining a cancer care plan and likely costs to an international patient and his wife" width="1200" height="896" loading="lazy">
-            <span class="hero-scrim" aria-hidden="true"></span>
-            <div class="container hero-slide-inner">
-              <div class="hero-slide-copy">
-                <span class="slide-tag">Cost Advantage</span>
-                <h2>World-class cancer care at 60–80% lower cost</h2>
-                <p class="hero-sub">JCI / NABH-accredited hospitals, transparent estimates and a written cost plan before you travel.</p>
-                <div class="hero-cta-row">
-                  <a class="btn btn-ghost-gold" href="#costs">View treatment costs <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="hero-slide hero-slide--coral hero-slide--bottom hero-slide--narrow" aria-roledescription="slide" aria-label="Slide 3 of 4">
-            <img class="hero-slide-bg" src="assets/images/hero-slide-3.jpg" alt="Oncology doctor and nurse caring for a patient during chemotherapy infusion" width="1920" height="1080" loading="lazy">
-            <span class="hero-scrim" aria-hidden="true"></span>
-            <div class="container hero-slide-inner">
-              <div class="hero-slide-copy">
-                <span class="slide-tag">Complete Support</span>
-                <h2>One care team beside you, from diagnosis to&nbsp;recovery</h2>
-                <p class="hero-sub">Chemotherapy, radiation and surgery planned by specialists — with visa, travel, stay and interpreter support handled for you and your family.</p>
-                <div class="hero-cta-row">
-                  <a class="btn btn-ghost-gold" href="#journey">See how the journey works <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="hero-slide hero-slide--sand hero-slide--bottom" aria-roledescription="slide" aria-label="Slide 4 of 4">
-            <img class="hero-slide-bg" src="assets/images/hero-slide-4.jpg" alt="Multidisciplinary oncology team reviewing cancer scans on a tumour board" width="1200" height="896" loading="lazy">
-            <span class="hero-scrim" aria-hidden="true"></span>
-            <div class="container hero-slide-inner">
-              <div class="hero-slide-copy">
-                <span class="slide-tag">Second Opinion</span>
-                <h2>Free expert opinion on your medical reports</h2>
-                <p class="hero-sub">Share your diagnosis today and get clear options before you decide on treatment.</p>
-                <div class="hero-cta-row">
-                  <a class="btn btn-primary" href="#lead-form" data-event="form_intent">Get my free plan <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-                </div>
-              </div>
-            </div>
-          </article>
-
-        </div>
-
-        <button class="slide-arrow slide-prev" aria-label="Previous slide">
-          <svg class="ic" aria-hidden="true"><use href="#i-chevl"/></svg>
-        </button>
-        <button class="slide-arrow slide-next" aria-label="Next slide">
-          <svg class="ic" aria-hidden="true"><use href="#i-chevr"/></svg>
-        </button>
-        <div class="slide-dots" id="slideDots" role="group" aria-label="Slide navigation">
-          <button class="slide-toggle" type="button" aria-label="Pause slideshow" aria-pressed="false">
-            <svg class="ic" aria-hidden="true"><use href="#i-pause"/></svg>
-          </button>
-          <!-- indicator dots are generated by js/script.js -->
-        </div>
+    <section class="hero-bright" id="top">
+      <div class="hb-media" aria-hidden="true">
+        <img class="hb-img" src="assets/images/hero-bg.jpg" alt="" width="1376" height="768" fetchpriority="high">
+        <span class="hb-veil"></span>
       </div>
 
-      <!-- Lead form floating over the right side of the banner (stacks below on mobile) -->
-      <div class="hero-capture">
+      <div class="container hb-grid hb-grid--capture">
+        <div class="hb-copy">
+        <p class="hb-chip"><span class="hb-chip-country">India</span>JCI · NABH · NABL accredited hospitals only</p>
+        <h1 class="hb-title">Cancer Treatment in India, With <em>Trusted Guidance</em> at&nbsp;Every&nbsp;Step.</h1>
+        <p class="hb-lead">Connect with leading oncologists at JCI / NABH-accredited hospitals. Shifara Health reviews your reports, explains your options and costs, and takes care of your visa, travel, stay and recovery.</p>
+
+        <ul class="hb-checks">
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Free expert opinion on your medical reports</li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Top oncologists at JCI / NABH / NABL accredited hospitals</li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Visa, flights, stay and recovery support from one team</li>
+        </ul>
+
+        <div class="hb-cta">
+          <a class="btn btn-primary" href="#lead-form" data-event="form_intent">Get My Free Treatment Plan <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn-whatsapp" data-contact="waLink" href="#" target="_blank" rel="noopener" data-event="whatsapp_click">
+            <svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg> Chat On WhatsApp
+          </a>
+        </div>
+
+        <dl class="hb-stats">
+          <div><dt>17+</dt><dd>Partner hospitals</dd></div>
+          <div><dt>60–80%</dt><dd>Lower treatment cost*</dd></div>
+          <div><dt>160+</dt><dd>Countries on e-Medical Visa*</dd></div>
+        </dl>
+      </div>
+      </div><!-- /hb-grid -->
+
+        <!-- Free treatment-plan card — floats over the right side of the
+             bright hero and stacks below it on mobile -->
+        <div class="hero-capture">
         <div class="hero-form-wrap">
           <div class="hero-form" id="lead-form">
             <p class="capture-eyebrow">What you get with Shifara Health</p>
@@ -718,66 +661,108 @@
     </section>
 
     <!-- ==========================================================
-         SECTION 9 — TRANSPARENT COSTS
-         Only the two published ranges are shown as fixed numbers.
-         Everything else is presented as a custom quote after report
-         review (doc: other ranges [REQUIRED], not published yet).
+         USP STRIP — six ready-to-point differentiators
+         (client doc pt 2, item 4: table supplied verbatim below
+         the why-choose-India section)
+    ============================================================ -->
+    <section class="section usp-strip" id="usp" aria-label="The Shifara Health advantage at a glance">
+      <div class="container">
+        <div class="usp-grid">
+          <div class="card usp-card reveal">
+            <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-zap"/></svg></span>
+            <h3>60–80% Savings</h3>
+            <p>Savings vs. the USA, UK and Gulf countries</p>
+          </div>
+          <div class="card usp-card reveal">
+            <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg></span>
+            <h3>6.4 Lakh+ Patients</h3>
+            <p>International patients treated in India in 2024</p>
+          </div>
+          <div class="card usp-card reveal">
+            <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg></span>
+            <h3>0 Days Waiting</h3>
+            <p>No waiting list for most planned surgeries</p>
+          </div>
+          <div class="card usp-card reveal">
+            <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg></span>
+            <h3>160+ Countries</h3>
+            <p>Countries eligible for India's e-Medical Visa</p>
+          </div>
+          <div class="card usp-card reveal">
+            <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-headset"/></svg></span>
+            <h3>24/7 Support</h3>
+            <p>Case manager assistance before, during and after travel</p>
+          </div>
+          <div class="card usp-card reveal">
+            <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-tag"/></svg></span>
+            <h3>Free Cost Estimate</h3>
+            <p>Treatment plan and cost estimate with no obligation</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         TRANSPARENT COSTS (section 9) — copy replaced verbatim
+         from the client's corrected price list (doc pt 2, item 5)
     ============================================================ -->
     <section class="section costs" id="costs">
       <div class="container">
         <div class="section-head" data-overline="Transparent Pricing">
           <h2>Transparent Cancer Treatment Costs</h2>
-          <p>Save 60–80% compared with the US, UK and Gulf. Your exact estimate depends on your reports, treatment plan and hospital.</p>
+          <p>Save 60–80% compared with the US, UK and Gulf. Get indicative treatment packages with a written estimate based on your medical reports and selected hospital.</p>
         </div>
 
         <div class="grid-4 costs-grid">
           <div class="card cost-card reveal">
-            <span class="cost-tag cost-tag--live">Published price</span>
-            <span class="price">USD 8,000 – 18,000</span>
+            <span class="cost-tag cost-tag--live">Indicative price</span>
+            <span class="price">USD 8,000–18,000</span>
             <h3>Brain Tumour Surgery</h3>
-            <p>Includes surgery, hospital stay and standard pre-surgical evaluation.</p>
+            <p>Includes surgeon and anaesthesia fees, hospital stay and standard medicines, subject to the hospital's package terms.</p>
           </div>
           <div class="card cost-card reveal">
-            <span class="cost-tag cost-tag--live">Published price</span>
-            <span class="price">USD 28,000 – 40,000</span>
+            <span class="cost-tag cost-tag--live">Indicative price</span>
+            <span class="price">USD 28,000–40,000</span>
             <h3>Liver Transplant</h3>
-            <p>Includes transplant surgery, hospital stay and standard evaluation.</p>
+            <p>Includes transplant surgery and hospital-related costs, subject to the hospital's final quotation.</p>
           </div>
           <div class="card cost-card reveal">
             <span class="cost-tag">Custom quote</span>
-            <span class="price price--soft">Estimate on review</span>
+            <span class="price price--soft">Estimate after medical review</span>
             <h3>Breast Cancer Surgery</h3>
-            <p>Written estimate shared after your reports are reviewed.</p>
+            <p>Receive a personalised treatment estimate after your reports are reviewed.</p>
           </div>
           <div class="card cost-card reveal">
             <span class="cost-tag">Custom quote</span>
-            <span class="price price--soft">Estimate on review</span>
-            <h3>Chemotherapy <small>(per cycle)</small></h3>
-            <p>Depends on drugs, protocol and cycle count in your plan.</p>
+            <span class="price price--soft">Estimate after medical review</span>
+            <h3>Chemotherapy <small>(Per Cycle)</small></h3>
+            <p>Costs depend on the prescribed drugs, treatment protocol and number of cycles.</p>
           </div>
         </div>
 
         <div class="costs-note reveal">
           <div class="covers">
-            <h4>What the estimate covers</h4>
+            <h4>What Your Treatment Package Typically Covers</h4>
             <ul>
-              <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Consultation and diagnostics</li>
-              <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Main procedure or treatment course</li>
-              <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Hospital stay</li>
-              <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Written breakdown before you travel</li>
+              <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Surgeon and anaesthesia fees</li>
+              <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Hospital and ICU stay (as applicable)</li>
+              <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Standard medicines and consumables</li>
+              <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Free Shifara case management</li>
             </ul>
           </div>
           <div class="covers covers--out">
-            <h4>Usually outside the estimate</h4>
+            <h4>Additional Travel &amp; Personal Expenses</h4>
             <ul>
-              <li><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg> International flights</li>
-              <li><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg> Extended accommodation</li>
-              <li><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg> Complications or plan changes</li>
+              <li><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg> International flight tickets</li>
+              <li><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg> Accommodation outside the hospital package</li>
+              <li><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg> Visa application fees</li>
+              <li><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg> Personal expenses and extended stays</li>
+              <li><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg> Additional treatment or complications outside the agreed package</li>
             </ul>
           </div>
         </div>
 
-        <p class="cost-disclaimer">Costs shown are indicative ranges and vary by hospital, doctor, treatment plan and your medical condition. A final estimate is given after your reports are reviewed.</p>
+        <p class="cost-disclaimer"><strong>Important:</strong> All prices are indicative and vary by hospital, doctor, room category and individual medical condition. Your final written estimate will specify the exact inclusions and exclusions after hospital review.</p>
 
         <div class="costs-cta">
           <a class="btn btn-outline" href="#contact">Talk to a Cost Advisor <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
@@ -873,52 +858,210 @@
     </section>
 
     <!-- ==========================================================
-         SECTION 12 — CANCER CARE HUBS
-         Hospital names intentionally excluded (template).
-         Doc: Chennai excluded for now — home page lists Cardiac & Eye
-         as the Chennai focus; oncology partners [CONFIRM].
+         TRAVELLING TO INDIA — country guidance section
+         (doc pt 2, item 2: headline/sub verbatim; country chips
+         follow the design reference; "Ask Us" opens the free
+         treatment-plan form)
+    ============================================================ -->
+    <section class="section travelling" id="travelling">
+      <div class="container">
+        <p class="tl-overline"><span class="tl-dot" aria-hidden="true"></span> International Patients</p>
+        <h2 class="tl-title">Travelling to India for Healthcare? <em>We've Got You Covered</em></h2>
+        <p class="tl-sub">Explore country-specific visa information, travel guidance and support throughout your treatment journey.</p>
+
+        <ul class="tl-chips reveal">
+          <li><img src="assets/images/flags/bd.svg" alt="" width="22" height="22" loading="lazy" decoding="async"> Bangladesh</li>
+          <li><img src="assets/images/flags/iq.svg" alt="" width="22" height="22" loading="lazy" decoding="async"> Iraq</li>
+          <li><img src="assets/images/flags/ir.svg" alt="" width="22" height="22" loading="lazy" decoding="async"> Iran</li>
+          <li><img src="assets/images/flags/sa.svg" alt="" width="22" height="22" loading="lazy" decoding="async"> Saudi Arabia</li>
+          <li><img src="assets/images/flags/ye.svg" alt="" width="22" height="22" loading="lazy" decoding="async"> Yemen</li>
+          <li><img src="assets/images/flags/om.svg" alt="" width="22" height="22" loading="lazy" decoding="async"> Oman</li>
+          <li><img src="assets/images/flags/ng.svg" alt="" width="22" height="22" loading="lazy" decoding="async"> Nigeria</li>
+          <li><img src="assets/images/flags/ke.svg" alt="" width="22" height="22" loading="lazy" decoding="async"> Kenya</li>
+          <li><img src="assets/images/flags/et.svg" alt="" width="22" height="22" loading="lazy" decoding="async"> Ethiopia</li>
+          <li><img src="assets/images/flags/tz.svg" alt="" width="22" height="22" loading="lazy" decoding="async"> Tanzania</li>
+          <li><img src="assets/images/flags/ug.svg" alt="" width="22" height="22" loading="lazy" decoding="async"> Uganda</li>
+          <li><img src="assets/images/flags/gh.svg" alt="" width="22" height="22" loading="lazy" decoding="async"> Ghana</li>
+          <li><img src="assets/images/flags/sd.svg" alt="" width="22" height="22" loading="lazy" decoding="async"> Sudan</li>
+          <li><img src="assets/images/flags/ss.svg" alt="" width="22" height="22" loading="lazy" decoding="async"> South Sudan</li>
+          <li><img src="assets/images/flags/so.svg" alt="" width="22" height="22" loading="lazy" decoding="async"> Somalia</li>
+          <li><img src="assets/images/flags/rw.svg" alt="" width="22" height="22" loading="lazy" decoding="async"> Rwanda</li>
+          <li><img src="assets/images/flags/zm.svg" alt="" width="22" height="22" loading="lazy" decoding="async"> Zambia</li>
+          <li><img src="assets/images/flags/zw.svg" alt="" width="22" height="22" loading="lazy" decoding="async"> Zimbabwe</li>
+          <li><img src="assets/images/flags/cm.svg" alt="" width="22" height="22" loading="lazy" decoding="async"> Cameroon</li>
+          <li><img src="assets/images/flags/cd.svg" alt="" width="22" height="22" loading="lazy" decoding="async"> DR Congo</li>
+          <li><img src="assets/images/flags/mz.svg" alt="" width="22" height="22" loading="lazy" decoding="async"> Mozambique</li>
+          <li><img src="assets/images/flags/mw.svg" alt="" width="22" height="22" loading="lazy" decoding="async"> Malawi</li>
+          <li><img src="assets/images/flags/eg.svg" alt="" width="22" height="22" loading="lazy" decoding="async"> Egypt</li>
+        </ul>
+
+        <div class="tl-ask reveal">
+          <span class="tl-ask-ic" aria-hidden="true"><svg class="ic"><use href="#i-globe"/></svg></span>
+          <div class="tl-ask-copy">
+            <strong>Don't see your country?</strong>
+            <p>Citizens of 160+ countries can get India's e-Medical Visa. Ask us and we'll guide you.</p>
+          </div>
+          <a class="btn btn-primary tl-ask-btn" href="#lead-form" data-event="form_intent">Ask Us <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         CANCER CARE HUBS — city cards now carry the partner
+         hospital names from the client's corrected city-wise list
+         (doc pt 2, item 6). Hub cards: Delhi, Gurgaon, Hyderabad, Mumbai.
 ============================================================ -->
     <section class="section hubs" id="hubs">
       <div class="container">
         <div class="section-head" data-overline="Cancer Care Cities">
-          <h2>Cancer Care in Delhi NCR, Mumbai and Bengaluru</h2>
-          <p>Accredited partner hospitals in three of India’s leading cancer care hubs, with a Shifara Health team beside you.</p>
+          <h2>Cancer Care in Delhi, Gurgaon, Mumbai and Hyderabad</h2>
+          <p>Accredited partner hospitals in four of India’s leading cancer care hubs, with a Shifara Health team beside you.</p>
         </div>
-        <div class="grid-3 hubs-grid">
+        <div class="grid-4 hubs-grid">
           <div class="card hub-card reveal">
             <div class="hub-img-wrap">
-              <img src="assets/images/hub-delhi.jpg" alt="Delhi NCR Cancer Care Network" class="hub-img" width="320" height="145" loading="lazy">
-              <span class="hub-pin"><svg class="ic" aria-hidden="true"><use href="#i-map"/></svg> Delhi NCR</span>
+              <img src="assets/images/hub-delhi.jpg" alt="Delhi partner hospital network" class="hub-img" width="320" height="145" loading="lazy">
+              <span class="hub-pin"><svg class="ic" aria-hidden="true"><use href="#i-map"/></svg> Delhi</span>
             </div>
             <div class="hub-body">
-              <h3>Delhi NCR <small>(Delhi, Gurugram, Noida)</small></h3>
-              <p>Largest oncology network, with top multi-speciality and dedicated cancer hospitals.</p>
-              <div class="chip-row"><span class="chip">JCI &amp; NABH Centres</span><span class="chip">CyberKnife &amp; BMT</span></div>
+              <h3>Delhi</h3>
+              <p>Capital-city network with leading multi-speciality and dedicated cancer hospitals.</p>
+              <ul class="hub-list">
+                <li>Indraprastha Apollo Hospitals</li>
+                <li>Max Super Speciality Hospital</li>
+                <li>BLK-Max Super Speciality Hospital</li>
+                <li>Primus Super Speciality Hospital – Chanakyapuri</li>
+                <li>Venkateshwar Hospital</li>
+              </ul>
             </div>
           </div>
           <div class="card hub-card reveal">
             <div class="hub-img-wrap">
-              <img src="assets/images/hub-mumbai.jpg" alt="Mumbai Oncology Hub" class="hub-img" width="320" height="145" loading="lazy">
+              <img src="assets/images/hero-slide-4.jpg" alt="Cancer specialists reviewing scans at a Gurgaon partner hospital" class="hub-img" width="1200" height="896" loading="lazy">
+              <span class="hub-pin"><svg class="ic" aria-hidden="true"><use href="#i-map"/></svg> Gurgaon</span>
+            </div>
+            <div class="hub-body">
+              <h3>Gurgaon</h3>
+              <p>Advanced and robotic oncology minutes from Delhi airport.</p>
+              <ul class="hub-list">
+                <li>Fortis Memorial Research Institute</li>
+                <li>Artemis Hospital</li>
+                <li>Marengo Asia Hospital</li>
+                <li>Max Super Speciality Hospital</li>
+                <li>Manipal Hospital (Columbia Asia)</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card hub-card reveal">
+            <div class="hub-img-wrap">
+              <img src="assets/images/hero-slide-3.jpg" alt="Oncology care team at a Hyderabad partner hospital" class="hub-img" width="1920" height="1080" loading="lazy">
+              <span class="hub-pin"><svg class="ic" aria-hidden="true"><use href="#i-map"/></svg> Hyderabad</span>
+            </div>
+            <div class="hub-body">
+              <h3>Hyderabad</h3>
+              <p>Cost-effective cancer care with renowned oncology and transplant centres.</p>
+              <ul class="hub-list">
+                <li>Apollo Hospital</li>
+                <li>PACE Hospitals</li>
+                <li>Aster Prime Hospital</li>
+                <li>Continental Hospitals</li>
+                <li>Medicover Hospitals</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card hub-card reveal">
+            <div class="hub-img-wrap">
+              <img src="assets/images/hub-mumbai.jpg" alt="Mumbai partner hospital network" class="hub-img" width="320" height="145" loading="lazy">
               <span class="hub-pin"><svg class="ic" aria-hidden="true"><use href="#i-map"/></svg> Mumbai</span>
             </div>
             <div class="hub-body">
               <h3>Mumbai</h3>
               <p>Shifara Health’s oncology hub with advanced GI, HPB and complex robotic cancer surgery.</p>
-              <div class="chip-row"><span class="chip">Robotic Onco-Surgery</span><span class="chip">GI &amp; HPB Cancer Care</span></div>
-            </div>
-          </div>
-          <div class="card hub-card reveal">
-            <div class="hub-img-wrap">
-              <img src="assets/images/hub-bengaluru.jpg" alt="Bengaluru Cancer Care Center" class="hub-img" width="320" height="145" loading="lazy">
-              <span class="hub-pin"><svg class="ic" aria-hidden="true"><use href="#i-map"/></svg> Bengaluru</span>
-            </div>
-            <div class="hub-body">
-              <h3>Bengaluru</h3>
-              <p>Dedicated cancer centre with comprehensive oncology services and clinical research.</p>
-              <div class="chip-row"><span class="chip">Immunotherapy &amp; CAR-T</span><span class="chip">Clinical Research</span></div>
+              <ul class="hub-list">
+                <li>Nanavati Max Super Speciality Hospital</li>
+                <li>Sterling Wockhardt Hospital</li>
+                <li>Fortis Hospital</li>
+                <li>SevenHills Hospital</li>
+              </ul>
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         PARTNER HOSPITALS — logo marquee
+         (doc pt 2, item 3: headline/sub verbatim; design mirrors the
+         International Patients page; 17 self-hosted partner logos)
+    ============================================================ -->
+    <section class="section partners" id="partners">
+      <div class="container">
+        <div class="section-head" data-overline="Partner Network">
+          <h2><strong>Explore 17+ Partner Hospitals</strong> <em>With Confidence</em></h2>
+          <p>Explore JCI and NABH-accredited partner hospitals, compare treatment options and receive personalised assistance throughout your medical journey.</p>
+        </div>
+
+        <ul class="partner-chips reveal">
+          <li><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg> JCI accredited</li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg> NABH accredited</li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg> NABL labs</li>
+        </ul>
+      </div>
+
+      <div class="partner-rows" aria-label="Partner hospital logos">
+        <div class="partner-row partner-row--a" data-marquee>
+          <ul>
+            <li><img src="assets/images/hospitals/apollo.png" alt="Apollo Hospitals" loading="eager" decoding="async"></li>
+            <li><img src="assets/images/hospitals/artemis.png" alt="Artemis Hospital" loading="eager" decoding="async"></li>
+            <li><img src="assets/images/hospitals/fortis.png" alt="Fortis Healthcare" loading="eager" decoding="async"></li>
+            <li><img src="assets/images/hospitals/gleneagles.jpg" alt="Gleneagles Hospital" loading="eager" decoding="async"></li>
+            <li><img src="assets/images/hospitals/hcg.jpg" alt="HCG Hospitals" loading="eager" decoding="async"></li>
+            <li><img src="assets/images/hospitals/manipal.jpg" alt="Manipal Hospitals" loading="eager" decoding="async"></li>
+            <li><img src="assets/images/hospitals/marengo.png" alt="Marengo Asia Hospital" loading="eager" decoding="async"></li>
+            <li><img src="assets/images/hospitals/max-healthcare.png" alt="Max Healthcare" loading="eager" decoding="async"></li>
+            <li><img src="assets/images/hospitals/medanta.png" alt="Medanta – The Medicity" loading="eager" decoding="async"></li>
+          </ul>
+          <ul aria-hidden="true">
+            <li><img src="assets/images/hospitals/apollo.png" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/hospitals/artemis.png" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/hospitals/fortis.png" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/hospitals/gleneagles.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/hospitals/hcg.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/hospitals/manipal.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/hospitals/marengo.png" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/hospitals/max-healthcare.png" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/hospitals/medanta.png" alt="" loading="lazy" decoding="async"></li>
+          </ul>
+        </div>
+        <div class="partner-row" data-marquee>
+          <ul>
+            <li><img src="assets/images/hospitals/medicover-fertility.jpg" alt="Medicover Fertility" loading="eager" decoding="async"></li>
+            <li><img src="assets/images/hospitals/nanavati-max.png" alt="Nanavati Max Super Speciality Hospital" loading="eager" decoding="async"></li>
+            <li><img src="assets/images/hospitals/prime-super-speciality.jpg" alt="Prime Super Speciality Hospital" loading="eager" decoding="async"></li>
+            <li><img src="assets/images/hospitals/rela.png" alt="Rela Hospital" loading="eager" decoding="async"></li>
+            <li><img src="assets/images/hospitals/shalby.png" alt="Shalby Hospitals" loading="eager" decoding="async"></li>
+            <li><img src="assets/images/hospitals/venkateshwar.jpg" alt="Venkateshwar Hospital" loading="eager" decoding="async"></li>
+            <li><img src="assets/images/hospitals/wockhardt.png" alt="Wockhardt Hospitals" loading="eager" decoding="async"></li>
+            <li><img src="assets/images/hospitals/world-ivf.jpg" alt="World IVF Centre" loading="eager" decoding="async"></li>
+          </ul>
+          <ul aria-hidden="true">
+            <li><img src="assets/images/hospitals/medicover-fertility.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/hospitals/nanavati-max.png" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/hospitals/prime-super-speciality.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/hospitals/rela.png" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/hospitals/shalby.png" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/hospitals/venkateshwar.jpg" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/hospitals/wockhardt.png" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/hospitals/world-ivf.jpg" alt="" loading="lazy" decoding="async"></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="partners-note">
+        Hospital and brand names belong to their respective owners and are shown for reference.
+      </p>
+      <div class="partners-cta reveal">
+        <a class="btn btn-outline" href="#lead-form" data-event="form_intent">Compare Hospitals for Your Treatment <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
     </section>
 

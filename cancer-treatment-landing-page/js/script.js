@@ -59,9 +59,11 @@ function applyContactDetails() {
 }
 
 /* ------------------------------------------------------------
-   4) HERO SLIDER — 4 full-width slides, autoplay, arrows,
-      dots, swipe, keyboard. Autoplay stops after interaction
-      and is disabled for prefers-reduced-motion users.
+   4) HERO SLIDER — RETIRED. The hero was redesigned as a static
+      bright banner (client doc pt 2, item 1), so the carousel
+      markup, arrows and dots no longer exist on the page. The
+      guard below makes this a harmless no-op; it stays wired in
+      the init list so the boot sequence order is untouched.
 ------------------------------------------------------------ */
 function initSlider() {
   const slider = document.getElementById("heroSlider");
