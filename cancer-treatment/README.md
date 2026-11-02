@@ -11,7 +11,7 @@ brand assets and data on shifarahealth.com.
 ## Files
 
 ```
-public/cancer-treatment/
+cancer-treatment/
 ├── index.html                    — full page (12 sections + footer)
 ├── css/style.css                 — Shifara design system + responsive styles
 ├── js/script.js                  — CONFIG + carousel, navbar, tabs, form, tracking
@@ -20,7 +20,7 @@ public/cancer-treatment/
 └── README.md
 ```
 
-The deployed web root is `public/` in this repository; see `DEPLOY.md`.
+The repo root is the deployed web root; see `DEPLOY.md`.
 
 ## Design system (Shifara brand)
 

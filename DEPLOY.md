@@ -1,87 +1,105 @@
 # Deployment — lp.shifarahealth.com
 
-Static site, no build step. Nginx serves the repository's `public/` folder as the
-web root, so `/cancer-treatment/` and `/international-patient/` map directly to the
-two folders and every `git pull` is a deploy.
+The repository is the website: `public_html` is both the git checkout and the web
+root, and every `git pull` is a deploy. No build step.
 
-## 1. DNS
-
-Point the subdomain at the VPS before requesting TLS:
-
-```bash
-dig +short lp.shifarahealth.com
+```
+public_html/                     ← DocumentRoot + git checkout
+├── index.html                   ← https://lp.shifarahealth.com/
+├── cancer-treatment/            ← https://lp.shifarahealth.com/cancer-treatment/
+├── international-patient/       ← https://lp.shifarahealth.com/international-patient/
+├── .htaccess                    ← Apache: blocks .git/docs, sets caching
+├── deploy/  docs/  *.md         ← repo files, blocked from the web
+└── .git/
 ```
 
-This should return the VPS public IP.
+## 1. Clone into `public_html` (one time)
 
-## 2. Clone the repository (one time)
+The directory must be empty (or contain only the host's default placeholder files).
 
 ```bash
-sudo mkdir -p /var/www/lp.shifarahealth.com
-sudo chown -R "$USER":"$(id -gn)" /var/www/lp.shifarahealth.com
+cd /home/shifarahealth.com/public_html
+ls -A                 # check what is already there
 
-git clone https://github.com/Rvjais/medical-tourism-lp.git /var/www/lp.shifarahealth.com
+git clone https://github.com/Rvjais/medical-tourism-lp.git .
 ```
 
-The web root is `/var/www/lp.shifarahealth.com/public` — **not** the repo root. The
-repo root also contains `.git/`, `deploy/`, `docs/` and docs, which must stay private.
-
-If the repository is private, set up a read-only deploy key on the server first
-(Settings → Deploy keys in GitHub) or use a personal access token in the clone URL.
-
-## 3. Nginx (one time)
+If files are present, move them aside first instead of deleting them:
 
 ```bash
-sudo cp /var/www/lp.shifarahealth.com/deploy/nginx.conf \
-        /etc/nginx/sites-available/lp.shifarahealth.com
-
-sudo ln -sfn /etc/nginx/sites-available/lp.shifarahealth.com \
-             /etc/nginx/sites-enabled/lp.shifarahealth.com
-
-sudo nginx -t && sudo systemctl reload nginx
+mkdir -p /root/public_html_backup
+mv /home/shifarahealth.com/public_html/* /root/public_html_backup/
+mv /home/shifarahealth.com/public_html/.[!.]* /root/public_html_backup/ 2>/dev/null
 ```
 
-Check HTTP first:
+Then run the `git clone ... .` command above.
+
+## 2. Set the document root
+
+Point `lp.shifarahealth.com` at:
+
+```
+/home/shifarahealth.com/public_html
+```
+
+- **Apache panel (cPanel/Hestia/CloudPanel/etc.):** the domain's document root
+  should already be `public_html`; otherwise set it to the path above.
+- **Plain nginx:** use `deploy/nginx.conf` (it already has
+  `root /home/shifarahealth.com/public_html;`).
+- **Plain Apache:** `DocumentRoot /home/shifarahealth.com/public_html` and allow
+  `.htaccess` overrides (`AllowOverride All`).
+
+The included `.htaccess` blocks `/.git`, `/docs/`, `/deploy/`, `README.md` and
+`DEPLOY.md`, so cloning into the web root does not expose them. **This only works
+on Apache with `AllowOverride All`.** On nginx, the deny rules in
+`deploy/nginx.conf` do the same job.
+
+## 3. Permissions
+
+The web server user must be able to read the files:
 
 ```bash
+chmod -R a+rX /home/shifarahealth.com/public_html
+```
+
+## 4. Verify
+
+```bash
+curl -I http://lp.shifarahealth.com/
 curl -I http://lp.shifarahealth.com/cancer-treatment/
 curl -I http://lp.shifarahealth.com/international-patient/
+curl -I http://lp.shifarahealth.com/.git/config        # must be 403/404
 ```
 
-Both should return `200`. Requests without the trailing slash return `301` to the
-slash version, which keeps relative asset paths working.
+All three pages should return `200`. Requests without the trailing slash get a
+`301` to the slash version, which keeps relative asset paths working.
 
-## 4. HTTPS (one time)
+## 5. HTTPS (one time)
 
 ```bash
 # Debian / Ubuntu
-sudo apt update && sudo apt install -y certbot python3-certbot-nginx
-sudo certbot --nginx -d lp.shifarahealth.com
+apt update && apt install -y certbot python3-certbot-nginx   # nginx
+# or: apt install -y certbot python3-certbot-apache          # Apache
+
+certbot --nginx -d lp.shifarahealth.com       # nginx
+certbot --apache -d lp.shifarahealth.com      # Apache
 ```
 
-Certbot edits the nginx config in place, adds the `443` server block and sets up
-auto-renewal. Verify with `sudo certbot renew --dry-run`.
-
-If another server block already answers for this name, remove or rename it so only
-`lp.shifarahealth.com` handles this host.
-
-## 5. Deploying updates
-
-Every push to `main` is picked up with:
+Certbot edits the vhost and sets up auto-renewal. Check it with:
 
 ```bash
-cd /var/www/lp.shifarahealth.com
+certbot renew --dry-run
+```
+
+## 6. Deploying updates
+
+```bash
+cd /home/shifarahealth.com/public_html
 git pull --ff-only
 ```
 
-No build, service restart or nginx reload is needed for HTML/CSS/JS/image changes.
-Only reload nginx when `deploy/nginx.conf` itself changes:
-
-```bash
-sudo cp /var/www/lp.shifarahealth.com/deploy/nginx.conf \
-        /etc/nginx/sites-available/lp.shifarahealth.com
-sudo nginx -t && sudo systemctl reload nginx
-```
+No build, restart or reload is needed for HTML/CSS/JS/image changes. Only reload
+nginx if `deploy/nginx.conf` itself changes.
 
 HTML is sent with `Cache-Control: no-cache`, so a pull is visible on the next page
 load. CSS/JS are cached for 1 hour and images/fonts for 30 days.
@@ -90,14 +108,9 @@ load. CSS/JS are cached for 1 hour and images/fonts for 30 days.
 
 | Symptom | Check |
 |---------|-------|
-| `403 Forbidden` | Nginx user cannot read the files: `sudo chmod -R a+rX /var/www/lp.shifarahealth.com/public` |
-| `404` on both pages | `root` in the nginx config does not end in `/public`, or the clone is in another path |
-| Assets `404` but HTML loads | URL is missing the trailing slash (the config adds it with a redirect) |
-| Old content after pull | Confirm `git log -1` on the server; hard-refresh the browser |
-| `nginx -t` fails after certbot | Check the certificate paths printed by certbot |
-| SELinux blocks reads (CentOS/RHEL) | `sudo chcon -R -t httpd_sys_content_t /var/www/lp.shifarahealth.com/public` |
-
-## What is intentionally not deployed
-
-`docs/` (client briefs), `deploy/`, `README.md`, `DEPLOY.md` and `.git/` live outside
-the web root and are not reachable over HTTP.
+| `destination path '.' already exists` | `public_html` is not empty — see step 1 |
+| `403 Forbidden` | `chmod -R a+rX /home/shifarahealth.com/public_html` |
+| `/.git/config` returns a file | `.htaccess` is ignored: enable `AllowOverride All`, or use the nginx config |
+| Assets `404` but HTML loads | URL is missing the trailing slash |
+| Old content after pull | Confirm `git log -1` on the server, then hard-refresh |
+| Form/GTM blocked | No build step; check the browser console for the third-party script |
