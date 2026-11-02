@@ -42,7 +42,7 @@ Then open <http://localhost:8080/>.
 ## Deploying
 
 ```bash
-cd /home/shifarahealth.com/public_html
+cd /home/lp.shifarahealth.com/public_html
 git pull --ff-only
 ```
 
