@@ -18,6 +18,13 @@ const CONFIG = {
     ),
   emailDisplay: "mail@shifarahealth.com",
   emailHref: "mailto:mail@shifarahealth.com",
+
+  /* Formester lead capture (cancer treatment page).
+     The plain endpoint stores the POST server-side and redirects to
+     its own thank-you page — used via a hidden iframe because the
+     .json endpoint does not allow cross-origin reads (CORS). */
+  formesterEndpoint: "https://app.formester.com/forms/FjfwLULn2/submissions",
+  formesterTimeoutMs: 45000,
 };
 
 /* ------------------------------------------------------------
@@ -549,10 +556,104 @@ function initFaq() {
 /* ------------------------------------------------------------
    9) Lead form — inline validation, dial-code aware phone rule,
       success state, GTM form_submit event.
-      TEMPLATE NOTE: replace the simulated success with a POST to
-      the CRM / form endpoint once routing is confirmed
-      (doc: CRM + mail@[brand].com).
+      Submissions are stored by Formester (CONFIG.formesterEndpoint)
+      through a hidden iframe — see submitViaFormester below.
 ------------------------------------------------------------ */
+/* Post the form to Formester through a hidden iframe.
+   A native form post needs no CORS clearance; Formester stores the
+   submission and answers with its own thank-you redirect, which
+   lands inside the iframe. The page itself never navigates, so our
+   success panel keeps working. If no response arrives in time, we
+   show the inline WhatsApp suggestion instead of losing the lead. */
+function submitViaFormester(form, onSuccess, onFailure) {
+  if (form.dataset.sending === "true") return;
+  form.dataset.sending = "true";
+
+  const submitBtn = form.querySelector('[type="submit"]');
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.setAttribute("aria-busy", "true");
+  }
+  const status = form.querySelector(".form-status");
+  if (status) status.hidden = true;
+
+  /* readable companions for the CRM (stripped again after the try) */
+  const extras = [];
+  const addHidden = (name, value) => {
+    if (!value) return;
+    const input = document.createElement("input");
+    input.type = "hidden";
+    input.name = name;
+    input.value = value;
+    form.appendChild(input);
+    extras.push(input);
+  };
+  const dial = form.querySelector(".dial");
+  const countrySel = form.querySelector("select[data-country]");
+  addHidden("dialCode", dial ? dial.textContent.trim() : "");
+  addHidden(
+    "countryName",
+    countrySel && countrySel.selectedIndex >= 0
+      ? countrySel.options[countrySel.selectedIndex].textContent
+      : ""
+  );
+
+  /* hidden iframe target — created once per form, reused */
+  const frameName = "formester-frame-" + (form.id || "lead");
+  let frame = document.querySelector('iframe[data-form-frame="' + frameName + '"]');
+  if (!frame) {
+    frame = document.createElement("iframe");
+    frame.name = frameName;
+    frame.dataset.formFrame = frameName;
+    frame.title = "Form submission";
+    frame.setAttribute("aria-hidden", "true");
+    frame.tabIndex = -1;
+    frame.style.cssText = "position:absolute;left:-9999px;width:0;height:0;border:0;";
+    document.body.appendChild(frame);
+  }
+
+  form.action = CONFIG.formesterEndpoint;
+  form.method = "POST";
+  form.enctype = "multipart/form-data";
+  form.acceptCharset = "UTF-8";
+  form.target = frameName;
+
+  let settled = false;
+  const restore = () => {
+    settled = true;
+    form.target = "";
+    form.dataset.sending = "false";
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.removeAttribute("aria-busy");
+    }
+    extras.forEach((el) => el.remove());
+  };
+  const finishOk = () => {
+    if (settled) return;
+    clearTimeout(watchdog);
+    restore();
+    onSuccess();
+  };
+  const finishFail = () => {
+    if (settled) return;
+    clearTimeout(watchdog);
+    frame.removeEventListener("load", onLoad);
+    restore();
+    if (status) status.hidden = false;
+    onFailure();
+  };
+  const onLoad = () => {
+    if (settled) return;
+    setTimeout(finishOk, 300); /* let a redirect chain settle */
+  };
+
+  frame.addEventListener("load", onLoad, { once: true });
+  const watchdog = setTimeout(finishFail, CONFIG.formesterTimeoutMs);
+
+  form.submit(); /* native submit — does not re-fire our handler */
+}
+
 function initForm() {
   const form = document.getElementById("enquiryForm");
   if (!form) return;
@@ -598,16 +699,21 @@ function initForm() {
     const countryText =
       country.selectedIndex >= 0 ? country.options[country.selectedIndex].textContent : "";
 
-    trackEvent("form_submit", {
-      formSource: sourceField ? sourceField.value : "",
-      country: countryText,
-    });
-
-    /* TODO — send to CRM endpoint here, e.g.:
-       fetch("https://[crm-endpoint]", { method: "POST", body: new FormData(form) })
-       .then(showSuccess).catch(showWhatsAppFallback); */
-
-    showSuccess();
+    submitViaFormester(
+      form,
+      () => {
+        trackEvent("form_submit", {
+          formSource: sourceField ? sourceField.value : "",
+          country: countryText,
+        });
+        showSuccess();
+      },
+      () => {
+        /* lead not confirmed — keep the form on screen so the
+           patient can retry or use the WhatsApp link shown */
+        trackEvent("form_error", { formSource: sourceField ? sourceField.value : "" });
+      }
+    );
   });
 
   function showSuccess() {

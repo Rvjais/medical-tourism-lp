@@ -88,8 +88,9 @@ Open `index.html` in any browser. No build step needed.
 
 1. **Patient stories** — confirm written consent for each quote, name and photo, or
    replace with approved testimonials.
-2. **Form routing** — the submit handler in `js/script.js` shows a success state; wire
-   the `TODO` fetch() call to the CRM endpoint.
+2. **Form routing** — wired to Formester form `FjfwLULn2` (`CONFIG.formesterEndpoint`
+   in `js/script.js`); submissions are posted through a hidden iframe. Confirm the
+   fields appear correctly in the Formester dashboard after the first real lead.
 3. **GTM** — the data layer is already wired (`form_submit`, `whatsapp_click`,
    `call_click`, `email_click`, `faq_open`, `tab_click`). Add the container snippet to
    `<head>` if not injected site-wide.

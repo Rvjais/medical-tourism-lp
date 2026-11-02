@@ -474,6 +474,13 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-6px) rotate
 .form-privacy .ic { margin-top: .18em; color: var(--brand); }
 .form-privacy a { text-decoration: underline; font-weight: 600; }
 
+.form-status {
+  margin-top: .7rem; font-size: .8rem; line-height: 1.55;
+  color: var(--danger); text-align: left;
+}
+.form-status a { color: inherit; font-weight: 600; text-decoration: underline; }
+.btn[aria-busy="true"] { opacity: .65; pointer-events: none; }
+
 .form-success { text-align: center; padding: 1rem 0; }
 .success-ic {
   display: inline-flex; width: 76px; height: 76px; border-radius: 50%;

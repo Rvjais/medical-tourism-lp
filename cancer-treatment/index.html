@@ -235,12 +235,14 @@
             <h2>Get Your Free Cancer Treatment Plan</h2>
             <p class="form-sub">Share your diagnosis and reports. Our medical team will review your case and connect you with the right specialist and hospital.</p>
 
-            <!--
-              TEMPLATE NOTE (doc Section B): form routing goes to the CRM plus
-              [hello@brand.com]. Wire the submit handler in js/script.js.
-            -->
-            <form id="enquiryForm" novalidate="">
+            <!-- Submissions are stored by Formester (CONFIG.formesterEndpoint in
+                 js/script.js). With JavaScript the form is posted through a hidden
+                 iframe; these attributes keep the native fallback working. -->
+            <form id="enquiryForm" data-lead-form data-success="formSuccess" novalidate
+                  action="https://app.formester.com/forms/FjfwLULn2/submissions"
+                  method="POST" enctype="multipart/form-data" accept-charset="UTF-8">
               <input type="hidden" name="formSource" value="Cancer Treatment in India landing page">
+              <input type="hidden" name="treatment" value="Cancer">
 
               <div class="field">
                 <label for="fullName">Full Name <em>*</em></label>
@@ -250,7 +252,7 @@
 
               <div class="field">
                 <label for="country">Country <em>*</em></label>
-                <select id="country" name="country" required>
+                <select id="country" name="country" data-country required>
                   <option value="" disabled selected>Select your country</option>
                 </select>
                 <noscript>
@@ -282,6 +284,8 @@
                 <svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg>
                 Your information is confidential and shared only with relevant doctors and hospitals for medical evaluation and coordination.
               </p>
+
+              <p class="form-status" hidden>Something went wrong while sending your request. Please try again — or <a data-contact="waLink" href="#" target="_blank" rel="noopener" data-event="whatsapp_click">WhatsApp us</a> and we will take your details directly.</p>
 
               <p class="form-quote">“When cancer takes you far from home, the journey can feel overwhelming. Shifara Health is your guide, support and companion through it all.”</p>
 
