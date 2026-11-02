@@ -1,0 +1,34 @@
+Website scraped from: https://shifarahealth.com/doctors/
+Total pages  : 1
+Total assets : 725
+Errors       : 0
+
+──────────────────────────────────────────────────
+HOW TO VIEW THE SCRAPED SITE
+──────────────────────────────────────────────────
+
+Option 1 — Local server (recommended, most faithful):
+  1. Extract this ZIP anywhere on your computer.
+  2. Windows: double-click OPEN_SITE.bat
+     Mac/Linux: open a terminal in the 'scraped_site' folder and run
+                python3 serve.py
+  The site opens in your browser (needs Python installed).
+
+Option 2 — Direct file open:
+  Double-click index.html (or any file in pages/).
+  Pages, styles and images work, but browsers block some
+  modern scripts (ES modules) on file:// — sections that
+  depend on them may stay hidden. Use Option 1 then.
+
+──────────────────────────────────────────────────
+FOLDER STRUCTURE
+──────────────────────────────────────────────────
+
+  index.html      → Entry point (opens the home page)
+  OPEN_SITE.bat / serve.py → local web server launcher
+  pages/          → All .html pages (links between them work offline)
+  <other folders> → Assets at their original server paths
+                    (e.g. wp-content/, assets/, _next/ …)
+  _external/      → Assets from other hosts (CDNs, fonts …)
+
+Links to pages that were not cloned still point to the live site.

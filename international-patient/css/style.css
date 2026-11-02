@@ -3084,6 +3084,19 @@ a { color: var(--brand-deep); }
   font-weight: 600;
   letter-spacing: .02em;
 }
+/* ---------- Doctor photo avatars (real images via update_doctors.py) ---------- */
+.doc-photo {
+  display: block;
+  width: 76px;
+  height: 76px;
+  margin: 0 auto .85rem;
+  border-radius: 50%;
+  border: 3px solid #ffffff;
+  box-shadow: 0 8px 20px rgba(16, 41, 73, .12);
+  object-fit: cover;
+  object-position: top;
+}
+
 .doc-card h3 { font-size: .97rem; line-height: 1.35; margin-bottom: .2rem; }
 .doc-role {
   color: var(--muted);
