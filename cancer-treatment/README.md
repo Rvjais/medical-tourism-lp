@@ -88,9 +88,23 @@ Open `index.html` in any browser. No build step needed.
 
 1. **Patient stories** — confirm written consent for each quote, name and photo, or
    replace with approved testimonials.
-2. **Form routing** — wired to Formester form `FjfwLULn2` (`CONFIG.formesterEndpoint`
-   in `js/script.js`); submissions are posted through a hidden iframe. Confirm the
-   fields appear correctly in the Formester dashboard after the first real lead.
+2. **Form routing** — every lead goes to two places in parallel (see `submitLead`
+   in `js/script.js`):
+   - **Formester** form `FjfwLULn2` (`CONFIG.formesterEndpoint`), posted through a
+     hidden iframe.
+   - **VS CRM** (`CONFIG.crmEndpoint` = `https://vscrm.in/api/lead/LeadAddRestCall`,
+     key in `CONFIG.crmApiKey`), posted with `fetch` as
+     `application/x-www-form-urlencoded`.
+
+   The success panel shows as soon as the first channel confirms; the error state
+   only appears if both fail. Confirm both dashboards receive the first real lead.
+
+   > **Don't switch the CRM call to JSON.** `vscrm.in` answers an `OPTIONS`
+   > preflight with `405`, so an `application/json` POST is blocked by the browser.
+   > The form-encoded POST is a CORS "simple request" (no preflight) and its JSON
+   > reply is readable. The API always returns HTTP `200` — check `Error === false`
+   > in the body. Custom questions would be sent as `Custom-<QuestionName>` keys;
+   > the forms currently put extra context (`Treatment`, `Page`) in `Description`.
 3. **GTM** — the data layer is already wired (`form_submit`, `whatsapp_click`,
    `call_click`, `email_click`, `faq_open`, `tab_click`). Add the container snippet to
    `<head>` if not injected site-wide.

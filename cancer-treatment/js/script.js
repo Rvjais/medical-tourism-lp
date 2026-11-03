@@ -25,6 +25,15 @@ const CONFIG = {
      .json endpoint does not allow cross-origin reads (CORS). */
   formesterEndpoint: "https://app.formester.com/forms/FjfwLULn2/submissions",
   formesterTimeoutMs: 45000,
+
+  /* VS CRM (vscrm.in) lead sync.
+     The API answers an OPTIONS preflight with 405 and has no CORS
+     middleware, so an application/json POST from the browser never
+     leaves the page. A form-encoded POST is a "simple" CORS request
+     (no preflight) and its JSON reply is readable — see submitToCrm. */
+  crmEndpoint: "https://vscrm.in/api/lead/LeadAddRestCall",
+  crmApiKey: "4d285e2a-76af-41db-bcb3-5503293b8b16",
+  crmTimeoutMs: 15000,
 };
 
 /* ------------------------------------------------------------
@@ -556,28 +565,118 @@ function initFaq() {
 /* ------------------------------------------------------------
    9) Lead form — inline validation, dial-code aware phone rule,
       success state, GTM form_submit event.
-      Submissions are stored by Formester (CONFIG.formesterEndpoint)
-      through a hidden iframe — see submitViaFormester below.
+      Every validated lead is sent to BOTH destinations in parallel:
+        - VS CRM    (CONFIG.crmEndpoint)        - REST, see submitToCrm
+        - Formester (CONFIG.formesterEndpoint)  - hidden iframe
+      The first channel that confirms shows the success panel; the
+      error state only appears if both channels fail.
 ------------------------------------------------------------ */
+/* Snapshot the form as a VS CRM lead.
+   The CRM expects form-encoded data (its OPTIONS reply is a 405, so an
+   application/json POST would never clear the browser's CORS preflight).
+   It always answers with HTTP 200, using {"Error":false,...} for success
+   and {"Error":true,...} for a bad key or rejected lead, so the caller
+   must read the body rather than the status. */
+function buildCrmPayload(form) {
+  const value = (selector) => {
+    const el = form.querySelector(selector);
+    return el ? String(el.value || "").trim() : "";
+  };
+  const dialEl = form.querySelector(".dial");
+  const dial = dialEl ? dialEl.textContent.trim() : "";
+  const countrySel = form.querySelector("select[data-country]");
+  const country =
+    countrySel && countrySel.selectedIndex >= 0
+      ? countrySel.options[countrySel.selectedIndex].textContent
+          .replace(/\s*\([^)]*\)\s*$/, "")
+          .trim()
+      : "";
+
+  const phone = value('[name="phone"]');
+  const digits = phone.replace(/\D/g, "");
+  const source = value('[name="formSource"]');
+  const treatment = value('[name="treatment"]');
+  const message = value('[name="message"]');
+
+  /* The CRM has no custom questions wired yet, so everything that does
+     not fit a standard field is kept in Description - nothing is lost. */
+  const description = [
+    treatment ? "Treatment: " + treatment : "",
+    message,
+    source ? "Page: " + source : "",
+  ]
+    .filter(Boolean)
+    .join("\n");
+
+  return {
+    Apikey: CONFIG.crmApiKey,
+    Name: value('[name="fullName"]'),
+    Mobile: dial && digits ? dial + digits : digits || phone,
+    Email: value('[name="email"]'),
+    Description: description,
+    Reference: "Shifara Health - " + (source || "Website"),
+    City: "",
+    State: "",
+    Country: country,
+    Branch: "",
+    Source: "",
+    Campaign: "",
+    Assign: "",
+    Owner: "",
+  };
+}
+
+/* POST the lead to VS CRM. Always reports through onDone(ok, message)
+   and never throws - the Formester copy still runs as a safety net. */
+function submitToCrm(payload, onDone) {
+  if (typeof fetch !== "function" || typeof URLSearchParams !== "function") {
+    onDone(false, "fetch unavailable");
+    return;
+  }
+
+  const body = new URLSearchParams();
+  Object.keys(payload).forEach((key) => {
+    body.append(key, payload[key] == null ? "" : String(payload[key]));
+  });
+
+  const controller = typeof AbortController === "function" ? new AbortController() : null;
+  const timer = setTimeout(() => {
+    if (controller) controller.abort();
+  }, CONFIG.crmTimeoutMs);
+
+  fetch(CONFIG.crmEndpoint, {
+    method: "POST",
+    mode: "cors",
+    credentials: "omit",
+    cache: "no-store",
+    headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
+    body: body.toString(),
+    signal: controller ? controller.signal : undefined,
+  })
+    .then((res) => {
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      return res.json();
+    })
+    .then((data) => {
+      clearTimeout(timer);
+      const ok = Boolean(data && data.Error === false);
+      onDone(ok, data && data.Message ? String(data.Message) : "");
+    })
+    .catch(() => {
+      clearTimeout(timer);
+      onDone(false, "request failed");
+    });
+}
+
 /* Post the form to Formester through a hidden iframe.
    A native form post needs no CORS clearance; Formester stores the
    submission and answers with its own thank-you redirect, which
    lands inside the iframe. The page itself never navigates, so our
    success panel keeps working. If no response arrives in time, we
    show the inline WhatsApp suggestion instead of losing the lead. */
-function submitViaFormester(form, onSuccess, onFailure) {
-  if (form.dataset.sending === "true") return;
-  form.dataset.sending = "true";
-
-  const submitBtn = form.querySelector('[type="submit"]');
-  if (submitBtn) {
-    submitBtn.disabled = true;
-    submitBtn.setAttribute("aria-busy", "true");
-  }
-  const status = form.querySelector(".form-status");
-  if (status) status.hidden = true;
-
-  /* readable companions for the CRM (stripped again after the try) */
+function submitViaFormester(form, onDone) {
+  /* readable companions for the Formester dashboard (stripped again
+     once the post has been handed to the browser) */
   const extras = [];
   const addHidden = (name, value) => {
     if (!value) return;
@@ -622,26 +721,20 @@ function submitViaFormester(form, onSuccess, onFailure) {
   const restore = () => {
     settled = true;
     form.target = "";
-    form.dataset.sending = "false";
-    if (submitBtn) {
-      submitBtn.disabled = false;
-      submitBtn.removeAttribute("aria-busy");
-    }
     extras.forEach((el) => el.remove());
   };
   const finishOk = () => {
     if (settled) return;
     clearTimeout(watchdog);
     restore();
-    onSuccess();
+    onDone(true);
   };
   const finishFail = () => {
     if (settled) return;
     clearTimeout(watchdog);
     frame.removeEventListener("load", onLoad);
     restore();
-    if (status) status.hidden = false;
-    onFailure();
+    onDone(false);
   };
   const onLoad = () => {
     if (settled) return;
@@ -652,6 +745,60 @@ function submitViaFormester(form, onSuccess, onFailure) {
   const watchdog = setTimeout(finishFail, CONFIG.formesterTimeoutMs);
 
   form.submit(); /* native submit — does not re-fire our handler */
+}
+
+/* Fan one validated lead out to both destinations.
+   onSuccess({ crm, formester }) fires for the first channel that
+   confirms; each value is true, false, or null while still pending.
+   onFailure runs only when both channels have failed. */
+function submitLead(form, onSuccess, onFailure) {
+  if (form.dataset.sending === "true") return;
+  form.dataset.sending = "true";
+
+  const submitBtn = form.querySelector('[type="submit"]');
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.setAttribute("aria-busy", "true");
+  }
+  const status = form.querySelector(".form-status");
+  if (status) status.hidden = true;
+
+  /* snapshot the values before the Formester post rewrites the form */
+  const payload = buildCrmPayload(form);
+
+  const results = { crm: null, formester: null };
+  let finished = 0;
+  let confirmed = 0;
+  let settled = false;
+
+  const restore = () => {
+    form.dataset.sending = "false";
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.removeAttribute("aria-busy");
+    }
+  };
+
+  const channelDone = (channel, ok) => {
+    results[channel] = ok;
+    finished += 1;
+    if (ok) confirmed += 1;
+    if (settled) return;
+
+    if (confirmed > 0) {
+      settled = true;
+      restore();
+      onSuccess({ crm: results.crm, formester: results.formester });
+    } else if (finished === 2) {
+      settled = true;
+      restore();
+      if (status) status.hidden = false;
+      onFailure();
+    }
+  };
+
+  submitToCrm(payload, (ok) => channelDone("crm", ok));
+  submitViaFormester(form, (ok) => channelDone("formester", ok));
 }
 
 function initForm() {
@@ -699,12 +846,16 @@ function initForm() {
     const countryText =
       country.selectedIndex >= 0 ? country.options[country.selectedIndex].textContent : "";
 
-    submitViaFormester(
+    submitLead(
       form,
-      () => {
+      (result) => {
+        const channels = [];
+        if (result.crm === true) channels.push("vscrm");
+        if (result.formester === true) channels.push("formester");
         trackEvent("form_submit", {
           formSource: sourceField ? sourceField.value : "",
           country: countryText,
+          channels: channels.join("+"),
         });
         showSuccess();
       },

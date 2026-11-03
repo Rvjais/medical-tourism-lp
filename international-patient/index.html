@@ -246,9 +246,10 @@
             <i class="is-on" data-seg="1"></i><i data-seg="2"></i><i data-seg="3"></i>
           </div>
 
-          <!-- Submissions are stored by Formester (CONFIG.formesterEndpoint in
-               js/script.js). With JavaScript the form is posted through a hidden
-               iframe; these attributes keep the native fallback working. -->
+          <!-- Leads are sent to Formester (CONFIG.formesterEndpoint) through a
+               hidden iframe AND to VS CRM (CONFIG.crmEndpoint) via fetch — see
+               js/script.js. These attributes keep the no-JS fallback working
+               (that path posts to Formester only). -->
           <form id="enquiryForm" data-lead-form data-success="formSuccess" novalidate
                 action="https://app.formester.com/forms/4RkE3znWs/submissions"
                 method="POST" enctype="multipart/form-data" accept-charset="UTF-8">
@@ -1567,6 +1568,8 @@
             <h3>Request Free Consultation</h3>
             <p class="form-sub">Tell us about the patient and the treatment needed. Our team will respond with the next steps.</p>
 
+            <!-- Same dual routing as the hero form: VS CRM via fetch plus the
+                 Formester iframe post (see js/script.js). -->
             <form id="consultForm" data-lead-form data-success="consultSuccess" novalidate=""
                   action="https://app.formester.com/forms/4RkE3znWs/submissions"
                   method="POST" enctype="multipart/form-data" accept-charset="UTF-8">
