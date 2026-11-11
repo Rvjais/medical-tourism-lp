@@ -1767,7 +1767,7 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-6px) rotate
 
 /* ---------- Cities: image with caption, no card ---------- */
 .card.hub-card { padding: 1.3rem 0 1.5rem; }
-.hub-img-wrap { overflow: visible; }
+.hub-img-wrap { overflow: hidden; }
 .hub-img { display: block; width: 100%; height: 150px; object-fit: cover; border-radius: 0; }
 .card.hub-card:hover .hub-img { transform: none; }
 .hub-body { padding: .95rem 0 0; }
