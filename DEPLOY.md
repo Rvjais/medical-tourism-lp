@@ -101,8 +101,19 @@ git pull --ff-only
 No build, restart or reload is needed for HTML/CSS/JS/image changes. Only reload
 nginx if `deploy/nginx.conf` itself changes.
 
-HTML is sent with `Cache-Control: no-cache`, so a pull is visible on the next page
-load. CSS/JS are cached for 1 hour and images/fonts for 30 days.
+On plain Apache, `.htaccess` sends HTML with `Cache-Control: no-cache`, CSS/JS for
+1 hour and images/fonts for 30 days.
+
+**Bump the asset version on every CSS or JS change.** The live server is LiteSpeed,
+which ignores the `.htaccess` cache headers: HTML goes out with no cache header
+(so a pull shows up quickly) but CSS goes out with `max-age=604800` (7 days). Without a new URL, returning visitors get the new HTML with the old CSS
+and the page looks broken. In the page you changed, update the `?v=` value on both
+links (use the date, e.g. `?v=20261111`):
+
+```html
+<link rel="stylesheet" href="css/style.css?v=20261111">
+<script src="js/script.js?v=20261111"></script>
+```
 
 ## Troubleshooting
 
@@ -113,4 +124,5 @@ load. CSS/JS are cached for 1 hour and images/fonts for 30 days.
 | `/.git/config` returns a file | `.htaccess` is ignored: enable `AllowOverride All`, or use the nginx config |
 | Assets `404` but HTML loads | URL is missing the trailing slash |
 | Old content after pull | Confirm `git log -1` on the server, then hard-refresh |
+| New HTML but unstyled/old layout | CSS is cached for 7 days — bump `?v=` on the CSS/JS links (see step 6) |
 | Form/GTM blocked | No build step; check the browser console for the third-party script |
