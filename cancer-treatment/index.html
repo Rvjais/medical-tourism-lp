@@ -61,7 +61,6 @@
     "mainEntity": [
       {"@type": "Question","name": "What types of cancer can Shifara Health help with?","acceptedAnswer": {"@type": "Answer","text": "Shifara Health guides you to specialists and hospitals for breast, lung, blood, brain, head and neck, colorectal, prostate and gynaecological cancers, and others on request."}},
       {"@type": "Question","name": "How does the free opinion work?","acceptedAnswer": {"@type": "Answer","text": "Share your reports through the form or WhatsApp. Our medical team reviews your case and connects you with a suitable specialist who explains your diagnosis and options."}},
-      {"@type": "Question","name": "How much does cancer treatment cost in India?","acceptedAnswer": {"@type": "Answer","text": "Most procedures cost 60–80% less than in the US, UK or Gulf. The final cost depends on cancer type, stage, treatment plan, hospital, medicines, diagnostics and length of stay. For example, brain tumour surgery is listed at USD 8,000–18,000. You receive a written estimate after your reports are reviewed."}},
       {"@type": "Question","name": "How do I get a medical visa for cancer treatment?","acceptedAnswer": {"@type": "Answer","text": "Our team helps with the complete medical visa process, including invitation letters and travel documents. Citizens of 160+ countries can apply for India's e-Medical Visa. Rules change, so we confirm the current requirements for your country."}},
       {"@type": "Question","name": "Can a family member travel with me?","acceptedAnswer": {"@type": "Answer","text": "Yes. We arrange accommodation, local transport, translator support and dietary help for companions, and can organise sightseeing during longer stays."}},
       {"@type": "Question","name": "What happens after treatment?","acceptedAnswer": {"@type": "Answer","text": "We arrange recovery stays, professional nurses and caregivers, and follow-up consultations. We also help with medical records and guidance so you can continue care at home."}},
@@ -109,6 +108,7 @@
       <symbol id="i-map" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
       <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
       <symbol id="i-user" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+      <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="m12 2.5 2.94 5.96 6.56.95-4.75 4.63 1.12 6.53L12 17.49l-5.87 3.08 1.12-6.53L2.5 9.41l6.56-.95z"/></symbol>
     </defs>
   </svg>
 
@@ -145,10 +145,10 @@
         <ul class="nav-links" id="navLinks">
           <li><a href="#cancer-types">Cancer Types</a></li>
           <li><a href="#services">Services</a></li>
-          <li><a href="#why-india">Why India</a></li>
-          <li><a href="#costs">Costs</a></li>
+          <li><a href="#why-shifara">Why Us</a></li>
           <li><a href="#journey">Journey</a></li>
           <li><a href="#hubs">Cities</a></li>
+          <li><a href="#specialists">Specialists</a></li>
           <li><a href="#faqs">FAQ</a></li>
         </ul>
 
@@ -169,10 +169,10 @@
       <ul class="drawer-links">
         <li><a href="#cancer-types">Cancer Types</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#why-india">Why India</a></li>
-        <li><a href="#costs">Costs</a></li>
+        <li><a href="#why-shifara">Why Us</a></li>
         <li><a href="#journey">Journey</a></li>
         <li><a href="#hubs">Cities</a></li>
+        <li><a href="#specialists">Specialists</a></li>
         <li><a href="#faqs">FAQ</a></li>
       </ul>
       <div class="drawer-actions">
@@ -203,12 +203,13 @@
         <div class="hb-copy">
         <p class="hb-chip"><span class="hb-chip-country">India</span>JCI · NABH · NABL accredited hospitals only</p>
         <h1 class="hb-title">Cancer Treatment in India, With <em>Trusted Guidance</em> at&nbsp;Every&nbsp;Step.</h1>
-        <p class="hb-lead">Connect with leading oncologists at JCI / NABH-accredited hospitals. Shifara Health reviews your reports, explains your options and costs, and takes care of your visa, travel, stay and recovery.</p>
+        <p class="hb-lead">Access advanced cancer treatment options, experienced oncologists and coordinated care across accredited hospitals in India.</p>
 
         <ul class="hb-checks">
-          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Free expert opinion on your medical reports</li>
-          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Top oncologists at JCI / NABH / NABL accredited hospitals</li>
-          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Visa, flights, stay and recovery support from one team</li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Free Medical Report Review</li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Complete Visa &amp; Travel Support</li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Flights, Stay &amp; Recovery Assistance</li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Personalised Cancer Care Guidance</li>
         </ul>
 
         <div class="hb-cta">
@@ -218,11 +219,21 @@
           </a>
         </div>
 
-        <dl class="hb-stats">
-          <div><dt>17+</dt><dd>Partner hospitals</dd></div>
-          <div><dt>60–80%</dt><dd>Lower treatment cost*</dd></div>
-          <div><dt>160+</dt><dd>Countries on e-Medical Visa*</dd></div>
-        </dl>
+        <!-- Accreditation badges (client doc: replace the stat pointers with
+             NABH + NABL badges). Text seals for now — swap each .acc-seal for
+             the official logo <img> once the client supplies the files. The
+             accreditations belong to partner hospitals/labs, not Shifara. -->
+        <div class="hb-badges" aria-label="Partner hospital accreditations">
+          <span class="hb-badges-label">Partner hospitals accredited by</span>
+          <div class="hb-badge">
+            <span class="acc-seal" aria-hidden="true">NABH</span>
+            <span class="hb-badge-text"><strong>NABH</strong> National Accreditation Board for Hospitals</span>
+          </div>
+          <div class="hb-badge">
+            <span class="acc-seal acc-seal--alt" aria-hidden="true">NABL</span>
+            <span class="hb-badge-text"><strong>NABL</strong> National Accreditation Board for Laboratories</span>
+          </div>
+        </div>
       </div>
       </div><!-- /hb-grid -->
 
@@ -312,69 +323,38 @@
     </section>
 
     <!-- ========================================================
-         SECTION 2 — TRUST BAR (4 cards + optional 5th)
+         SECTION 2 — STATS STRIP (6 USP pointers, client doc pt 3)
          Shifara Health does not publish patient counts / ratings —
          do NOT add any until verified (doc warning).
     ========================================================== -->
-    <section class="trustbar" aria-label="Why patients trust us">
+    <section class="trustbar trustbar--six" aria-label="Shifara Health at a glance">
       <div class="container trust-grid">
         <div class="trust-card reveal">
-          <span class="trust-num">60–80%</span>
-          <span class="trust-label">Lower treatment cost than the US or UK*</span>
+          <span class="trust-num">8+</span>
+          <span class="trust-label">Types of Cancer Care</span>
+        </div>
+        <div class="trust-card reveal">
+          <span class="trust-num">6</span>
+          <span class="trust-label">Cancer Care Locations</span>
+        </div>
+        <div class="trust-card reveal">
+          <span class="trust-num">50+</span>
+          <span class="trust-label">Specialist Doctors</span>
+        </div>
+        <div class="trust-card reveal">
+          <span class="trust-num">17+</span>
+          <span class="trust-label">Partner Hospitals</span>
         </div>
         <div class="trust-card reveal">
           <span class="trust-num">160+</span>
-          <span class="trust-label">Countries eligible for India’s e-Medical Visa*</span>
+          <span class="trust-label">Countries Served</span>
         </div>
         <div class="trust-card reveal">
-          <span class="trust-num trust-num-sm">JCI · NABH · NABL</span>
-          <span class="trust-label">Accredited partner hospitals only</span>
-        </div>
-        <div class="trust-card reveal">
-          <span class="trust-num">24/7</span>
-          <span class="trust-label">Patient support and free expert opinion</span>
-        </div>
-        <!-- OPTIONAL 5th card per doc: “[X]+ Oncology Specialists” —
-             uncomment and set the verified count before launch:
-        <div class="trust-card reveal"><span class="trust-num">[X]+</span><span class="trust-label">Oncology Specialists</span></div>
-        -->
-      </div>
-      <p class="container trust-footnote">*Savings vary by procedure and hospital. Visa eligibility rules change — confirm current e-Medical Visa requirements for your country.</p>
-    </section>
-
-    <!-- ========================================================
-         SECTION 3 — FIND THE RIGHT SUPPORT (8 cards)
-    ========================================================== -->
-    <section class="section support" id="support">
-      <div class="container">
-        <div class="section-head" data-overline="How We Help">
-          <h2>Find the Right Support for Your Cancer Journey</h2>
-          <p>Every cancer journey is different. Tell us what you need and we will help you take the right next step.</p>
-        </div>
-
-        <div class="support-grid">
-          <a class="card support-card reveal" href="#lead-form" data-event="doctor_profile_click">
-            <h3>Find a Cancer Specialist</h3>
-            <p>Meet oncologists matched to your cancer type, stage and needs.</p>
-            <span class="card-link">Request a Specialist Match <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
-          </a>
-          <a class="card support-card reveal" href="#hubs" data-event="hospital_profile_click">
-            <h3>Find a Cancer Hospital</h3>
-            <p>Compare JCI / NABH-accredited cancer centres by expertise and city.</p>
-            <span class="card-link">View Hospitals <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
-          </a>
-          <a class="card support-card reveal" href="#lead-form" data-event="form_intent">
-            <h3>Get a Free Second Opinion</h3>
-            <p>Share your reports and get an expert review before you decide.</p>
-            <span class="card-link">Get a Second Opinion <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
-          </a>
-          <a class="card support-card reveal" href="#costs">
-            <h3>Understand Treatment Costs</h3>
-            <p>Transparent estimates and savings against the US, UK and Gulf.</p>
-            <span class="card-link">Compare Costs <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
-          </a>
+          <span class="trust-num">60–80%</span>
+          <span class="trust-label">Lower treatment cost*</span>
         </div>
       </div>
+      <p class="container trust-footnote">*Compared with the US, UK and Gulf. Savings vary by procedure and hospital.</p>
     </section>
 
     <!-- ==========================================================
@@ -386,8 +366,8 @@
     <section class="section types" id="cancer-types">
       <div class="container">
         <div class="section-head" data-overline="Cancer Types">
-          <h2>Access advanced cancer treatment options, experienced oncologists and coordinated care across accredited hospitals in India.</h2>
-          <p>Specialised cancer care across major cancer types, with medical, surgical, radiation and supportive oncology at JCI / NABH-accredited hospitals.</p>
+          <h2>Specialised Treatment for Every Cancer Type</h2>
+          <p>Find treatment options for different cancer types, supported by experienced oncologists and accredited hospitals.</p>
         </div>
 
         <div class="tabs-wrap" data-tabs>
@@ -407,6 +387,7 @@
             <div class="tab-panel is-active" id="c-breast" role="tabpanel">
               <h3>Breast Cancer</h3>
               <p>Treatment is planned around the cancer type, stage and tumour characteristics, with breast-conserving surgery and reconstruction options where suitable.</p>
+              <figure class="type-media"><img src="assets/images/cancer-types/breast.jpg" alt="Patient preparing for a mammography breast screening" width="800" height="500" loading="lazy" decoding="async"></figure>
               <h4>Treatment &amp; Care Options</h4>
               <ul class="checklist">
                 <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Breast-conserving and reconstructive surgery</li>
@@ -421,6 +402,7 @@
             <div class="tab-panel" id="c-lung" role="tabpanel">
               <h3>Lung Cancer</h3>
               <p>Care is planned around the cancer type, stage and molecular profile, with minimally invasive surgery and precision radiation available.</p>
+              <figure class="type-media"><img src="assets/images/cancer-types/lung.jpg" alt="CT scanner used for lung cancer imaging" width="800" height="500" loading="lazy" decoding="async"></figure>
               <h4>Treatment &amp; Care Options</h4>
               <ul class="checklist">
                 <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Minimally invasive and robotic surgery</li>
@@ -435,6 +417,7 @@
             <div class="tab-panel" id="c-blood" role="tabpanel">
               <h3>Blood Cancer</h3>
               <p>Specialists for leukaemia, lymphoma and myeloma, with haematology and bone marrow transplant teams.</p>
+              <figure class="type-media"><img src="assets/images/cancer-types/blood.jpg" alt="Blood smear under a microscope used in blood cancer diagnosis" width="800" height="500" loading="lazy" decoding="async"></figure>
               <h4>Treatment &amp; Care Options</h4>
               <ul class="checklist">
                 <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Chemotherapy and targeted therapy</li>
@@ -450,6 +433,7 @@
               <h3>Brain Tumours</h3>
               <p>Neuro-oncology and neurosurgery teams plan treatment around the tumour type, grade and location, including awake surgery where suitable.</p>
               <p class="cost-badge"><svg class="ic" aria-hidden="true"><use href="#i-tag"/></svg> Indicative cost — Brain Tumour Surgery: <strong>USD 8,000 – 18,000</strong> <small>(final estimate after your reports are reviewed)</small></p>
+              <figure class="type-media"><img src="assets/images/cancer-types/brain.jpg" alt="Neurosurgery team member in the operating theatre" width="800" height="500" loading="lazy" decoding="async"></figure>
               <h4>Treatment &amp; Care Options</h4>
               <ul class="checklist">
                 <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Brain tumour surgery and resection</li>
@@ -464,6 +448,7 @@
             <div class="tab-panel" id="c-headneck" role="tabpanel">
               <h3>Head &amp; Neck Cancer</h3>
               <p>Care for cancers of the mouth, throat, larynx and salivary glands, including reconstruction and speech rehabilitation.</p>
+              <figure class="type-media"><img src="assets/images/cancer-types/head-neck.jpg" alt="Radiation therapy suite used in head and neck cancer treatment" width="800" height="500" loading="lazy" decoding="async"></figure>
               <h4>Treatment &amp; Care Options</h4>
               <ul class="checklist">
                 <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Surgery and tumour removal</li>
@@ -478,6 +463,7 @@
             <div class="tab-panel" id="c-colorectal" role="tabpanel">
               <h3>Colorectal Cancer</h3>
               <p>Colon and rectal cancer care with minimally invasive surgery, stoma support and treatment planning for advanced disease.</p>
+              <figure class="type-media"><img src="assets/images/cancer-types/colorectal.jpg" alt="Gastroenterology team with a patient before an endoscopy" width="800" height="500" loading="lazy" decoding="async"></figure>
               <h4>Treatment &amp; Care Options</h4>
               <ul class="checklist">
                 <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Colon or rectal cancer surgery</li>
@@ -492,6 +478,7 @@
             <div class="tab-panel" id="c-prostate" role="tabpanel">
               <h3>Prostate Cancer</h3>
               <p>Treatment is planned around stage, grade, PSA level and overall health, with robotic surgery and precision radiation options.</p>
+              <figure class="type-media"><img src="assets/images/cancer-types/prostate.jpg" alt="Surgeon at a robotic surgery console" width="800" height="500" loading="lazy" decoding="async"></figure>
               <h4>Treatment &amp; Care Options</h4>
               <ul class="checklist">
                 <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Active surveillance for low-risk cancers</li>
@@ -506,6 +493,7 @@
             <div class="tab-panel" id="c-gynae" role="tabpanel">
               <h3>Gynaecological Cancer</h3>
               <p>Care for ovarian, uterine, cervical and vulval cancers, including cytoreductive surgery and genetic testing.</p>
+              <figure class="type-media"><img src="assets/images/cancer-types/gynae.jpg" alt="Oncologist discussing treatment options with a patient and her family" width="800" height="500" loading="lazy" decoding="async"></figure>
               <h4>Treatment &amp; Care Options</h4>
               <ul class="checklist">
                 <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Gynaecologic cancer surgery</li>
@@ -632,149 +620,42 @@
       </div>
     </section>
     <!-- ==========================================================
-     SECTION 6 — WHY CHOOSE INDIA (merged block per doc)
-     The doc's intro cited “644,000 international patients in 2024”
-     pending a verified source. Softened wording used until confirmed.
-============================================================ -->
-    <section class="section why-india" id="why-india">
-      <div class="container">
-        <div class="section-head" data-overline="Why Treatment in India">
-          <h2>Why Choose India for Cancer Treatment?</h2>
-          <p>India combines experienced oncologists, advanced technology and significantly lower costs — with no long waiting lists for time-sensitive cancer care.</p>
-        </div>
-        <div class="grid-4">
-          <div class="card why-card reveal">
-            <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-compass"/></svg></span>
-            <h3>Experienced Cancer Specialists</h3>
-            <p>Oncologists across medical, surgical, radiation and haemato-oncology sub-specialties, many with decades of experience.</p>
-          </div>
-          <div class="card why-card reveal">
-            <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-hospital"/></svg></span>
-            <h3>Advanced Technology</h3>
-            <p>Robotic surgery, precision radiation, molecular diagnostics and immunotherapy at accredited partner hospitals.</p>
-          </div>
-          <div class="card why-card reveal">
-            <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-tag"/></svg></span>
-            <h3>Treatment That Costs Less</h3>
-            <p>Most procedures cost 60–80% less than in the US, UK or Gulf, without compromising on quality.</p>
-          </div>
-          <div class="card why-card reveal">
-            <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg></span>
-            <h3>Prompt Access</h3>
-            <p>Specialist consultations and treatment are generally available without long waiting lists.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================
-         USP STRIP — six ready-to-point differentiators
-         (client doc pt 2, item 4: table supplied verbatim below
-         the why-choose-India section)
+         WHY CHOOSE SHIFARA HEALTH — redesigned per client doc pt 3.
+         Replaces the old "Why Choose India" cards; layout follows the
+         client's reference (copy + Key Strengths box on the left, large
+         image on the right). The USP strip and Transparent Costs
+         sections that used to follow were removed per the same doc.
     ============================================================ -->
-    <section class="section usp-strip" id="usp" aria-label="The Shifara Health advantage at a glance">
-      <div class="container">
-        <div class="usp-grid">
-          <div class="card usp-card reveal">
-            <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-zap"/></svg></span>
-            <h3>Access advanced cancer treatment</h3>
-            <p>options, experienced oncologists and coordinated care across accredited hospitals in India.</p>
-          </div>
-          <div class="card usp-card reveal">
-            <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg></span>
-            <h3>Experienced Oncologists</h3>
-            <p>Specialists across medical, surgical, radiation and haematology sub-specialties, many with decades of experience</p>
-          </div>
-          <div class="card usp-card reveal">
-            <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg></span>
-            <h3>Accredited Hospitals</h3>
-            <p>JCI / NABH / NABL accredited facilities with advanced technology and robotic surgery</p>
-          </div>
-          <div class="card usp-card reveal">
-            <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg></span>
-            <h3>160+ e-Medical Visa Countries</h3>
-            <p>Countries eligible for India's e-Medical Visa with 24/7 assistance</p>
-          </div>
-          <div class="card usp-card reveal">
-            <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-headset"/></svg></span>
-            <h3>24/7 Case Manager Support</h3>
-            <p>From report review through treatment completion and follow-up at home</p>
-          </div>
-          <div class="card usp-card reveal">
-            <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-tag"/></svg></span>
-            <h3>Transparent Cost Estimates</h3>
-            <p>60–80% savings vs. US/UK/Gulf with written estimates after medical review</p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <section class="section why-shifara" id="why-shifara">
+      <div class="container ws-grid">
+        <div class="ws-copy reveal">
+          <p class="ws-overline">Why Shifara Health</p>
+          <h2>Why Choose Shifara Health for Cancer Treatment in India?</h2>
+          <p>Shifara Health connects international patients with experienced cancer specialists and 17+ JCI, NABH and NABL-accredited partner hospitals across India. From expert medical opinions and personalised treatment plans to affordable care options, we simplify access to advanced cancer treatment.</p>
+          <p>With free cost estimates, medical visa assistance, travel arrangements and dedicated 24/7 case manager support, we make every step of your medical journey easier. From your first enquiry to treatment coordination and follow-up, Shifara Health is with you at every step.</p>
 
-    <!-- ==========================================================
-         TRANSPARENT COSTS (section 9) — copy replaced verbatim
-         from the client's corrected price list (doc pt 2, item 5)
-    ============================================================ -->
-    <section class="section costs" id="costs">
-      <div class="container">
-        <div class="section-head" data-overline="Transparent Pricing">
-          <h2>Transparent Cancer Treatment Costs</h2>
-          <p>Save 60–80% compared with the US, UK and Gulf. Get indicative treatment packages with a written estimate based on your medical reports and selected hospital.</p>
-        </div>
-
-        <div class="grid-4 costs-grid">
-          <div class="card cost-card reveal">
-            <span class="cost-tag cost-tag--live">Indicative price</span>
-            <span class="price">USD 8,000–18,000</span>
-            <h3>Brain Tumour Surgery</h3>
-            <p>Includes surgeon and anaesthesia fees, hospital stay and standard medicines, subject to the hospital's package terms.</p>
-          </div>
-          <div class="card cost-card reveal">
-            <span class="cost-tag cost-tag--live">Indicative price</span>
-            <span class="price">USD 28,000–40,000</span>
-            <h3>Liver Transplant</h3>
-            <p>Includes transplant surgery and hospital-related costs, subject to the hospital's final quotation.</p>
-          </div>
-          <div class="card cost-card reveal">
-            <span class="cost-tag">Custom quote</span>
-            <span class="price price--soft">Estimate after medical review</span>
-            <h3>Breast Cancer Surgery</h3>
-            <p>Receive a personalised treatment estimate after your reports are reviewed.</p>
-          </div>
-          <div class="card cost-card reveal">
-            <span class="cost-tag">Custom quote</span>
-            <span class="price price--soft">Estimate after medical review</span>
-            <h3>Chemotherapy <small>(Per Cycle)</small></h3>
-            <p>Costs depend on the prescribed drugs, treatment protocol and number of cycles.</p>
-          </div>
-        </div>
-
-        <div class="costs-note reveal">
-          <div class="covers">
-            <h4>What Your Treatment Package Typically Covers</h4>
+          <div class="ws-strengths">
+            <h3>Key Strengths</h3>
             <ul>
-              <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Surgeon and anaesthesia fees</li>
-              <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Hospital and ICU stay (as applicable)</li>
-              <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Standard medicines and consumables</li>
-              <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Free Shifara case management</li>
+              <li><strong>17+ Accredited Partner Hospitals</strong> – Access to trusted hospitals across India.</li>
+              <li><strong>Experienced Cancer Specialists</strong> – Connect with specialised oncology experts.</li>
+              <li><strong>Free Medical Opinion</strong> – Expert review of your medical reports.</li>
+              <li><strong>Advanced Cancer Care</strong> – Explore surgery, chemotherapy, immunotherapy and radiation therapy.</li>
+              <li><strong>60–80% Cost Savings</strong> – Affordable treatment options compared with the USA, UK and Gulf.</li>
+              <li><strong>Free Cost Estimate</strong> – Personalised treatment costs with no obligation.</li>
+              <li><strong>160+ Countries</strong> – Eligible for India's e-Medical Visa.</li>
+              <li><strong>24/7 Case Manager Support</strong> – Assistance before, during and after travel.</li>
+              <li><strong>Complete Travel Assistance</strong> – Medical visa, airport pickup and accommodation support.</li>
+              <li><strong>End-to-End Coordination</strong> – Support throughout your treatment journey.</li>
             </ul>
           </div>
-          <div class="covers covers--out">
-            <h4>Additional Travel &amp; Personal Expenses</h4>
-            <ul>
-              <li><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg> International flight tickets</li>
-              <li><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg> Accommodation outside the hospital package</li>
-              <li><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg> Visa application fees</li>
-              <li><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg> Personal expenses and extended stays</li>
-              <li><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg> Additional treatment or complications outside the agreed package</li>
-            </ul>
-          </div>
+
+          <a class="btn btn-primary" href="#lead-form" data-event="form_intent">Get My Free Treatment Plan <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </div>
 
-        <p class="cost-disclaimer"><strong>Important:</strong> All prices are indicative and vary by hospital, doctor, room category and individual medical condition. Your final written estimate will specify the exact inclusions and exclusions after hospital review.</p>
-
-        <div class="costs-cta">
-          <a class="btn btn-outline" href="#contact">Talk to a Cost Advisor <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          <a class="btn btn-primary" href="#lead-form" data-event="form_intent">Get My Free Estimate <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </div>
+        <figure class="ws-media reveal">
+          <img src="assets/images/hero-slide-4.jpg" alt="Multidisciplinary cancer care team reviewing patient scans together" width="1200" height="896" loading="lazy" decoding="async">
+        </figure>
       </div>
     </section>
     <!-- ==========================================================
@@ -921,8 +802,9 @@
     <section class="section hubs" id="hubs">
       <div class="container">
         <div class="section-head" data-overline="Cancer Care Cities">
-          <h2>Cancer Care in Delhi, Gurgaon, Mumbai and Hyderabad</h2>
-          <p>Accredited partner hospitals in four of India’s leading cancer care hubs, with a Shifara Health team beside you.</p>
+          <h2>Access Advanced Cancer Care Across India's Leading Medical Cities</h2>
+          <!-- Subheadline drafted by us — the client doc gave only the headline. Confirm with the client. -->
+          <p>Compare accredited partner hospitals in Delhi, Gurgaon, Mumbai and Hyderabad, with Shifara Health coordinating your appointments, travel and stay.</p>
         </div>
         <div class="grid-4 hubs-grid">
           <div class="card hub-card reveal">
@@ -944,7 +826,7 @@
           </div>
           <div class="card hub-card reveal">
             <div class="hub-img-wrap">
-              <img src="assets/images/hero-slide-4.jpg" alt="Cancer specialists reviewing scans at a Gurgaon partner hospital" class="hub-img" width="1200" height="896" loading="lazy">
+              <img src="assets/images/hospital-1.jpg" alt="Modern partner hospital campus in Gurgaon" class="hub-img" width="1200" height="896" loading="lazy">
               <span class="hub-pin"><svg class="ic" aria-hidden="true"><use href="#i-map"/></svg> Gurgaon</span>
             </div>
             <div class="hub-body">
@@ -1073,111 +955,274 @@
     </section>
 
     <!-- ==========================================================
-         SECTION 13 — WHY CHOOSE SHIFARA HEALTH
-         Claim wording marked [CONFIRM] in the doc is commented below
-
-<!-- ==========================================================
-      DOCTORS VIDEO SECTION — per doc: "Add Doctors videos as well on the landing pages"
-      Build: 3-column grid of doctor cards with YouTube embed placeholders.
-      Replace the YouTube video IDs below with actual links when provided.
-   ============================================================ -->
-   <section class="section doctors-videos" id="doctors-videos">
-     <div class="container">
-       <div class="section-head" data-overline="Our Oncology Team">
-         <h2>Meet Our Oncology Team</h2>
-         <p>Watch brief introductory videos from our specialist doctors.</p>
-       </div>
-
-       <div class="video-grid">
-         <article class="video-card reveal">
-           <div class="video-thumb">
-             <iframe width="280" height="158" src="https://www.youtube.com/shorts/-RPti8E3eyI" title="Dr. Ravella Venkateswara Rao" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-           </div>
-           <div class="video-info">
-             <h3>Dr. Ravella Venkateswara Rao</h3>
-             <p>Senior Consultant – Medical Oncology & Hematology</p>
-              <p>⭐ 46+ Years of Experience</p>
-              <p>Specialises in medical oncology, haematological malignancies, chemotherapy, targeted therapy, immunotherapy and supportive cancer care.</p>
-              <a class="btn btn-primary btn-sm" href="#contact">Book Consultation</a>
-           </div>
-         </article>
-
-         <article class="video-card reveal">
-           <div class="video-thumb">
-             <iframe width="280" height="158" src="https://www.youtube.com/shorts/fa78wYjVnZY" title="Dr. (Prof.) Lalit Kumar" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-           </div>
-           <div class="video-info">
-             <h3>Dr. (Prof.) Lalit Kumar</h3>
-             <p>Chairman – Artemis Cancer Centre & Senior Consultant – Medical Oncology</p>
-              <p>⭐ 40+ Years of Experience</p>
-              <p>Expertise in medical oncology, chemotherapy, systemic cancer treatment and the management of complex solid tumours and blood cancers.</p>
-              <a class="btn btn-primary btn-sm" href="#contact">Book Consultation</a>
-           </div>
-         </article>
-
-         <article class="video-card reveal">
-           <div class="video-thumb">
-             <iframe width="280" height="158" src="https://www.youtube.com/shorts/EofvKKrEo7s" title="Dr. Vinod Raina" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-           </div>
-           <div class="video-info">
-             <h3>Dr. Vinod Raina</h3>
-             <p>Chairman – Medical Oncology, Hematology & Bone Marrow Transplant</p>
-              <p>⭐ 40+ Years of Experience</p>
-              <p>Specialises in medical oncology, haematological cancers, bone marrow transplantation and comprehensive cancer management.</p>
-              <a class="btn btn-primary btn-sm" href="#contact">Book Consultation</a>
-           </div>
-         </article>
-       </div>
-     </div>
-   </section>
-         for legal review before launch.
-============================================================ -->
-    <section class="section why-us" id="why-us">
+         FIND EXPERIENCED CANCER SPECIALISTS — doctor slider
+         (client doc pt 3: card format from the reference, 2 rows that
+         move automatically). Doctor copy is verbatim from the client's
+         Google Doc doctor list. js/script.js (initDoctorRows) clones each
+         row for a seamless loop; without JS the rows scroll sideways.
+         PHOTO PENDING (initials shown): Dr. Ashok Patel, Dr. Rathna Devi,
+         Dr. Sankar Srinivasan, Dr. Bhawana Awasthy, Dr. Anil Kumar Anand.
+         The website files named after the last two show other doctors,
+         so they are deliberately not used.
+    ============================================================ -->
+    <section class="section specialists" id="specialists">
       <div class="container">
-        <div class="section-head" data-overline="Why Shifara Health">
-          <h2>Why Choose Shifara Health for Cancer Treatment in India?</h2>
-          <p>Choosing the right care partner matters as much as choosing the right doctor. We offer clear guidance, accredited hospitals and one dedicated team at every step.</p>
+        <div class="section-head" data-overline="Our Specialists">
+          <h2>Find Experienced Cancer Specialists in India</h2>
+          <p>Connect with 87+ oncologists across leading hospitals in India. Explore specialists in medical, surgical and radiation oncology, and get expert guidance to find the right doctor for your cancer care needs.</p>
         </div>
-        <div class="grid-4 us-grid">
-          <div class="card us-card reveal">
-            <span class="us-num">1</span>
-            <h3>Patient-First, Transparent Guidance</h3>
-            <ul>
-              <li>Personalised assistance based on your diagnosis and stage</li>
-              <li>Honest guidance with options, not a single hospital pushed on you</li>
-              <li>Clear communication so you can decide with confidence</li>
-            </ul>
-          </div>
-          <div class="card us-card reveal">
-            <span class="us-num">2</span>
-            <h3>Access to India’s Leading Cancer Hospitals</h3>
-            <ul>
-              <li>Partner hospitals in the JCI / NABH / NABL accredited network</li>
-              <li>Options across Delhi NCR, Mumbai and Bengaluru</li>
-              <li>Hospital chosen on medical need</li>
-            </ul>
-          </div>
-          <div class="card us-card reveal">
-            <span class="us-num">3</span>
-            <h3>One Team for International Patients</h3>
-            <ul>
-              <li>Medical visa and invitation letter support</li>
-              <li>Flights, airport pickup and accommodation</li>
-              <li>Interpreter services and a coordinator for patients travelling from abroad</li>
-            </ul>
-          </div>
-          <div class="card us-card reveal">
-            <span class="us-num">4</span>
-            <h3>End-to-End Coordination</h3>
-            <ul>
-              <li>Report review, second opinions and appointments</li>
-              <li>Admissions, insurance help and concierge desk</li>
-              <li>Follow-ups and post-treatment guidance</li>
-            </ul>
-          </div>
+      </div>
+
+      <div class="doc-rows" aria-label="Cancer specialists">
+        <div class="doc-row" data-doc-row>
+          <ul class="doc-track">
+            <li class="doc-card">
+              <div class="doc-photo-wrap">
+                <img class="doc-photo" src="assets/images/doctors/dr-ravella-venkateswara-rao.jpg" alt="Dr. Ravella Venkateswara Rao" width="480" height="480" loading="lazy" decoding="async">
+                <span class="doc-tag">Medical &amp; Hemato-Oncology</span>
+              </div>
+              <div class="doc-body">
+                <h3>Dr. Ravella Venkateswara Rao</h3>
+                <p class="doc-role">Senior Consultant – Medical Oncology &amp; Hematology</p>
+                <p class="doc-exp"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg> 46+ Years of Experience</p>
+                <p class="doc-bio">Specialises in medical oncology, haematological malignancies, chemotherapy, targeted therapy, immunotherapy and supportive cancer care.</p>
+                <a class="doc-cta" href="#lead-form" data-event="doctor_profile_click">Book Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+            </li>
+            <li class="doc-card">
+              <div class="doc-photo-wrap">
+                <img class="doc-photo" src="assets/images/doctors/dr-vinod-raina.jpg" alt="Dr. Vinod Raina" width="480" height="480" loading="lazy" decoding="async">
+                <span class="doc-tag">Hemato-Oncology &amp; BMT</span>
+              </div>
+              <div class="doc-body">
+                <h3>Dr. Vinod Raina</h3>
+                <p class="doc-role">Chairman – Medical Oncology, Hematology &amp; Bone Marrow Transplant</p>
+                <p class="doc-exp"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg> 40+ Years of Experience</p>
+                <p class="doc-bio">Specialises in medical oncology, haematological cancers, bone marrow transplantation and comprehensive cancer management.</p>
+                <a class="doc-cta" href="#lead-form" data-event="doctor_profile_click">Book Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+            </li>
+            <li class="doc-card">
+              <div class="doc-photo-wrap doc-photo-wrap--initials">
+                <span class="doc-initials" aria-hidden="true">AP</span>
+                <span class="doc-tag">Surgical Oncology</span>
+              </div>
+              <div class="doc-body">
+                <h3>Dr. Ashok Patel</h3>
+                <p class="doc-role">Senior Consultant – Department of Surgical Oncology</p>
+                <p class="doc-exp"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg> 38+ Years of Experience</p>
+                <p class="doc-bio">Specialises in surgical oncology and operative management of different types of solid tumours.</p>
+                <a class="doc-cta" href="#lead-form" data-event="doctor_profile_click">Book Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+            </li>
+            <li class="doc-card">
+              <div class="doc-photo-wrap">
+                <img class="doc-photo" src="assets/images/doctors/dr-harsh-dua.jpg" alt="Dr. Harsh Dua" width="480" height="480" loading="lazy" decoding="async">
+                <span class="doc-tag">Medical Oncology</span>
+              </div>
+              <div class="doc-body">
+                <h3>Dr. Harsh Dua</h3>
+                <p class="doc-role">Senior Consultant – Department of Medical Oncology</p>
+                <p class="doc-exp"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg> 35+ Years of Experience</p>
+                <p class="doc-bio">Specialises in medical oncology, chemotherapy, haematology and the management of different solid tumours and blood cancers.</p>
+                <a class="doc-cta" href="#lead-form" data-event="doctor_profile_click">Book Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+            </li>
+            <li class="doc-card">
+              <div class="doc-photo-wrap doc-photo-wrap--initials">
+                <span class="doc-initials" aria-hidden="true">SS</span>
+                <span class="doc-tag">Medical &amp; Hemato-Oncology</span>
+              </div>
+              <div class="doc-body">
+                <h3>Dr. Sankar Srinivasan</h3>
+                <p class="doc-role">Senior Consultant – Medical Oncology &amp; Hematology</p>
+                <p class="doc-exp"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg> 34+ Years of Experience</p>
+                <p class="doc-bio">Specialises in medical oncology, haematological malignancies and comprehensive management of solid tumours and blood cancers.</p>
+                <a class="doc-cta" href="#lead-form" data-event="doctor_profile_click">Book Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+            </li>
+            <li class="doc-card">
+              <div class="doc-photo-wrap doc-photo-wrap--initials">
+                <span class="doc-initials" aria-hidden="true">BA</span>
+                <span class="doc-tag">Medical Oncology</span>
+              </div>
+              <div class="doc-body">
+                <h3>Dr. Bhawana Awasthy</h3>
+                <p class="doc-role">Senior Consultant – Medical Oncology</p>
+                <p class="doc-exp"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg> 33+ Years of Experience</p>
+                <p class="doc-bio">Specialises in medical oncology, haematological disorders and comprehensive cancer management.</p>
+                <a class="doc-cta" href="#lead-form" data-event="doctor_profile_click">Book Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="doc-row doc-row--reverse" data-doc-row>
+          <ul class="doc-track">
+            <li class="doc-card">
+              <div class="doc-photo-wrap">
+                <img class="doc-photo" src="assets/images/doctors/dr-lalit-kumar.jpg" alt="Dr. (Prof.) Lalit Kumar" width="480" height="480" loading="lazy" decoding="async">
+                <span class="doc-tag">Medical Oncology</span>
+              </div>
+              <div class="doc-body">
+                <h3>Dr. (Prof.) Lalit Kumar</h3>
+                <p class="doc-role">Chairman – Artemis Cancer Centre &amp; Senior Consultant – Medical Oncology</p>
+                <p class="doc-exp"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg> 40+ Years of Experience</p>
+                <p class="doc-bio">Expertise in medical oncology, chemotherapy, systemic cancer treatment and the management of complex solid tumours and blood cancers.</p>
+                <a class="doc-cta" href="#lead-form" data-event="doctor_profile_click">Book Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+            </li>
+            <li class="doc-card">
+              <div class="doc-photo-wrap">
+                <img class="doc-photo" src="assets/images/doctors/dr-anurag-srivastava.jpg" alt="Dr. Anurag Srivastava" width="480" height="480" loading="lazy" decoding="async">
+                <span class="doc-tag">Surgical Oncology</span>
+              </div>
+              <div class="doc-body">
+                <h3>Dr. Anurag Srivastava</h3>
+                <p class="doc-role">Chairman – Breast &amp; Surgical Oncology</p>
+                <p class="doc-exp"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg> 38+ Years of Experience</p>
+                <p class="doc-bio">Expert in breast cancer surgery, surgical oncology and the management of complex solid tumours.</p>
+                <a class="doc-cta" href="#lead-form" data-event="doctor_profile_click">Book Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+            </li>
+            <li class="doc-card">
+              <div class="doc-photo-wrap">
+                <img class="doc-photo" src="assets/images/doctors/dr-subodh-chandra-pande.jpg" alt="Dr. Subodh Chandra Pande" width="480" height="480" loading="lazy" decoding="async">
+                <span class="doc-tag">Radiation Oncology</span>
+              </div>
+              <div class="doc-body">
+                <h3>Dr. Subodh Chandra Pande</h3>
+                <p class="doc-role">Chief – Radiation Oncology</p>
+                <p class="doc-exp"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg> 36+ Years of Experience</p>
+                <p class="doc-bio">Expert in radiation oncology, radiotherapy planning and radiation-based cancer treatment.</p>
+                <a class="doc-cta" href="#lead-form" data-event="doctor_profile_click">Book Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+            </li>
+            <li class="doc-card">
+              <div class="doc-photo-wrap doc-photo-wrap--initials">
+                <span class="doc-initials" aria-hidden="true">RD</span>
+                <span class="doc-tag">Radiation Oncology</span>
+              </div>
+              <div class="doc-body">
+                <h3>Dr. Rathna Devi</h3>
+                <p class="doc-role">Senior Consultant – Radiation Oncology</p>
+                <p class="doc-exp"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg> 34+ Years of Experience</p>
+                <p class="doc-bio">Expert in advanced radiation oncology, CyberKnife, Proton Beam Therapy, precision radiotherapy and treatment of complex tumours.</p>
+                <a class="doc-cta" href="#lead-form" data-event="doctor_profile_click">Book Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+            </li>
+            <li class="doc-card">
+              <div class="doc-photo-wrap">
+                <img class="doc-photo" src="assets/images/doctors/dr-svs-deo.jpg" alt="Dr. SVS Deo" width="480" height="480" loading="lazy" decoding="async">
+                <span class="doc-tag">Surgical Oncology</span>
+              </div>
+              <div class="doc-body">
+                <h3>Dr. SVS Deo</h3>
+                <p class="doc-role">Chairman – Max Network Surgical Oncology</p>
+                <p class="doc-exp"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg> 34+ Years of Experience</p>
+                <p class="doc-bio">Expert in surgical oncology and the surgical management of complex cancer cases.</p>
+                <a class="doc-cta" href="#lead-form" data-event="doctor_profile_click">Book Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+            </li>
+            <li class="doc-card">
+              <div class="doc-photo-wrap doc-photo-wrap--initials">
+                <span class="doc-initials" aria-hidden="true">AA</span>
+                <span class="doc-tag">Radiation Oncology</span>
+              </div>
+              <div class="doc-body">
+                <h3>Dr. Anil Kumar Anand</h3>
+                <p class="doc-role">Senior Director – Radiation Oncology</p>
+                <p class="doc-exp"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg> 32+ Years of Experience</p>
+                <p class="doc-bio">Expert in radiation oncology, radiotherapy and radiation-based treatment planning for cancer patients.</p>
+                <a class="doc-cta" href="#lead-form" data-event="doctor_profile_click">Book Consultation <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
+
+    <!-- ==========================================================
+         ACCREDITATION — client doc pt 3. Text seals for now; swap each
+         .acc-seal for the official logo image once the client sends the
+         files. Accreditations belong to partner hospitals and labs.
+    ============================================================ -->
+    <section class="section accreditation" id="accreditation">
+      <div class="container">
+        <div class="section-head" data-overline="Accreditation">
+          <h2>Trusted Access to Quality Healthcare in India</h2>
+          <p>Shifara Health connects international patients with recognised, accredited hospitals and experienced medical specialists across India, helping them access quality healthcare, personalised guidance and seamless medical travel support.</p>
+        </div>
+
+        <ul class="acc-grid">
+          <li class="acc-card reveal">
+            <span class="acc-seal" aria-hidden="true">JCI</span>
+            <div>
+              <h3>JCI</h3>
+              <p>Joint Commission International — an international accreditation for hospital quality and patient safety.</p>
+            </div>
+          </li>
+          <li class="acc-card reveal">
+            <span class="acc-seal" aria-hidden="true">NABH</span>
+            <div>
+              <h3>NABH</h3>
+              <p>National Accreditation Board for Hospitals &amp; Healthcare Providers — India's national standard for hospital quality.</p>
+            </div>
+          </li>
+          <li class="acc-card reveal">
+            <span class="acc-seal acc-seal--alt" aria-hidden="true">NABL</span>
+            <div>
+              <h3>NABL</h3>
+              <p>National Accreditation Board for Testing and Calibration Laboratories — accreditation for diagnostic and pathology labs.</p>
+            </div>
+          </li>
+        </ul>
+        <p class="acc-note">Accreditations are held by our partner hospitals and laboratories. Shifara Health is a medical travel and care-coordination company.</p>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         DOCTOR VIDEOS — client doc pt 3 (4 YouTube Shorts).
+         Names come from each video's YouTube title. Shorts must be
+         embedded through /embed/<id>; /shorts/<id> URLs refuse to load
+         inside an iframe.
+    ============================================================ -->
+    <section class="section doctor-videos" id="doctor-videos">
+      <div class="container">
+        <div class="section-head" data-overline="Doctor Videos">
+          <h2>Insights from Experienced Cancer Specialists</h2>
+          <p>Hear directly from experienced oncologists in these short videos.</p>
+        </div>
+
+        <div class="video-grid">
+          <figure class="video-card reveal">
+            <div class="video-frame">
+              <iframe src="https://www.youtube-nocookie.com/embed/-RPti8E3eyI" title="Dr Vikas Dua — video" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <figcaption><strong>Dr Vikas Dua</strong> <span>Principal Director &amp; Head – Pediatric Hematology, Hemato-Oncology &amp; BMT</span></figcaption>
+          </figure>
+          <figure class="video-card reveal">
+            <div class="video-frame">
+              <iframe src="https://www.youtube-nocookie.com/embed/fa78wYjVnZY" title="Dr. Vedant Kabra — video" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <figcaption><strong>Dr. Vedant Kabra</strong> <span>Principal Director – Surgical Oncology</span></figcaption>
+          </figure>
+          <figure class="video-card reveal">
+            <div class="video-frame">
+              <iframe src="https://www.youtube-nocookie.com/embed/EofvKKrEo7s" title="Dr Gaurav Dixit — video" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <figcaption><strong>Dr Gaurav Dixit</strong></figcaption>
+          </figure>
+          <figure class="video-card reveal">
+            <div class="video-frame">
+              <iframe src="https://www.youtube-nocookie.com/embed/YoqAAMd3V6o" title="Dr Arun Danewa — video" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <figcaption><strong>Dr Arun Danewa</strong> <span>Pediatric Haematology, Oncology &amp; BMT</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
     <!-- ==========================================================
      SECTION 14 — PATIENT STORIES
      Doc status: [REQUIRED] — 3–5 oncology stories with written
@@ -1301,10 +1346,6 @@
           <div class="faq-item reveal">
             <button class="faq-q" aria-expanded="false"><span>How does the free opinion work?</span><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></button>
             <div class="faq-a" hidden><p>Share your reports through the form or WhatsApp. Our medical team reviews your case and connects you with a suitable specialist who explains your diagnosis and options.</p></div>
-          </div>
-          <div class="faq-item reveal">
-            <button class="faq-q" aria-expanded="false"><span>How much does cancer treatment cost in India?</span><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></button>
-            <div class="faq-a" hidden><p>Most procedures cost 60–80% less than in the US, UK or Gulf. The final cost depends on cancer type, stage, treatment plan, hospital, medicines, diagnostics and length of stay. For example, brain tumour surgery is listed at USD 8,000–18,000. You receive a written estimate after your reports are reviewed.</p></div>
           </div>
           <div class="faq-item reveal">
             <button class="faq-q" aria-expanded="false"><span>How do I get a medical visa for cancer treatment?</span><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></button>

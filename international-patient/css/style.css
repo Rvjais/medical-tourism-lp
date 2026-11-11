@@ -3784,3 +3784,13 @@ a { color: var(--brand-deep); }
   .row-track { scroll-behavior: auto; }
   .plan-progress i, .plan-pill, .row-arrow { transition: none; }
 }
+
+/* ---------- Client doc (pt 3): image at the top of each treatment card ---------- */
+.card.proc-card { overflow: hidden; }
+.proc-media {
+  margin: -1.5rem -1.5rem 1.1rem;
+  aspect-ratio: 16 / 10;
+  background: var(--brand-tint);
+  overflow: hidden;
+}
+.proc-media img { display: block; width: 100%; height: 100%; object-fit: cover; }

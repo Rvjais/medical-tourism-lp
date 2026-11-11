@@ -3074,3 +3074,264 @@ a { color: var(--brand-deep); }
   .partner-row { animation: none; }
 }
 
+
+/* ============================================================
+   CLIENT DOC (PT 3) — hero accreditation badges, 6-stat strip,
+   cancer-type images + overlap fix, redesigned Why Shifara block,
+   specialist rows, accreditation section, doctor videos.
+   Appended last so these rules win any same-selector cascade.
+   ============================================================ */
+
+/* ---------- Shared accreditation seal (text stand-in for logos) ---------- */
+.acc-seal {
+  flex: 0 0 auto;
+  width: 52px; height: 52px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: #fff; color: var(--brand);
+  font-family: var(--font-head); font-weight: 800; font-size: .74rem; letter-spacing: .05em;
+  border: 2px solid var(--brand);
+  box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 4.5px rgba(14, 95, 112, .35), var(--shadow-sm);
+}
+.acc-seal--alt {
+  color: var(--accent-deep); border-color: var(--accent-deep);
+  box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 4.5px rgba(180, 71, 42, .3), var(--shadow-sm);
+}
+
+/* ---------- 1 · Hero: NABH + NABL badges (replace the stat pointers) ---------- */
+.hero-bright .hb-badges { display: flex; flex-wrap: wrap; align-items: center; gap: .7rem 1rem; }
+.hero-bright .hb-badges-label {
+  flex-basis: 100%;
+  font-size: .7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--muted);
+}
+.hero-bright .hb-badge {
+  display: inline-flex; align-items: center; gap: .7rem;
+  background: #fff; border: 1px solid #e3eaf2; border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+  padding: .5rem 1rem .5rem .5rem;
+}
+.hero-bright .hb-badge-text { font-size: .76rem; line-height: 1.3; color: var(--ink-soft); max-width: 17ch; }
+.hero-bright .hb-badge-text strong { display: block; font-family: var(--font-head); font-size: .95rem; color: var(--ink); }
+
+/* ---------- 2 · Stats strip: 6 pointers on a new deep-teal band ---------- */
+.trustbar.trustbar--six {
+  background: linear-gradient(100deg, var(--brand-darker) 0%, var(--brand) 100%);
+  padding: 2.2rem 0 1.6rem;
+}
+.trustbar--six .trust-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0; }
+.trustbar--six .trust-card,
+.trustbar--six .trust-card + .trust-card {
+  border: 0;
+  border-left: 1px solid rgba(255, 255, 255, .16);
+  padding: .3rem 1.15rem;
+  align-items: flex-start; text-align: left;
+}
+.trustbar--six .trust-card:nth-child(6n+1) { border-left: 0; }
+.trustbar--six .trust-num { color: #fff; font-size: clamp(1.55rem, 2.3vw, 2rem); font-weight: 700; }
+.trustbar--six .trust-label { color: #cfe6ea; font-size: .86rem; max-width: none; }
+.trustbar--six .trust-footnote { color: rgba(255, 255, 255, .72); border-top-color: rgba(255, 255, 255, .14); }
+
+/* ---------- 3 · Cancer types: image under the summary + overlap fix ----------
+   The old desktop grid put every direct <p> in row 2, so the brain-tumour
+   cost note sat on top of the description. Named areas give each item its
+   own row; the options list spans the rows of the left column. */
+.type-media {
+  margin: .15rem 0 1.1rem;
+  border-radius: 16px; overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: var(--brand-tint);
+}
+.type-media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+@media (min-width: 981px) {
+  .types .tab-panel.is-active {
+    grid-template-areas:
+      "title opth"
+      "desc  opts"
+      "cost  opts"
+      "media opts"
+      "cta   opts";
+    grid-template-rows: auto auto auto auto 1fr;
+  }
+  .types .tab-panel > h3 { grid-area: title; }
+  .types .tab-panel > p { grid-area: desc; }
+  .types .tab-panel > .cost-badge { grid-area: cost; margin: 0 0 1rem; }
+  .types .tab-panel > .type-media { grid-area: media; margin-bottom: 0; }
+  .types .tab-panel > h4 { grid-area: opth; }
+  .types .tab-panel > ul { grid-area: opts; }
+  .types .tab-panel > .btn { grid-area: cta; }
+}
+
+/* ---------- 4 · Why Choose Shifara Health (client reference layout) ---------- */
+.why-shifara { background: #e9f4f5; }
+.ws-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+  gap: clamp(2rem, 4vw, 3.6rem);
+  align-items: stretch;
+}
+.ws-overline {
+  display: inline-block;
+  background: var(--gold-soft); border: 1px solid #dbe6f1; color: var(--gold-text);
+  font-size: .68rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase;
+  padding: .34rem 1rem; margin-bottom: 1rem;
+}
+.ws-copy h2 {
+  font-size: clamp(1.6rem, 3vw, 2.25rem); font-weight: 600; letter-spacing: -.012em; line-height: 1.2;
+  margin-bottom: 1rem;
+}
+.ws-copy > p { color: var(--muted); line-height: 1.7; margin-bottom: .9rem; }
+.ws-strengths {
+  background: #fff;
+  border: 1px solid var(--line); border-left: 4px solid var(--gold);
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+  padding: 1.35rem 1.5rem;
+  margin: 1.5rem 0 1.6rem;
+}
+.ws-strengths h3 { font-size: 1.1rem; margin-bottom: .85rem; }
+.ws-strengths ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .55rem; }
+.ws-strengths li { position: relative; padding-left: 1.1rem; font-size: .9rem; line-height: 1.5; color: var(--ink-soft); }
+.ws-strengths li::before {
+  content: ""; position: absolute; left: 0; top: .55em;
+  width: 6px; height: 6px; border-radius: 50%; background: var(--gold);
+}
+.ws-strengths strong { color: var(--ink); font-weight: 600; }
+.ws-media {
+  position: relative; margin: 0; min-height: 420px;
+  border-radius: 24px; overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+.ws-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+/* ---------- 5 · Specialists: two auto-moving rows ---------- */
+.specialists { background: #fff; }
+.doc-rows { display: grid; gap: 1.3rem; overflow: hidden; padding: .2rem 0 .6rem; }
+/* no-JS / reduced-motion fallback: a sideways-scrolling row */
+.doc-row {
+  display: flex;
+  overflow-x: auto; scroll-snap-type: x proximity;
+  padding: .4rem max(4vw, calc((100vw - 1220px) / 2)) .9rem;
+}
+.doc-track { display: flex; gap: 1.2rem; list-style: none; margin: 0; padding: 0 1.2rem 0 0; }
+/* JS appends a clone of the track, then the row slides by half its width */
+.doc-row.is-looping {
+  width: max-content; overflow: visible;
+  padding: .4rem 0 .9rem;
+  animation: doc-scroll 62s linear infinite;
+}
+.doc-row--reverse.is-looping { animation-direction: reverse; animation-duration: 68s; }
+.doc-rows:hover .doc-row.is-looping,
+.doc-row.is-looping:focus-within { animation-play-state: paused; }
+@keyframes doc-scroll { to { transform: translateX(-50%); } }
+
+.doc-card {
+  flex: 0 0 290px;
+  display: flex; flex-direction: column;
+  background: #fff; border: 1px solid var(--line); border-radius: 18px;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  scroll-snap-align: start;
+}
+.doc-photo-wrap { position: relative; aspect-ratio: 4 / 3; background: #eef3f6; overflow: hidden; }
+.doc-photo { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 15%; }
+.doc-photo-wrap::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 45%;
+  background: linear-gradient(180deg, rgba(8, 52, 64, 0), rgba(8, 52, 64, .5));
+}
+.doc-photo-wrap--initials { display: grid; place-items: center; background: linear-gradient(135deg, var(--brand-light), #f6fbfc); }
+.doc-photo-wrap--initials::after { display: none; }
+.doc-initials {
+  width: 92px; height: 92px; border-radius: 50%; margin-bottom: 1.3rem;
+  display: grid; place-items: center;
+  background: #fff; color: var(--brand); box-shadow: var(--shadow-sm);
+  font-family: var(--font-head); font-weight: 700; font-size: 1.7rem; letter-spacing: .04em;
+}
+.doc-tag {
+  position: absolute; left: .85rem; bottom: .8rem; z-index: 1;
+  background: var(--brand); color: #fff;
+  font-size: .72rem; font-weight: 700; line-height: 1.2;
+  padding: .32rem .72rem; border-radius: 999px;
+}
+.doc-body { display: flex; flex-direction: column; flex: 1; padding: 1.05rem 1.2rem 1.2rem; }
+.doc-body h3 { font-size: 1.06rem; margin: 0 0 .25rem; }
+.doc-role { color: var(--brand-deep); font-size: .83rem; font-weight: 600; line-height: 1.4; margin: 0 0 .55rem; }
+.doc-exp { display: flex; align-items: center; gap: .35rem; font-size: .8rem; color: var(--muted); margin: 0 0 .55rem; }
+.doc-exp .ic { width: 1em; height: 1em; color: #f2b01e; }
+.doc-bio { font-size: .82rem; line-height: 1.55; color: var(--ink-soft); margin: 0 0 1rem; }
+.doc-cta {
+  margin-top: auto;
+  display: flex; align-items: center; justify-content: center; gap: .4rem;
+  border: 1.5px solid var(--line-strong); border-radius: 12px;
+  padding: .6rem .9rem;
+  font-weight: 600; font-size: .88rem; color: var(--brand);
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+.doc-cta:hover,
+.doc-cta:focus-visible { background: #eb6861; border-color: #eb6861; color: #fff; }
+
+/* ---------- 6 · Accreditation ---------- */
+.accreditation { background: var(--sand); }
+.acc-grid {
+  list-style: none; margin: 0 auto; padding: 0;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem;
+  max-width: 1080px;
+}
+.acc-card {
+  display: flex; align-items: center; gap: 1rem;
+  background: #fff; border: 1px solid var(--line); border-radius: 18px;
+  box-shadow: var(--shadow-sm);
+  padding: 1.3rem;
+}
+.acc-card .acc-seal { width: 72px; height: 72px; font-size: .95rem; }
+.acc-card h3 { font-size: 1.05rem; margin-bottom: .25rem; }
+.acc-card p { font-size: .84rem; line-height: 1.5; color: var(--muted); margin: 0; }
+.acc-note { text-align: center; font-size: .78rem; color: var(--muted); max-width: 640px; margin: 1.4rem auto 0; }
+
+/* ---------- 7 · Doctor videos (vertical Shorts) ---------- */
+.doctor-videos { background: #fff; }
+.video-grid {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.3rem;
+  max-width: 1100px; margin: 0 auto;
+}
+.video-card {
+  margin: 0;
+  background: #fff; border: 1px solid var(--line); border-radius: 20px;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+.video-frame { position: relative; aspect-ratio: 9 / 16; background: var(--brand-navy); }
+.video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video-card figcaption { padding: .85rem 1rem 1rem; font-size: .82rem; line-height: 1.4; color: var(--muted); }
+.video-card figcaption strong { display: block; font-family: var(--font-head); font-size: .98rem; color: var(--ink); }
+
+/* ---------- 8 · Responsive ---------- */
+@media (max-width: 1080px) {
+  .trustbar--six .trust-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 1.3rem; }
+  .trustbar--six .trust-card:nth-child(3n+1) { border-left: 0; }
+  .video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 640px; }
+}
+@media (max-width: 980px) {
+  .ws-grid { grid-template-columns: 1fr; }
+  .ws-media { order: -1; min-height: 0; aspect-ratio: 16 / 10; }
+  .acc-grid { grid-template-columns: 1fr; max-width: 560px; }
+}
+@media (max-width: 640px) {
+  .hero-bright .hb-badge { padding: .45rem .8rem .45rem .45rem; }
+  .hero-bright .acc-seal { width: 46px; height: 46px; font-size: .68rem; }
+  .trustbar--six .trust-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .trustbar--six .trust-card:nth-child(3n+1) { border-left: 1px solid rgba(255, 255, 255, .16); }
+  .trustbar--six .trust-card:nth-child(2n+1) { border-left: 0; }
+  .trustbar--six .trust-card { padding: .3rem .9rem; }
+  .ws-strengths { padding: 1.15rem 1.1rem; }
+  .doc-card { flex-basis: 262px; }
+  /* videos: swipeable row instead of four tall stacked frames */
+  .video-grid {
+    display: flex; gap: .9rem;
+    overflow-x: auto; scroll-snap-type: x mandatory;
+    max-width: none; margin: 0 -4vw; padding: 0 4vw .6rem;
+  }
+  .video-card { flex: 0 0 68vw; scroll-snap-align: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .doc-row.is-looping { animation: none; }
+}

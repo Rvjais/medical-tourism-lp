@@ -954,6 +954,30 @@ function initScrollEffects() {
 }
 
 /* ------------------------------------------------------------
+   12) Doctor rows — two auto-moving rows of specialist cards.
+      Each track is cloned once so the CSS animation can loop
+      seamlessly (translateX -50%). The clone is hidden from
+      assistive tech and taken out of the tab order. Rows pause
+      on hover / keyboard focus (CSS). With reduced motion — or no
+      JS — the rows stay as horizontally scrollable lists.
+------------------------------------------------------------ */
+function initDoctorRows() {
+  const rows = document.querySelectorAll("[data-doc-row]");
+  if (!rows.length) return;
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  rows.forEach((row) => {
+    const track = row.querySelector(".doc-track");
+    if (!track || row.classList.contains("is-looping")) return;
+    const clone = track.cloneNode(true);
+    clone.setAttribute("aria-hidden", "true");
+    clone.querySelectorAll("a, button").forEach((el) => el.setAttribute("tabindex", "-1"));
+    row.appendChild(clone);
+    row.classList.add("is-looping");
+  });
+}
+
+/* ------------------------------------------------------------
    Boot
 ------------------------------------------------------------ */
 document.addEventListener("DOMContentLoaded", () => {
@@ -963,6 +987,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initNav();
   populateCountries();
   initTabs();
+  initDoctorRows();
   initFaq();
   initForm();
   initTracking();
