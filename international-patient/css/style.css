@@ -3794,3 +3794,9 @@ a { color: var(--brand-deep); }
   overflow: hidden;
 }
 .proc-media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* ---------- Click-to-call removed (client request) ---------- */
+/* mobile bottom bar: WhatsApp + Get Free Plan only */
+.sticky-cta { grid-template-columns: 1fr 1.2fr; }
+/* the mobile top bar used to show only the phone; show the email instead */
+.topbar-contact a[data-contact="mailLink"] { display: inline-flex; }

@@ -3289,11 +3289,13 @@ a { color: var(--brand-deep); }
 
 /* ---------- 7 · Doctor videos (vertical Shorts) ---------- */
 .doctor-videos { background: #fff; }
+/* centred rows, so an odd count (e.g. 7 = 4 + 3) sits in the middle */
 .video-grid {
-  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.3rem;
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 1.3rem;
   max-width: 1100px; margin: 0 auto;
 }
 .video-card {
+  flex: 0 0 calc((100% - 3 * 1.3rem) / 4);
   margin: 0;
   background: #fff; border: 1px solid var(--line); border-radius: 20px;
   box-shadow: var(--shadow-sm);
@@ -3308,7 +3310,8 @@ a { color: var(--brand-deep); }
 @media (max-width: 1080px) {
   .trustbar--six .trust-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 1.3rem; }
   .trustbar--six .trust-card:nth-child(3n+1) { border-left: 0; }
-  .video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 640px; }
+  .video-grid { max-width: 760px; }
+  .video-card { flex-basis: calc((100% - 2 * 1.3rem) / 3); }
 }
 @media (max-width: 980px) {
   .ws-grid { grid-template-columns: 1fr; }
@@ -3324,9 +3327,9 @@ a { color: var(--brand-deep); }
   .trustbar--six .trust-card { padding: .3rem .9rem; }
   .ws-strengths { padding: 1.15rem 1.1rem; }
   .doc-card { flex-basis: 262px; }
-  /* videos: swipeable row instead of four tall stacked frames */
+  /* videos: swipeable row instead of tall stacked frames */
   .video-grid {
-    display: flex; gap: .9rem;
+    display: flex; flex-wrap: nowrap; justify-content: flex-start; gap: .9rem;
     overflow-x: auto; scroll-snap-type: x mandatory;
     max-width: none; margin: 0 -4vw; padding: 0 4vw .6rem;
   }
@@ -3335,3 +3338,13 @@ a { color: var(--brand-deep); }
 @media (prefers-reduced-motion: reduce) {
   .doc-row.is-looping { animation: none; }
 }
+
+/* photo credit for the CC BY-SA city images */
+.hub-credits { text-align: center; color: var(--muted); font-size: .72rem; line-height: 1.5; margin: 1.6rem auto 0; max-width: 760px; }
+.hub-credits a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+
+/* ---------- Click-to-call removed (client request) ---------- */
+/* mobile bottom bar: WhatsApp + Get Free Plan only */
+.sticky-cta { grid-template-columns: 1fr 1.2fr; }
+/* the mobile top bar used to show only the phone; show the email instead */
+.topbar-contact a[data-contact="mailLink"] { display: inline-flex; }

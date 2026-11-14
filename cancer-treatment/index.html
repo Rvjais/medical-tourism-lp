@@ -40,7 +40,7 @@
   <link rel="preload" as="image" href="assets/images/hero-bg.jpg" fetchpriority="high">
 
   <!-- Styles — bump ?v= on every CSS/JS change: the server caches CSS for 7 days -->
-  <link rel="stylesheet" href="css/style.css?v=20261111">
+  <link rel="stylesheet" href="css/style.css?v=20261114b">
 
   <!-- No-JS fallbacks: keep reveal content visible, show a form note -->
   <noscript>
@@ -121,11 +121,6 @@
     <div class="topbar">
       <div class="container topbar-inner">
         <div class="topbar-contact">
-          <a data-contact="phoneLink" href="#" data-event="call_click">
-            <svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>
-            <span data-contact="phoneText">+91 99713 16164</span>
-          </a>
-          <span class="topbar-sep" aria-hidden="true">|</span>
           <a data-contact="mailLink" href="#" data-event="email_click">
             <svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>
             <span data-contact="mailText">mail@shifarahealth.com</span>
@@ -153,9 +148,6 @@
         </ul>
 
         <div class="nav-actions">
-          <a class="nav-phone" data-contact="phoneLink" href="#" data-event="call_click" aria-label="Call us">
-            <svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>
-          </a>
           <a class="btn btn-primary btn-header" href="#lead-form" data-event="form_intent">Get Free Treatment Plan</a>
           <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navDrawer" aria-label="Open menu">
             <span></span><span></span><span></span>
@@ -179,10 +171,6 @@
         <a class="btn btn-primary btn-block" href="#lead-form" data-event="form_intent">Get My Free Treatment Plan</a>
         <a class="btn btn-whatsapp btn-block" data-contact="waLink" href="#" target="_blank" rel="noopener" data-event="whatsapp_click">
           <svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg> WhatsApp Coordinator
-        </a>
-        <a class="drawer-phone" data-contact="phoneLink" href="#" data-event="call_click">
-          <svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>
-          <span data-contact="phoneText">+91 99713 16164</span>
         </a>
       </div>
     </div>
@@ -826,35 +814,35 @@
           </div>
           <div class="card hub-card reveal">
             <div class="hub-img-wrap">
-              <img src="assets/images/hospital-1.jpg" alt="Modern partner hospital campus in Gurgaon" class="hub-img" width="1200" height="896" loading="lazy">
+              <img src="assets/images/hub-gurgaon.jpg" alt="DLF Cyber City skyline in Gurgaon" class="hub-img" width="800" height="533" loading="lazy">
               <span class="hub-pin"><svg class="ic" aria-hidden="true"><use href="#i-map"/></svg> Gurgaon</span>
             </div>
             <div class="hub-body">
               <h3>Gurgaon</h3>
-              <p>Robotic oncology near Delhi airport.</p>
+              <p>Advanced and robotic oncology minutes from Delhi airport.</p>
               <ul class="hub-list">
-                <li>Fortis</li>
-                <li>Artemis</li>
-                <li>Marengo</li>
-                <li>Max</li>
-                <li>Manipal</li>
+                <li>Fortis Memorial Research Institute</li>
+                <li>Artemis Hospital</li>
+                <li>Marengo Asia Hospital</li>
+                <li>Max Super Speciality Hospital</li>
+                <li>Manipal Hospital (Columbia Asia)</li>
               </ul>
             </div>
           </div>
           <div class="card hub-card reveal">
             <div class="hub-img-wrap">
-              <img src="assets/images/hero-slide-3.jpg" alt="Oncology care team at a Hyderabad partner hospital" class="hub-img" width="1920" height="1080" loading="lazy">
+              <img src="assets/images/hub-hyderabad.jpg" alt="Charminar in Hyderabad" class="hub-img" width="800" height="533" loading="lazy">
               <span class="hub-pin"><svg class="ic" aria-hidden="true"><use href="#i-map"/></svg> Hyderabad</span>
             </div>
             <div class="hub-body">
               <h3>Hyderabad</h3>
-              <p>Oncology & transplant centres.</p>
+              <p>Cost-effective cancer care with renowned oncology and transplant centres.</p>
               <ul class="hub-list">
-                <li>Apollo</li>
-                <li>PACE</li>
-                <li>Aster</li>
-                <li>Continental</li>
-                <li>Medicover</li>
+                <li>Apollo Hospital</li>
+                <li>PACE Hospitals</li>
+                <li>Aster Prime Hospital</li>
+                <li>Continental Hospitals</li>
+                <li>Medicover Hospitals</li>
               </ul>
             </div>
           </div>
@@ -875,6 +863,8 @@
             </div>
           </div>
         </div>
+        <!-- Required by the CC BY-SA 4.0 licence of the two Wikimedia photos -->
+        <p class="hub-credits">City photos: <a href="https://commons.wikimedia.org/wiki/File:Cyber_City_View.jpg" target="_blank" rel="noopener">Cyber City, Gurgaon</a> by Tarun4u and <a href="https://commons.wikimedia.org/wiki/File:Charminar_Morning_View.jpg" target="_blank" rel="noopener">Charminar</a> by Santoshvelamala1996, via Wikimedia Commons, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a> (cropped).</p>
       </div>
     </section>
 
@@ -1182,7 +1172,7 @@
     </section>
 
     <!-- ==========================================================
-         DOCTOR VIDEOS — client doc pt 3 (4 YouTube Shorts).
+         DOCTOR VIDEOS — client doc pt 3 (7 YouTube Shorts).
          Names come from each video's YouTube title. Shorts must be
          embedded through /embed/<id>; /shorts/<id> URLs refuse to load
          inside an iframe.
@@ -1211,13 +1201,31 @@
             <div class="video-frame">
               <iframe src="https://www.youtube-nocookie.com/embed/EofvKKrEo7s" title="Dr Gaurav Dixit — video" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
-            <figcaption><strong>Dr Gaurav Dixit</strong></figcaption>
+            <figcaption><strong>Dr Gaurav Dixit</strong> <span>Head – Haematology Oncology &amp; Bone Marrow Transplant</span></figcaption>
           </figure>
           <figure class="video-card reveal">
             <div class="video-frame">
               <iframe src="https://www.youtube-nocookie.com/embed/YoqAAMd3V6o" title="Dr Arun Danewa — video" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
             <figcaption><strong>Dr Arun Danewa</strong> <span>Pediatric Haematology, Oncology &amp; BMT</span></figcaption>
+          </figure>
+          <figure class="video-card reveal">
+            <div class="video-frame">
+              <iframe src="https://www.youtube-nocookie.com/embed/ffcyX-UhNgc" title="Dr. Rajesh Kumar Jain — video" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <figcaption><strong>Dr. Rajesh Kumar Jain</strong> <span>BLK-Max Hospital</span></figcaption>
+          </figure>
+          <figure class="video-card reveal">
+            <div class="video-frame">
+              <iframe src="https://www.youtube-nocookie.com/embed/tJYJyntMzdg" title="Dr Pushpinder Gulia — video" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <figcaption><strong>Dr Pushpinder Gulia</strong> <span>Cancer Surgeon</span></figcaption>
+          </figure>
+          <figure class="video-card reveal">
+            <div class="video-frame">
+              <iframe src="https://www.youtube-nocookie.com/embed/WCtehZpeOyY" title="Dr. Ankur Bahel — video" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <figcaption><strong>Dr. Ankur Bahel</strong> <span>Medical Oncologist</span></figcaption>
           </figure>
         </div>
       </div>
@@ -1315,8 +1323,6 @@
           </ul>
 
           <p class="cta-contact">
-            <a data-contact="phoneLink" href="#" data-event="call_click"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg> <span data-contact="phoneText">+91 99713 16164</span></a>
-            <span class="dot" aria-hidden="true">·</span>
             <a data-contact="mailLink" href="#" data-event="email_click"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg> <span data-contact="mailText">mail@shifarahealth.com</span></a>
           </p>
 
@@ -1431,8 +1437,6 @@
             <ul class="footer-contact">
               <li><svg class="ic" aria-hidden="true"><use href="#i-map"/></svg>
                 <span>Venture X, 389P-390, Near IFFCO Metro Station<br>Sector 29, Gurugram, Haryana - 122022</span></li>
-              <li><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>
-                <a data-contact="phoneLink" href="#" data-event="call_click"><span data-contact="phoneText">+91 99713 16164</span></a></li>
               <li><svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg>
                 <a data-contact="waLink" href="#" target="_blank" rel="noopener" data-event="whatsapp_click">WhatsApp: <span data-contact="phoneText">+91 99713 16164</span></a></li>
               <li><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>
@@ -1465,9 +1469,6 @@
      (mobile-first conversion per doc Section B)
 ============================================================ -->
 <div class="sticky-cta" aria-label="Quick contact">
-  <a data-contact="phoneLink" href="#" data-event="call_click">
-    <svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg><span>Call</span>
-  </a>
   <a data-contact="waLink" href="#" target="_blank" rel="noopener" data-event="whatsapp_click" class="sticky-wa">
     <svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg><span>WhatsApp</span>
   </a>
@@ -1485,6 +1486,6 @@
   Events wired in js/script.js: form_submit, whatsapp_click, call_click,
   doctor_profile_click, hospital_profile_click (+ email_click, form_intent).
 -->
-<script src="js/script.js?v=20261111"></script>
+<script src="js/script.js?v=20261114b"></script>
 </body>
 </html>
