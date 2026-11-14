@@ -14,7 +14,7 @@ const CONFIG = {
   whatsappHref:
     "https://wa.me/919971316164?text=" +
     encodeURIComponent(
-      "Hello Shifara Health, I would like a free consultation for medical treatment in India. I am sharing my reports."
+      "Hello Shifara Health, I would like a free consultation for medical treatment in India.\nhttps://lp.shifarahealth.com/international-patient/"
     ),
   emailDisplay: "mail@shifarahealth.com",
   emailHref: "mailto:mail@shifarahealth.com",

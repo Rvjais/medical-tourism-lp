@@ -14,7 +14,7 @@ const CONFIG = {
   whatsappHref:
     "https://wa.me/919971316164?text=" +
     encodeURIComponent(
-      "Hello Shifara Health, I would like a free cancer treatment plan. I am sharing my diagnosis and reports."
+      "Hello Shifara Health, I would like a free cancer treatment plan\nhttps://lp.shifarahealth.com/cancer-treatment/"
     ),
   emailDisplay: "mail@shifarahealth.com",
   emailHref: "mailto:mail@shifarahealth.com",
